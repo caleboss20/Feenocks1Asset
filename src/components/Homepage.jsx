@@ -1,9 +1,9 @@
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
-import image1 from "../../assets/images/bestfamily.webp";
-import image2 from "../../assets/images/family-savings.png";
-import image3 from "../../assets/images/toy.jpg";
-import Button from "../Button";
-import CardMarquee from "../marquee";
+import image1 from "../assets/images/bestfamily.webp";
+import image2 from "../assets/images/family-savings.png";
+import image3 from "../assets/images/toy.jpg";
+import Button from "./Button";
+import CardMarquee from "./marquee";
 import { motion } from "framer-motion";
 
 function Homepage() {
