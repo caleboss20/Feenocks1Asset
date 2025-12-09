@@ -6,9 +6,9 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <nav className="fixed right-0 left-0 flex justify-between items-center p-4 bg-white h-25 text-black z-20">
+      <nav className="fixed right-0 left-0 flex justify-between items-center p-6 bg-white h-25 text-black z-20">
         <div>
-           <h1 className="font-bold text-2xl">FEENICKS1</h1>
+           <h1 className="font-medium text-xl">FEENICKS1</h1>
            <span className="text-base font-medium">ASSET MANAGEMENT</span>
         </div>
        
