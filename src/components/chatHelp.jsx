@@ -8,7 +8,7 @@ function ChatHelp() {
       </div>
     </div>
      <div className="flex items-center justify-center w-70 h-10 rounded-md shadow-md bg-yello-500 absolute bottom-14 right-18">
-        <span className="text-lg">👋 Hi Need Help?</span>
+        {/* <span className="text-lg">👋 Hi Need Help?</span> */}
      </div>
     </>
   );
