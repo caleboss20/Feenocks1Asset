@@ -1,5 +1,5 @@
-import {FaFacebook,FaInstagram,FaTiktok,FaTwitter,FaWhatsapp} from "react-icons/fa"
-function Footer() {
+ import {FaFacebook,FaInstagram,FaTiktok,FaTwitter,FaWhatsapp} from "react-icons/fa"
+ function Footer() {
   return (
     <div>
    <h2 className="p-6 text-white text-xl font-medium">Feenicks1</h2>
@@ -40,11 +40,11 @@ function Footer() {
 
     {/**social icons */}
    <div className="flex gap-4 mt-20">
-    <FaFacebook className="w-7 h-7"/>
-    <FaTwitter className="w-7 h-7"/>
-    <FaInstagram className="w-7 h-7"/>
-    <FaTiktok className="w-7 h-7"/>
-    <FaWhatsapp className="w-7 h-7"/>
+    <FaFacebook className="w-52 h-22"/>
+    <FaTwitter className="w-22 h-12"/>
+    <FaInstagram className="w-22 h-12"/>
+    <FaTiktok className="w-22 h-12"/>
+    <FaWhatsapp className="w-42 h-22"/>
 
    </div>
    </div>

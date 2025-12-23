@@ -8,10 +8,12 @@ import { motion } from "framer-motion";
 import FAQsection from "./FAQsection";
 import Footer from "./Footer";
 import { ChatBubbleBottomCenterIcon } from "@heroicons/react/24/outline";
+import Navbar from "./Navbar";
 
 function Homepage() {
   return (
     <div className="">
+      <Navbar />
       {/* hero-section */}
       <section>
         <div className="">

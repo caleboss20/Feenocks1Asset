@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ChatHelp from "./chatHelp";
 import { FcGoogle } from "react-icons/fc";
@@ -6,6 +6,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import BackArrow from "./Backarrow";
+
 // Disposable email domains
 const disposableDomains = [
   "tempmail.com",
@@ -82,6 +85,7 @@ export default function SignUp() {
 
 
   // Step 1 submit
+
   const onEmailSubmit = (data) => {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     setGeneratedOTP(otp);
@@ -95,17 +99,17 @@ export default function SignUp() {
 
 
   // Step 2 submit
+    
   const onOTPSubmitHandler = (data) => {
     if (data.otp === generatedOTP) {
       setStep(3);
     } else {
       alert("Invalid OTP");
       resetOTP();
+      
+      
     }
   };
-
-
-
 
 
 
@@ -115,10 +119,20 @@ export default function SignUp() {
     alert("Signup completed!");
   };
 
+  //going to kyc//
+  const navigate=useNavigate();
+  const handleNext=()=>{
+   navigate("/verification");
+  }
+ 
 
+   const goback = () => navigate("/");
 
   return (
     <div className="w-full min-h-screen bg-re-300 p-4 flex justify-center md:items-center relative">
+       <div className="absolute left-5 top-10" onClick={goback}>
+        <BackArrow />
+      </div>
       <AnimatePresence>
         {step === 1 && (
           <motion.div
@@ -128,7 +142,7 @@ export default function SignUp() {
             transition={{ duration: 0.5 }}
           >
             <div className="p-2 w-full bg-white mt-32 md:p-6 w-full max-w-md bg-white mt-20">
-              <h2 className="text-5xl leading-normal md:text-3xl">
+              <h2 className="text-4xl leading-normal md:text-3xl">
                 Become An Elite Investor
               </h2>
               <p className="text-gray-700 text-xl mt-6">
@@ -256,7 +270,7 @@ export default function SignUp() {
             transition={{ duration: 0.5 }}
           >
             <div className="p-2 w-full bg-white mt-32 md:p-6 w-full max-w-md bg-white mt-20">
-              <h2 className="text-5xl leading-normal md:text-3xl">
+              <h2 className="text-4xl leading-normal md:text-3xl">
                 Let Get To Know You More
               </h2>
               <form
@@ -343,6 +357,7 @@ export default function SignUp() {
                   </p>
                 )}
                 <button
+                onClick={handleNext}
                   type="submit"
                   className="w-full h-15 bg-blue-600 rounded-md mt-10 flex justify-center items-center hover:bg-blue-700 transition"
                 >
@@ -372,6 +387,7 @@ export default function SignUp() {
             step === 3 ? "bg-blue-600" : "bg-gray-300"
           }`}
         ></span>
+        
       </div>
     </div>
   );

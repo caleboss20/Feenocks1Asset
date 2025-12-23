@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { XMarkIcon, ChevronDownIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 const RightSidebar = ({ isOpen, setIsOpen }) => {
   const [openDropdowns, setOpenDropdowns] = useState({});
   const menuItems = [
