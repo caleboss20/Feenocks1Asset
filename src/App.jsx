@@ -13,8 +13,22 @@ import { useState } from "react";
 import RiskAssessment from "./RiskAssessment";
 import RiskAssessmentResults from "./RiskAssessmentResults";
 
+// Risk calculation utility
+function calculateRiskProfile(answers) {
+  // Sum of all answer values
+  const total = Object.values(answers).reduce((sum, val) => sum + val, 0);
+  // Map score ranges to profiles
+  if (total <= 22) return { level: "Conservative", portfolioType: "Safe" };
+  if (total <= 32) return { level: "Moderate", portfolioType: "Balanced" };
+  if (total <= 42) return { level: "Growth", portfolioType: "Aggressive" };
+  return { level: "Aggressive", portfolioType: "High-Risk" };
+}
+
 function App() {
   const [selectedId, setSelectedId] = useState(null);
+  const [answers, setAnswers] = useState({});
+  const [riskResult, setRiskResult] = useState(null);
+
   return (
     <div className="w-full bg-white">
       <Routes>
@@ -43,8 +57,18 @@ function App() {
             />
           }
         />
-        <Route path="/assessment" element={<RiskAssessment />} />
-          <Route path="/results" element={<RiskAssessmentResults  selectedId={selectedId}/>} />
+        <Route path="/assessment" 
+           element={<RiskAssessment 
+           answers={answers}
+           setAnswers={setAnswers}
+           setRiskResult={setRiskResult}
+        />} />
+        <Route
+          path="/results"
+          element={<RiskAssessmentResults
+           riskResult={riskResult}
+            selectedId={selectedId} />}
+        />
       </Routes>
     </div>
   );
