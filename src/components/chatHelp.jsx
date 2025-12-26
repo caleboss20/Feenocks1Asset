@@ -1,9 +1,14 @@
 import { ChatBubbleBottomCenterIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
+
 function ChatHelp() {
+  const navigate=useNavigate();
   return (
     <>
     <div className="relative">
-      <div className="fixed shadow-2xl right-3 flex justify-center items-center bottom-10 w-15 h-15 rounded-full bg-blue-600">
+      <div
+      onClick={()=>navigate("/")} 
+      className="fixed shadow-2xl right-3 flex justify-center items-center bottom-2 w-15 h-15 rounded-full bg-blue-600">
         <ChatBubbleBottomCenterIcon className="w-8 h-8 text-white " />
       </div>
     </div>

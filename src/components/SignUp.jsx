@@ -129,7 +129,7 @@ export default function SignUp() {
    const goback = () => navigate("/");
 
   return (
-    <div className="w-full min-h-screen bg-re-300 p-4 flex justify-center md:items-center relative">
+    <div className="w-full bg-re-300 p-4 flex justify-center md:items-center relative">
        <div className="absolute left-5 top-10" onClick={goback}>
         <BackArrow />
       </div>
@@ -141,7 +141,7 @@ export default function SignUp() {
             exit={{ x: -500, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="p-2 w-full bg-white mt-32 md:p-6 w-full max-w-md bg-white mt-20">
+            <div className="p-2 w-full bg-white mt-2 md:p-6 w-full max-w-md bg-white mt-20">
               <h2 className="text-4xl leading-normal md:text-3xl">
                 Become An Elite Investor
               </h2>
@@ -194,7 +194,10 @@ export default function SignUp() {
                     Continue
                   </span>
                 </button>
-                <ChatHelp />
+                <div className="mt-5">
+                    <ChatHelp />
+                </div>
+                
               </form>
             </div>
           </motion.div>
@@ -371,7 +374,7 @@ export default function SignUp() {
         )}
       </AnimatePresence>
       {/* Step Indicator */}
-      <div className="absolute bottom-6 w-full flex justify-center space-x-4">
+      <div className="absolute bottom-2 w-full flex justify-center space-x-4">
         <span
           className={`w-3 h-3 rounded-full ${
             step === 1 ? "bg-blue-600" : "bg-gray-300"
