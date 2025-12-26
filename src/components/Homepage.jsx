@@ -28,7 +28,7 @@ function Homepage() {
             viewport={{ once: true }} // animate only once
             transition={{ duration: 0.8, ease: "easeOut" }} // smooth timing
           >
-            <h2 className="text-5xl font-bold text-white text-center leading-normal mb-6">
+            <h2 className="text-4xl font-bold text-white text-center leading-normal mb-6">
               Unlock seamless investment opportunities in Africa.
             </h2>
             <p className="text-xl text-white text-center mb-8">

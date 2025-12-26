@@ -55,9 +55,10 @@ function SupportCenter() {
   const hasResults = filteredFaqs.length > 0 || dynamicAnswer;
   
   const handleSend=()=>{
-    const phoneNumber="0256599734";
-    const url=`https://wa.me/${phoneNumber}?text=${encodeURIComponent()}`;
-    window.open(url,"_blank");
+    const message="Hello,I need support"
+    const phoneNumber="233256599734";
+    const url=`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
   }
   
   
