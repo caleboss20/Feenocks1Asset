@@ -47,7 +47,7 @@ function CompleteVerification({ selectedId, setSelectedId }) {
         <div onClick={goback}>
           <BackArrow />
         </div>
-        <h2 className="font-medium text-xl">Verify Your identity</h2>
+        <h2 className="font-medium text-xl text-center">Verify Your identity</h2>
       </div>
 
       <div className="mt-10 p-2 bg-green-100 w-full rounded-md ">
@@ -108,13 +108,13 @@ function CompleteVerification({ selectedId, setSelectedId }) {
           
         </div>
 
-     <div className="absolute bottom-10 p-6 w-full h-20 bg-re-500 flex flex-col items-center justify-center ">
+     <div className=" p-3 w-full h-20 bg-re-500 flex flex-col items-center justify-center ">
         <motion.button
         onClick={next}
          initial={{ opacity: 0, y: 20 }}
           animate={ show? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }} 
-        className="mr-8 w-full py-3 px-4 bg-blue-600 text-white font-medium text-lg rounded-md">Continue
+        className="mt-10 w-full py-3 px-4 bg-blue-600 text-white font-medium text-lg rounded-md">Continue
         </motion.button>
       </div> 
     </div>
