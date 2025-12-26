@@ -142,7 +142,7 @@ export default function SignUp() {
             transition={{ duration: 0.5 }}
           >
             <div className="p-2 w-full bg-white mt-2 md:p-6 w-full max-w-md bg-white mt-20">
-              <h2 className="text-4xl leading-normal md:text-3xl">
+              <h2 className="text-3xl leading-normal md:text-3xl">
                 Become An Elite Investor
               </h2>
               <p className="text-gray-700 text-xl mt-6">
