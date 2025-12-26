@@ -9,8 +9,12 @@ import FAQsection from "./FAQsection";
 import Footer from "./Footer";
 import { ChatBubbleBottomCenterIcon } from "@heroicons/react/24/outline";
 import Navbar from "./Navbar";
+import {MdQuestionMark  } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+
 
 function Homepage() {
+  const navigate=useNavigate();
   return (
     <div className="">
       <Navbar />
@@ -35,8 +39,10 @@ function Homepage() {
           </motion.div>
         </div>
         <div className="relative">
-          <div className="z-30 fixed shadow-2xl right-3 flex justify-center items-center bottom-10 w-15 h-15 rounded-full bg-blue-600">
-            <ChatBubbleBottomCenterIcon className="w-8 h-8 text-white " />
+          <div
+          onClick={()=>navigate("/support")} 
+          className="z-30 fixed shadow-2xl right-3 flex justify-center items-center bottom-10 w-15 h-15 rounded-full bg-blue-600">
+            <MdQuestionMark className="w-6 h-6 text-white " />
           </div>
         </div>
       </section>

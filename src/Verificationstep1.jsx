@@ -12,9 +12,9 @@ function Verification(){
      navigate("/verification2");
     }
  return(
-    <div className="w-full h-screen bg-re-400 p-8">
+    <div className="w-full bg--400 p-8">
            {/* <Navbar /> */}
-           <div className=" mt-25">
+           <div className=" mt-5">
             <div className="flex flex-col gap-4 justify-center items-center">
             <div className="flex justify-center items-center w-25 h-25 bg-blue-200 rounded-full mb-3">
                 <RiIdCardLine className="w-13 h-13 text-blue-800" />
@@ -41,7 +41,7 @@ function Verification(){
             </div>
          </div>
 
-         <div className="flex flex-col gap-4 absolute bottom-0 w-full h-45 bg-ed-300 left-0 p-6">
+         <div className="mt-40 flex flex-col gap-4 w-full h-45 bg-viole-300 p-6">
             <p className=" text-center text-md text-gray-600">By selecting "continue" you agree to the <span className="underline">Terms</span></p>
             <button
             onClick={next}
@@ -51,7 +51,7 @@ function Verification(){
              className="text-gray-700 text-center">Cancel</span>
          </div>
         
-        </div>
+           </div>
     </div>
  )
 }

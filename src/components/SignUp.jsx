@@ -122,7 +122,7 @@ export default function SignUp() {
   //going to kyc//
   const navigate=useNavigate();
   const handleNext=()=>{
-   navigate("/verification");
+   navigate("/socialinfo");
   }
  
 

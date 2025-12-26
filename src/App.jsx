@@ -12,6 +12,10 @@ import CompleteVerification from "./CompleteVerification";
 import { useState } from "react";
 import RiskAssessment from "./RiskAssessment";
 import RiskAssessmentResults from "./RiskAssessmentResults";
+import DepositSection from "./DepositSection";
+import SocialInfo from "./Socialinfo";
+import Recommendation from "./Recommendation";
+import SupportCenter from "./Support";
 
 // Risk calculation utility
 function calculateRiskProfile(answers) {
@@ -33,9 +37,12 @@ function App() {
     <div className="w-full bg-white">
       <Routes>
         <Route path="/" element={<Homepage />} />
+         <Route path="/support" element={<SupportCenter />} />
+        
         <Route path="" element={<Navbar />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
+         <Route path="/socialinfo" element={<SocialInfo />} />
         <Route path="/verification" element={<Verification />} />
         <Route
           path="/verification2"
@@ -69,6 +76,8 @@ function App() {
            riskResult={riskResult}
             selectedId={selectedId} />}
         />
+         <Route path="/recommendation" element={<Recommendation />} /> 
+         <Route path="/deposit" element={<DepositSection />} />
       </Routes>
     </div>
   );

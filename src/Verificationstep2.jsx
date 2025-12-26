@@ -30,7 +30,7 @@ function Verification2({selectedId,setSelectedId}) {
             <BackArrow />
         </div>
 
-      <div className="mt-25">
+      <div className="mt-5">
         <div className="gap-4 w-full bg-gree-500 flex justify-center items-center flex-col">
           <RiIdCardLine className="w-26 h-26 text-blue-600"/>
           <p className="font-medium text-xl">We need a photo of your ID</p>
@@ -44,7 +44,7 @@ function Verification2({selectedId,setSelectedId}) {
               whileTap={{ scale: 0.97 }}
               transition={{ type: "spring", stiffness: 300 }}
               className={`flex gap-4 pl-4 items-center h-15 w-full border-1 rounded-sm cursor-pointer ${
-                selectedId === "Driver's License" ? "border-blue-500" : "border-gray-400"
+                selectedId === "Driver's License" ? "border-blue-500 border-2" : "border-gray-400"
               }`}
             >
               <MdDirectionsCar className="w-7 h-7 text-blue-600"/>
@@ -56,7 +56,7 @@ function Verification2({selectedId,setSelectedId}) {
               whileTap={{ scale: 0.97 }}
               transition={{ type: "spring", stiffness: 300 }}
               className={`flex pl-4 items-center gap-4 h-15 w-full border-1 rounded-sm cursor-pointer ${
-                selectedId === "Ghana Card" ? "border-blue-500" : "border-gray-400"
+                selectedId === "Ghana Card" ? "border-blue-500 border-2" : "border-gray-400"
               }`}
             >
               <RiIdCardLine className="w-7 h-7 text-blue-600"/>
@@ -68,7 +68,7 @@ function Verification2({selectedId,setSelectedId}) {
               whileTap={{ scale: 0.97 }}
               transition={{ type: "spring", stiffness: 300 }}
               className={`flex pl-4 items-center gap-4 h-15 w-full border-1 rounded-sm cursor-pointer ${
-                selectedId === "Passport" ? "border-blue-500" : "border-gray-400"
+                selectedId === "Passport" ? "border-blue-500 border-2" : "border-gray-400"
               }`}
             >
               <FaPassport className="w-7 h-7 text-blue-600"/>
@@ -80,7 +80,7 @@ function Verification2({selectedId,setSelectedId}) {
               whileTap={{ scale: 0.97 }}
               transition={{ type: "spring", stiffness: 300 }}
               className={`flex pl-4 items-center gap-4 h-15 w-full border-1 rounded-sm cursor-pointer ${
-                selectedId === "Residency Card(US)" ? "border-blue-500" : "border-gray-400"
+                selectedId === "Residency Card(US)" ? "border-blue-500 border-2" : "border-gray-400"
               }`}
             >
               <MdOutlineBadge className="w-7 h-7 text-blue-600"/>

@@ -20,7 +20,11 @@ export default function RiskAssessmentResults({selectedId}) {
   const [isMounted, setIsMounted] = useState(false); 
    const navigate = useNavigate();
    useEffect(() => {
-     setIsMounted(true); // component has mounted
+     const timer=setTimeout(()=>{
+      setIsMounted(true);
+     },3000) 
+     return ()=>clearTimeout(timer);
+     // component has mounted
    }, []);
 
   return (
@@ -140,9 +144,9 @@ export default function RiskAssessmentResults({selectedId}) {
           <>
           <div className="flex justify-center">
         <motion.button
-          onClick={()=>navigate("")}
+          onClick={()=>navigate("/recommendation")}
           initial={{ opacity: 0, y: 20 }}
-          animate={selectedId ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.5 }}
           className="mb-5 p-5 px-34 py-3 bg-blue-600 rounded-lg text-white font-medium text-lg "
         >

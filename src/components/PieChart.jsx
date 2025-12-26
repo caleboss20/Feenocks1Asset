@@ -18,7 +18,7 @@ export default function PieChartRecommendation() {
   });
   const gradientString = `conic-gradient(${gradientSlices.join(", ")})`;
   return (
-    <div className="p-8 flex flex-col space-y-4 mb-30 mt-10">
+    <div className="p-8 flex flex-col space-y-4 mb-20 mt-10">
       {/* Animated Pie Chart */}
      
       <div className="flex w-full justify-center">
