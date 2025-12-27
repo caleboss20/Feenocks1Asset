@@ -40,7 +40,7 @@ function InvestorProfile() {
   };
   return (
     <div className="p-6">
-      <div onClick={() => navigate("/deposit")}>
+      <div onClick={() => navigate("/terms")}>
         <BackArrow />
       </div>
       <h2 className="text-2xl font-medium mt-5">Personal information</h2>

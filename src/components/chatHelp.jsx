@@ -8,7 +8,7 @@ function ChatHelp() {
     <div className="relative">
       <div
       onClick={()=>navigate("/")} 
-      className="fixed shadow-2xl right-3 flex justify-center items-center bottom-2 w-15 h-15 rounded-full bg-blue-600">
+      className="fixed shadow-2xl right-3 flex justify-center items-center bottom-2 w-10 h-10 rounded-full bg-blue-600">
         <ChatBubbleBottomCenterIcon className="w-8 h-8 text-white " />
       </div>
     </div>
