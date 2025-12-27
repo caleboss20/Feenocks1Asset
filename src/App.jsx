@@ -18,6 +18,7 @@ import Recommendation from "./Recommendation";
 import SupportCenter from "./Support";
 import InvestorProfile from "./InvestorProfile";
 import TermsAndConditions from "./TermsAndConditions";
+import PrivacyPolicy from "./PrivacyPolicy";
 
 // Risk calculation utility
 function calculateRiskProfile(answers) {
@@ -82,6 +83,7 @@ function App() {
          <Route path="/deposit" element={<DepositSection />} />
           <Route path="/profile" element={<InvestorProfile />} />
            <Route path="/terms" element={<TermsAndConditions />} />
+            <Route path="/policy" element={<PrivacyPolicy />} />
       
       </Routes>
     </div>

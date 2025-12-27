@@ -40,13 +40,13 @@ function TermsAndConditions() {
   };
   return (
     <div className="relative w-full px-6 py-10 max-w-5xl mx-auto text-gray-800 leading-relaxed">
-      <h1 className="text-4xl font-light mb-2">Terms & Conditions</h1>
+      <h1 className="text-3xl font-light mb-2">Terms & Conditions</h1>
       <p className="text-lg font-medium mt-8 mb-5 text-blue-600">
         (Last Updated: December, 2025)
       </p>
       {/* CONTENT */}
       <div className="space-y-6 text-[16px]">
-        <p className="text-lg leading-loose text-gray-700">
+        <p className=" leading-loose text-gray-700">
           These terms of use (“Terms and Conditions”), together with The
           Feenicks1 Platform Privacy Policy (“Privacy Policy”), set forth herein
           shall apply to your access and use of all Feenicks1 Platform Services
@@ -426,14 +426,14 @@ function TermsAndConditions() {
           className="w-5 h-5 accent-blue-600"
         />
         <p className=" text-sm text-gray-800">
-          I agree to the Feenicks1 Terms & Conditions
+          I agree to the Feenicks1 Terms & Conditions and <a href="/policy"className="text-blue-600 underline text-md">Privacy Policy</a>
         </p>
       </div>
 
       {error && (
         <motion.div className="flex mt-10 gap-3 justify-center items-center">
           <MdErrorOutline className="w-6 h-6 text-red-600" />
-          <span className="text-red-600">
+          <span className="text-red-600 text-sm">
             Please agree to the Terms & Conditions before continuing.
           </span>
         </motion.div>
