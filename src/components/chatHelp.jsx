@@ -1,5 +1,6 @@
 import { ChatBubbleBottomCenterIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
+import {MdQuestionMark  } from "react-icons/md";
 
 function ChatHelp() {
   const navigate=useNavigate();
@@ -7,9 +8,9 @@ function ChatHelp() {
     <>
     <div className="relative">
       <div
-      onClick={()=>navigate("/")} 
-      className="fixed shadow-2xl right-3 flex justify-center items-center bottom-2 w-10 h-10 rounded-full bg-blue-600">
-        <ChatBubbleBottomCenterIcon className="w-8 h-8 text-white " />
+      onClick={()=>navigate("/support")} 
+      className="fixed shadow-2xl right-3 flex justify-center items-center bottom-2 w-12 h-12 rounded-full bg-blue-600">
+        <MdQuestionMark className="w-6 h-6 text-white " />
       </div>
     </div>
      {/* <div className="flex items-center justify-center w-70 h-10 rounded-md shadow-md bg-yello-500 absolute bottom-14 right-18">

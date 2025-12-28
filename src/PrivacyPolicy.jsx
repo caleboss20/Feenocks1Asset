@@ -1,4 +1,5 @@
 import { useState,useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   HiChevronDown,
   HiChevronUp,
@@ -381,7 +382,11 @@ function PrivacyPolicy() {
         {atBottom ? <HiChevronUp size={22} /> : <HiChevronDown size={22} />}
       </button>
 
-      <a href="/terms" className="text-blue-800 mt-5 underline">Check out our terms and conditions</a>
+        <Link to="/terms">
+         <span
+       className="text-blue-800 mt-5 underline">Check out our terms and conditions</span>
+        </Link>
+     
 
     </div>
   );
