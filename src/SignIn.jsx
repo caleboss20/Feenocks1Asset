@@ -13,8 +13,8 @@ function SignIn() {
         <div className="absolute left-5 top-10" onClick={goback}>
         <BackArrow />
       </div>
-      <div className="p-2 w-full bg-white mt-32 rounded-xl shadow-">
-        <h2 className="text-5xl leading-normal">Welcome Back</h2>
+      <div className="p-2 w-full bg-white mt-17 rounded-xl shadow-">
+        <h2 className="text-3xl leading-normal">Welcome Back</h2>
         <p className="text-gray-700 text-xl mt-6">
           New user?
           <Link to="/signup">
@@ -48,12 +48,12 @@ function SignIn() {
           <input
             type="text"
             placeholder="Password"
-            className="mb-5 text-xl pl-4 text-gray-900 mt-15 w-full h-15 border-1 border-gray-500 rounded-md "
+            className="mb-5 text-xl pl-4 text-gray-900 mt-5 w-full h-15 border-1 border-gray-500 rounded-md "
           />
           <label htmlFor="" className="text-lg font-medium text-blue-600 ">
             Forgot password?
           </label>
-          <button className="w-full h-15 bg-blue-600 rounded-md mt-15 ">
+          <button className="w-full h-15 bg-blue-600 rounded-md mt-10 mb-5 ">
             <span className="font-medium text-white text-xl">Continue</span>
           </button>
           <ChatHelp />

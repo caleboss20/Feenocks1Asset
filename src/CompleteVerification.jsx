@@ -10,11 +10,11 @@ function CompleteVerification({ selectedId, setSelectedId }) {
     const [accountID, setAccountID] = useState(generateFAMID());
   const [copied, setCopied] = useState(false);
   // Function to generate FAM ID
-  function generateFAMID() {
+  function generateFAMID(){
     const randomPart = () => Math.random().toString(36).substring(2, 7).toUpperCase();
     return `FAM-${randomPart()}-${randomPart()}`;
   }
-  // Copy to clipboard
+  // Copy to clipboard 
   const handleCopy = () => {
     navigator.clipboard.writeText(accountID);
     setCopied(true);

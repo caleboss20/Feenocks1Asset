@@ -427,7 +427,7 @@ function TermsAndConditions() {
           className="w-5 h-5 accent-blue-600"
         />
         <p className=" text-sm text-gray-800">
-          I agree to the Feenicks1 Terms & Conditions and 
+          I agree to the Feenicks1 Terms & Conditions and {""}
           <Link to="/policy">
           <span className="text-blue-600 underline text-md">Privacy Policy</span>
           </Link>
