@@ -111,7 +111,7 @@ function DepositAmount({ selectedMethod, walletName }) {
           type="text"
           value={formatNumber(inputAmount)}
           onChange={handleInputChange}
-          className={`mt-10 ${shake ? "border-red-700" : ""} w-full py-4 border-b border-gray-700 text-2xl pt-4 pl-4 outline-none`}
+          className={`mt-7 ${shake ? "border-red-700" : ""} w-full py-4 border-b border-gray-700 text-2xl pt-4 pl-4 outline-none`}
         />
         {error && (
           <div className="flex gap-2 items-center">
@@ -151,7 +151,7 @@ function DepositAmount({ selectedMethod, walletName }) {
                 onClick={() => setPopup(false)}
                 className="fixed top-0 bottom-0 right-0 inset-0 bg-black/50 w-full z-20"
               ></div>
-              <div className="z-50 fixed bottom-0 left-0 right-0 h-1/2 bg-white">
+              <div className="z-50 fixed bottom-0 left-0 right-0 h-[500px] bg-white">
                 <div className="flex gap-15 p-4 items-center mt-3">
                   <div className="bg-gray-100 rounded-full w-10 h-10 flex items-center justify-center">
                     <span
@@ -161,7 +161,7 @@ function DepositAmount({ selectedMethod, walletName }) {
                       &times;
                     </span>
                   </div>
-                  <h2 className="font-medium text-lg ml-6">Confirm Deposit</h2>
+                  <h2 className="font-medium text-lg ml-3">Confirm Deposit</h2>
                 </div>
                 <div className="w-full h-[1px] bg-gray-300 mt-1"></div>
                 <h2 className="text-center mt-5 font-medium text-2xl">
