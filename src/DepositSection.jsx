@@ -4,15 +4,13 @@ import { motion } from "framer-motion";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import deposit1 from "./assets/images/deposit1.png";
 import BackArrow from "./components/Backarrow";
-function DepositSection() {
+function DepositSection({walletName,setWalletName,profileName,setProfileName}) {
   const navigate = useNavigate();
-  const [walletName, setWalletName] = useState("");
-  const [profileName, setProfileName] = useState("");
   const [touched, setTouched] = useState(false);
   const handleContinue = () => {
     setTouched(true);
     if (walletName.trim() && profileName.trim()) {
-      navigate("/profile");
+      navigate("/dashboard");
     }
   };
   const shakeAnimation = {
@@ -26,7 +24,7 @@ function DepositSection() {
   const inputWrapperClass = "relative mb-8";
   const iconClass = "absolute right-3 top-17 transform -translate-y-1/2 text-red-500 w-6 h-6";
   return (
-    <div className="w-full p-8 mb-10">
+    <div className="w-full p-6 mb-10">
       <div className="flex justify-center mb-4 mt-0">
         <div onClick={() => navigate("/recommendation")}>
           <BackArrow />

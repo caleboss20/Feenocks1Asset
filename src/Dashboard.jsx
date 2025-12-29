@@ -1,12 +1,28 @@
 import { BellIcon } from "@heroicons/react/24/outline";
 import { AiOutlineEyeInvisible, AiOutlineArrowUp } from "react-icons/ai";
 import { FiEye, FiArrowUpRight, FiArrowDownRight } from "react-icons/fi";
-
+import { Link, useNavigate } from "react-router-dom";
 import photo5 from "./assets/images/photo5.png";
 import { useState,useEffect } from "react";
-function Dashboard() {
+function Dashboard({profileName}) {
   const [hide, setHide] = useState(false);
   const [popup,setpopup]=useState(false);
+  const [amount, setAmount] = useState("");
+  const [shake, setShake] = useState(false);
+  const navigate=useNavigate();
+
+   const handleNext = () => {
+    if (!amount || parseFloat(amount) <= 0) {
+      setShake(true);
+      setTimeout(() => setShake(false), 500); // remove shake after animation
+      return; // prevent navigation
+      
+    }
+    else{
+      navigate("/depositmethod");
+    }
+   
+  };
 
   const handleShow = () => {
     setHide(!hide);
@@ -24,7 +40,7 @@ function Dashboard() {
             <img src={photo5} className="rounded-full" alt="" />
           </div>
           <div>
-            <h2 className="font-medium text-gray-800">Hi, Caleb Antwi</h2>
+            <h2 className="font-medium text-lg text-gray-800">Hi,{""}{profileName}</h2>
             <span className="text-gray-600">Welcome!</span>
           </div>
         </div>
@@ -71,12 +87,15 @@ function Dashboard() {
       </div>
 
       <div className="flex w-full mt-10 gap-6">
-        <div className="shadow-2xl flex-1 gap-3 flex items-center bg-blue-100 rounded-full">
+        <Link to="/depositmethod"className="shadow-2xl flex-1 gap-3 flex items-center bg-blue-100 rounded-full">
+             <div className="shadow-2xl flex-1 gap-3 flex items-center bg-blue-100 rounded-full">
           <div className="rounded-sm w-5 h-5 border-1 border-blue-900 ml-4 flex items-center justify-center">
             <FiArrowDownRight className="transform rotate-78 text-blue-900" />
           </div>
           <p className="text-gray-800 font-small">Deposit</p>
         </div>
+        </Link>
+       
 
         <div className="flex-1 py-3 shadow-2xl bg-violet-100 rounded-full">
           <div className="flex-1 gap-3 flex items-center rounded-full">
@@ -122,25 +141,50 @@ function Dashboard() {
             <button className="py-3 bg-blue-700 text-white w-full rounded-lg font-medium border-none outline-none">Add Funds</button>
        </div>
 
-       {popup ? <div className="fixed top-0 bottom-0 right-0 inset-0 bg-black/50 w-full z-20"> </div>:null }
+       {popup ?
+        <div className="fixed top-0 bottom-0 right-0 inset-0 bg-black/50 w-full z-20"> </div>:null }
       
 
       
 
       {popup &&
        <div className="w-full pl-2 py-6 px-2 h-110 fixed bottom-0 left-0 right-0 bg-white shadow-xl z-50">
-          <span className="text-5xl ">🥳</span>
+          <span className="text-4xl ">🥳</span>
           <p className="ml-4 mt-6 font-small text-md text-black">
             Now that your investment account is ready,
             how about you make that first deposit? just 
             enter the amount to get started.It must be 
             at least GH₵ 100.00</p>
             <div className="ml-3 mr-3">
-            <input type="text" 
+            <input
+             value={amount}
+            onChange={(e) =>setAmount(e.target.value)}
+            type="number" 
             placeholder="GH₵ 100.00"
-            className="text-xl pl-4 w-full h-18 bg-gray-100 rounded-lg mt-8 " />
+            className={`${shake ? "shake border-1 border-red-500" : "border-gray-300"}
+            text-xl pl-4 w-full h-18 bg-gray-100 rounded-lg mt-8 `} />
            
-             <button className="py-3  mt-8 bg-blue-700 text-white w-full rounded-lg font-medium border-none outline-none">Continue</button>
+            <style>
+        {`
+          @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+          }
+          .shake {
+            animation: shake 0.5s ease-in-out;
+          }
+        `}
+            </style>
+
+
+             <button 
+             onClick={handleNext}
+             className="py-3 
+             hover:bg-blue-700 transition 
+             mt-8 bg-blue-700 text-white w-full rounded-lg font-medium border-none outline-none">
+              Continue</button>
              <div
              onClick={()=>setpopup(false)} 
              className="flex justify-center items-center mt-8"><span className="font-medium text-gray-900 text-lg">

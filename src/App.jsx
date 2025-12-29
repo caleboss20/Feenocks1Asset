@@ -20,6 +20,8 @@ import InvestorProfile from "./InvestorProfile";
 import TermsAndConditions from "./TermsAndConditions";
 import PrivacyPolicy from "./PrivacyPolicy";
 import Dashboard from "./Dashboard";
+import DepositAmount from "./DepositFlow/DepositAmount";
+import DepositMethod from "./DepositFlow/DepositMethod";
 
 // Risk calculation utility
 function calculateRiskProfile(answers) {
@@ -36,17 +38,22 @@ function App() {
   const [selectedId, setSelectedId] = useState(null);
   const [answers, setAnswers] = useState({});
   const [riskResult, setRiskResult] = useState(null);
+  //for the wallet section//
+  const [walletName, setWalletName] = useState("");
+   const [profileName, setProfileName] = useState("");
+  //for deposit side//
+  const [selectedMethod, setSelectedMethod] = useState(null);
 
   return (
     <div className="w-full bg-white">
       <Routes>
         <Route path="/" element={<Homepage />} />
-         <Route path="/support" element={<SupportCenter />} />
-        
+        <Route path="/support" element={<SupportCenter />} />
+
         <Route path="" element={<Navbar />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
-         <Route path="/socialinfo" element={<SocialInfo />} />
+        <Route path="/socialinfo" element={<SocialInfo />} />
         <Route path="/verification" element={<Verification />} />
         <Route
           path="/verification2"
@@ -68,25 +75,60 @@ function App() {
             />
           }
         />
-        <Route path="/assessment" 
-           element={<RiskAssessment 
-           answers={answers}
-           setAnswers={setAnswers}
-           setRiskResult={setRiskResult}
-        />} />
+        <Route
+          path="/assessment"
+          element={
+            <RiskAssessment
+              answers={answers}
+              setAnswers={setAnswers}
+              setRiskResult={setRiskResult}
+            />
+          }
+        />
         <Route
           path="/results"
-          element={<RiskAssessmentResults
-           riskResult={riskResult}
-            selectedId={selectedId} />}
+          element={
+            <RiskAssessmentResults
+              riskResult={riskResult}
+              selectedId={selectedId}
+            />
+          }
         />
-         <Route path="/recommendation" element={<Recommendation />} /> 
-         <Route path="/deposit" element={<DepositSection />} />
-          <Route path="/profile" element={<InvestorProfile />} />
-           <Route path="/terms" element={<TermsAndConditions />} />
-            <Route path="/policy" element={<PrivacyPolicy />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-      
+        <Route path="/recommendation" element={<Recommendation />} />
+        <Route
+          path="/deposit"
+          element={
+            <DepositSection
+              walletName={walletName}
+              setWalletName={setWalletName}
+              profileName={profileName}
+              setProfileName={setProfileName}
+            />
+          }
+        />
+        <Route path="/profile" element={<InvestorProfile />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
+        <Route path="/policy" element={<PrivacyPolicy />} />
+        <Route path="/dashboard" element={<Dashboard profileName={profileName}/>} />
+        <Route
+          path="/depositmethod"
+          element={
+            <DepositMethod
+              selectedMethod={selectedMethod}
+              setSelectedMethod={setSelectedMethod}
+            />
+          }
+        />
+        <Route
+          path="/depositamount"
+          element={
+            <DepositAmount
+              selectedMethod={selectedMethod}
+              setSelectedMethod={setSelectedMethod}
+              walletName={walletName}
+            />
+          }
+        />
       </Routes>
     </div>
   );

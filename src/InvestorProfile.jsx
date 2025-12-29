@@ -31,7 +31,7 @@ function InvestorProfile() {
       form.phone &&
       isPhoneValid(form.phone);
     if (allFilled) {
-      navigate("/terms"); // go to terms page
+      navigate("/deposit"); // go to terms page
     }
   };
   const shake = {

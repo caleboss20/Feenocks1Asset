@@ -19,7 +19,7 @@ function TermsAndConditions() {
   const navigate = useNavigate();
 
   const handleAccept = () => {
-    agreed ? navigate("/dashboard") : setError(true);
+    agreed ? navigate("/profile") : setError(true);
   };
 
   useEffect(() => {
