@@ -2,7 +2,7 @@ import deposit from "../assets/images/image3.jpg";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-function DepositConfirm({ inputAmount, setTotalAmount,transacted,setTransacted }) {
+function DepositConfirm({ inputAmount, setTotalAmount, AddTransaction }) {
     
   const navigate = useNavigate();
   const handleAmount = () => {
@@ -12,7 +12,21 @@ function DepositConfirm({ inputAmount, setTotalAmount,transacted,setTransacted }
 
       navigate("/dashboard"); // go to dashboard
     } 
+     AddTransaction();
   }
+
+  
+const today = new Date();
+// Estimated date = today + 2 days
+const estimatedDate = new Date(today);
+estimatedDate.setDate(today.getDate() + 2);
+const formattedEstimatedDate = estimatedDate.toLocaleDateString("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
+ 
+
   return (
     <div className="w-full ">
       <div className="mt-6 p-6 ">
@@ -29,7 +43,11 @@ function DepositConfirm({ inputAmount, setTotalAmount,transacted,setTransacted }
               <CheckCircleIcon className="w-9 h-9 text-white" />
               <div className="flex flex-col">
                 <h2 className="font-medium text-white text-lg">Date Created</h2>
-                <span className="text-white text-lg">January 4, 2026</span>
+                <span className="text-white text-lg">{new Date().toLocaleDateString("en-US",{
+                  month:"long",
+                  day:"numeric",
+                  year:"numeric"
+                })}</span>
               </div>
             </div>
             <div>
@@ -47,7 +65,11 @@ function DepositConfirm({ inputAmount, setTotalAmount,transacted,setTransacted }
                 <h2 className="font-medium text-white text-lg">
                   Deposit Initiated
                 </h2>
-                <span className="text-white text-lg">January 4, 2026</span>
+                <span className="text-white text-lg">{new Date().toLocaleDateString("en-US",{
+                  month:"long",
+                  day:"numeric",
+                  year:"numeric"
+                })}</span>
               </div>
             </div>
           </div>
@@ -59,7 +81,7 @@ function DepositConfirm({ inputAmount, setTotalAmount,transacted,setTransacted }
                 <h2 className="font-medium text-white text-lg">
                   Estimated Deposit completion
                 </h2>
-                <span className="text-white text-lg">January 6, 2026</span>
+                <span className="text-white text-lg">{formattedEstimatedDate}</span>
               </div>
             </div>
           </div>

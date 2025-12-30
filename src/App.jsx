@@ -9,7 +9,7 @@ import Verification2 from "./Verificationstep2";
 import Verification3 from "./Verification3";
 import Verification4 from "./Verification4";
 import CompleteVerification from "./CompleteVerification";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RiskAssessment from "./RiskAssessment";
 import RiskAssessmentResults from "./RiskAssessmentResults";
 import DepositSection from "./DepositSection";
@@ -41,13 +41,44 @@ function App() {
   const [riskResult, setRiskResult] = useState(null);
   //for the wallet section//
   const [walletName, setWalletName] = useState("");
-   const [profileName, setProfileName] = useState("");
+  const [profileName, setProfileName] = useState("");
   //for deposit side//
   const [selectedMethod, setSelectedMethod] = useState(null);
   const [inputAmount, setInputAmount] = useState("");
-  const [totalAmount, setTotalAmount] = useState(0);
-  const [transacted,setTransacted]=useState(false);
+  const [totalAmount, setTotalAmount] =useState(()=>{
+    const saved=localStorage.getItem("totalAmount");
+    return saved? Number(saved):0;
+  });
 
+  const [transactions, setTransactions] = useState(()=>{
+    const saved=localStorage.getItem("transactions");
+    return saved? JSON.parse(saved):[];
+  });
+
+  useEffect(()=>{
+    localStorage.setItem("transactions",
+      JSON.stringify(transactions));  
+  },[transactions]);
+
+    useEffect(()=>{
+    localStorage.setItem("totalAmount",
+      totalAmount);  
+  },[totalAmount]);
+
+  const AddTransaction = () => {
+    const today = new Date();
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const time = today.toLocaleDateString("en-US", options);
+    const newtransaction = {
+      id: Date.now(),
+      type: "Deposit",
+      amount: Number(inputAmount),
+      date: time,
+    };
+    setTransactions(prev=>[newtransaction,...prev]);
+    setTotalAmount(prev=>prev+Number(inputAmount));
+    console.log("added");
+  };
 
   return (
     <div className="w-full bg-white">
@@ -114,14 +145,17 @@ function App() {
         <Route path="/profile" element={<InvestorProfile />} />
         <Route path="/terms" element={<TermsAndConditions />} />
         <Route path="/policy" element={<PrivacyPolicy />} />
-        <Route path="/dashboard" 
-        element={<Dashboard
-         profileName={profileName}
-         inputAmount={inputAmount}
-          totalAmount={totalAmount}
-           transacted={transacted}
-           setTransacted={setTransacted}
-         />} />
+        <Route
+          path="/dashboard"
+          element={
+            <Dashboard
+              profileName={profileName}
+              inputAmount={inputAmount}
+              totalAmount={totalAmount}
+              transactions={transactions}
+            />
+          }
+        />
         <Route
           path="/depositmethod"
           element={
@@ -143,16 +177,17 @@ function App() {
             />
           }
         />
-        <Route path="/depositconfirm" element={
-          <DepositConfirm 
-           totalAmount={totalAmount}
-           setTotalAmount={setTotalAmount}
-           inputAmount={inputAmount}
-           transacted={transacted}
-           setTransacted={setTransacted}
-           />
-            }
-          />
+        <Route
+          path="/depositconfirm"
+          element={
+            <DepositConfirm
+              totalAmount={totalAmount}
+              setTotalAmount={setTotalAmount}
+              inputAmount={inputAmount}
+              AddTransaction={AddTransaction}
+            />
+          }
+        />
       </Routes>
     </div>
   );

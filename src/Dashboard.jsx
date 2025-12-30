@@ -4,7 +4,7 @@ import { FiEye, FiArrowUpRight, FiArrowDownRight } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import photo5 from "./assets/images/photo5.png";
 import { useState,useEffect } from "react";
-function Dashboard({profileName,inputAmount,totalAmount,transacted,setTransacted}) {
+function Dashboard({profileName,inputAmount,totalAmount,transactions}) {
   const [hide, setHide] = useState(false);
   const [popup,setpopup]=useState(false);
   const [amount, setAmount] = useState("");
