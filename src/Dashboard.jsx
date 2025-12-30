@@ -127,7 +127,7 @@ function Dashboard({ profileName, totalAmount, transactions }) {
       {/* Recent Transactions */}
       <div className="w-full bg-re-500 mt-14 mb-40">
         <div className="flex justify-between">
-          <h2 className="font-medium text-gray-700 text-md">RECENT TRANSACTIONS</h2>
+          <h2 className="font-medium text-gray-700 text-sm">RECENT TRANSACTIONS</h2>
           <span className="mr-3 text-blue-600 font-medium">See All</span>
         </div>
         {transactions.length === 0 ? (
@@ -142,19 +142,19 @@ function Dashboard({ profileName, totalAmount, transactions }) {
                 className="flex w-full py-4 px-2 bg-gren-200 justify-between"
               >
                 <div className="flex gap-3">
-                  <div className="w-13 h-13 rounded-full bg-blue-100"></div>
+                  <div className="w-10 h-10 rounded-full bg-blue-50"></div>
                   <div className="flex flex-col gap-2">
-                    <h2 className="font-medium">{transaction.type}</h2>
-                    <span>{transaction.date}</span>
+                    <h2 className="font-medium text-sm ">{transaction.type}</h2>
+                    <span className="text-sm ">{transaction.date}</span>
                   </div>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-2.5 px-2">
-                  <div className="px-2 mr-2">
-                    <span className="text-green-400 font-medium">
+                <div className="flex flex-col gap-2.5 px-2">
+                  <div className="px-2 mr-4">
+                    <span className="text-green-400 font-medium text-sm ">
                       {transaction.valuepercent || "0%"}
                     </span>
                   </div>
-                  <h2 className="text-md font-medium">
+                  <h2 className="text-sm font-medium">
                     GH₵ {transaction.amount.toLocaleString()}.00
                   </h2>
                 </div>
