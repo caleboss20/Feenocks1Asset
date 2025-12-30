@@ -37,6 +37,7 @@ function calculateRiskProfile(answers) {
 
 function App() {
   const [selectedId, setSelectedId] = useState(null);
+   const [selected,setSelected]=useState(null);
   const [answers, setAnswers] = useState({});
   const [riskResult, setRiskResult] = useState(null);
   //for the wallet section//
@@ -69,11 +70,14 @@ function App() {
     const today = new Date();
     const options = { year: "numeric", month: "long", day: "numeric" };
     const time = today.toLocaleDateString("en-US", options);
+    const percent=Math.random()*10;
+    const valuepercent=`${percent.toFixed(2)}%`;
     const newtransaction = {
       id: Date.now(),
-      type: "Deposit",
+      type: selected,
       amount: Number(inputAmount),
       date: time,
+      valuepercent:valuepercent
     };
     setTransactions(prev=>[newtransaction,...prev]);
     setTotalAmount(prev=>prev+Number(inputAmount));
@@ -130,7 +134,10 @@ function App() {
             />
           }
         />
-        <Route path="/recommendation" element={<Recommendation />} />
+        <Route path="/recommendation" element={<Recommendation 
+        selected={selected}
+        setSelected={setSelected}
+        />} />
         <Route
           path="/deposit"
           element={
@@ -153,6 +160,7 @@ function App() {
               inputAmount={inputAmount}
               totalAmount={totalAmount}
               transactions={transactions}
+              selected={selected}
             />
           }
         />

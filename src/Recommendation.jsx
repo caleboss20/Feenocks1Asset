@@ -6,7 +6,7 @@ import {HiCheckCircle } from "react-icons/hi";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { HiChevronRight } from "react-icons/hi";
 
-function Recommendation() {
+function Recommendation({selected,setSelected}) {
   const navigate=useNavigate();
     const packages=[
       {
@@ -48,7 +48,7 @@ function Recommendation() {
         ticker:"",
       },
     ]
-    const [selected,setSelected]=useState(null);
+   
 
     return (
     <div className="w-full bg-white">

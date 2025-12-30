@@ -76,7 +76,7 @@ function DepositAmount({ selectedMethod, walletName,inputAmount,setInputAmount }
         setTimeout(() => {
           setLoading(false);
           setTimeout(() => {
-            navigate("/depositconfirm"); // replace with your route
+            navigate("/depositconfirm"); 
           }, 2000);
         }, 4000); // 4s loader
       }, 300);
