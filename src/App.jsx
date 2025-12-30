@@ -22,6 +22,7 @@ import PrivacyPolicy from "./PrivacyPolicy";
 import Dashboard from "./Dashboard";
 import DepositAmount from "./DepositFlow/DepositAmount";
 import DepositMethod from "./DepositFlow/DepositMethod";
+import DepositConfirm from "./DepositFlow/Depositconfirm";
 
 // Risk calculation utility
 function calculateRiskProfile(answers) {
@@ -43,6 +44,10 @@ function App() {
    const [profileName, setProfileName] = useState("");
   //for deposit side//
   const [selectedMethod, setSelectedMethod] = useState(null);
+  const [inputAmount, setInputAmount] = useState("");
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [transacted,setTransacted]=useState(false);
+
 
   return (
     <div className="w-full bg-white">
@@ -109,7 +114,14 @@ function App() {
         <Route path="/profile" element={<InvestorProfile />} />
         <Route path="/terms" element={<TermsAndConditions />} />
         <Route path="/policy" element={<PrivacyPolicy />} />
-        <Route path="/dashboard" element={<Dashboard profileName={profileName}/>} />
+        <Route path="/dashboard" 
+        element={<Dashboard
+         profileName={profileName}
+         inputAmount={inputAmount}
+          totalAmount={totalAmount}
+           transacted={transacted}
+           setTransacted={setTransacted}
+         />} />
         <Route
           path="/depositmethod"
           element={
@@ -126,9 +138,21 @@ function App() {
               selectedMethod={selectedMethod}
               setSelectedMethod={setSelectedMethod}
               walletName={walletName}
+              inputAmount={inputAmount}
+              setInputAmount={setInputAmount}
             />
           }
         />
+        <Route path="/depositconfirm" element={
+          <DepositConfirm 
+           totalAmount={totalAmount}
+           setTotalAmount={setTotalAmount}
+           inputAmount={inputAmount}
+           transacted={transacted}
+           setTransacted={setTransacted}
+           />
+            }
+          />
       </Routes>
     </div>
   );

@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import { FiChevronRight, FiCheck } from "react-icons/fi";
 import { motion, useAnimation } from "framer-motion";
 import { MdErrorOutline } from "react-icons/md";
-function DepositAmount({ selectedMethod, walletName }) {
+function DepositAmount({ selectedMethod, walletName,inputAmount,setInputAmount }) {
   const amountOptions = [
     { id: "100", amount: "GH₵ 100" },
     { id: "500", amount: "GH₵ 500" },
@@ -17,7 +17,6 @@ function DepositAmount({ selectedMethod, walletName }) {
   const min = 100;
   const max = 100000;
   const [selectedId, setSelectedId] = useState(null);
-  const [inputAmount, setInputAmount] = useState("");
   const [error, setError] = useState("");
   const [shake, setShake] = useState(false);
   const [popup, setPopup] = useState(false);
@@ -77,7 +76,7 @@ function DepositAmount({ selectedMethod, walletName }) {
         setTimeout(() => {
           setLoading(false);
           setTimeout(() => {
-            navigate("/nextpage"); // replace with your route
+            navigate("/depositconfirm"); // replace with your route
           }, 2000);
         }, 4000); // 4s loader
       }, 300);

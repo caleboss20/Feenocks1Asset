@@ -4,7 +4,7 @@ import { FiEye, FiArrowUpRight, FiArrowDownRight } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import photo5 from "./assets/images/photo5.png";
 import { useState,useEffect } from "react";
-function Dashboard({profileName}) {
+function Dashboard({profileName,inputAmount,totalAmount,transacted,setTransacted}) {
   const [hide, setHide] = useState(false);
   const [popup,setpopup]=useState(false);
   const [amount, setAmount] = useState("");
@@ -27,9 +27,14 @@ function Dashboard({profileName}) {
   const handleShow = () => {
     setHide(!hide);
   };
-  useEffect(()=>{
-   setpopup(true);
-   },[])
+
+useEffect(() => {
+  const hasSeenPopup = localStorage.getItem("hasSeenDashboardPopup");
+  if (!hasSeenPopup) {
+    setpopup(true); // show popup only first time
+    localStorage.setItem("hasSeenDashboardPopup", "true"); // mark as seen
+  }
+}, []);
 
   return (
     <div className="w-full p-4">
@@ -40,7 +45,7 @@ function Dashboard({profileName}) {
             <img src={photo5} className="rounded-full" alt="" />
           </div>
           <div>
-            <h2 className="font-medium text-lg text-gray-800">Hi,{""}{profileName}</h2>
+            <h2 className="font-medium text-lg text-gray-800">{`Hi,${""}${profileName || "there"}`}</h2>
             <span className="text-gray-600">Welcome!</span>
           </div>
         </div>
@@ -60,7 +65,7 @@ function Dashboard({profileName}) {
             <p className="text-4xl text-white mt-2">********</p>
           ) : (
             <div className="flex items-center gap-3">
-              <p className="text-2xl text-white mt-2">GH₵ 0.00</p>
+              <p className="text-2xl text-white mt-2">{`GH₵ ${totalAmount || 0}.00`}</p>
               <div className="relative flex items-center right-0 h-10 bg-re-600">
                 <p className="text-green-400 mt-2 font-medium">2.03%</p>
                 <AiOutlineArrowUp className="absolute bottom-2 -right-5 w-4 h-4 text-green-400 font-medium " />
@@ -90,7 +95,7 @@ function Dashboard({profileName}) {
         <Link to="/depositmethod"className="shadow-2xl flex-1 gap-3 flex items-center bg-blue-100 rounded-full">
              <div className="shadow-2xl flex-1 gap-3 flex items-center bg-blue-100 rounded-full">
           <div className="rounded-sm w-5 h-5 border-1 border-blue-900 ml-4 flex items-center justify-center">
-            <FiArrowDownRight className="transform rotate-78 text-blue-900" />
+            <FiArrowUpRight className="transform text-blue-900" />
           </div>
           <p className="text-gray-800 font-small">Deposit</p>
         </div>
@@ -111,7 +116,7 @@ function Dashboard({profileName}) {
        
        <div className="flex flex-col gap-1">
         <p className="text-lg font-medium text-gray-700">Total Funded</p>
-        <span className="text-gray-800 text-lg font-normal">GH₵ 0.00</span>
+        <span className="text-gray-800 text-lg font-normal">{`GH₵ ${totalAmount || 0}.00`}</span>
        </div>
        <div className="w-full h-[1px] bg-gray-100"></div>
 
@@ -138,7 +143,9 @@ function Dashboard({profileName}) {
        </div>
 
        <div className="z-10 fixed w-full h-20 p-4 bottom-0 right-0">
-            <button className="py-3 bg-blue-700 text-white w-full rounded-lg font-medium border-none outline-none">Add Funds</button>
+            <button
+            onClick={()=>navigate("/depositmethod")} 
+            className="py-3 bg-blue-700 text-white w-full rounded-lg font-medium border-none outline-none">Add Funds</button>
        </div>
 
        {popup ?
