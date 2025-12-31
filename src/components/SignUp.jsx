@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ChatHelp from "./chatHelp";
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import BackArrow from "./Backarrow";
-
+import { signInWithGoogle, handleRedirectResult } from "../Config/auth";
 // Disposable email domains
 const disposableDomains = [
   "tempmail.com",
@@ -44,9 +43,19 @@ export default function SignUp() {
   const [step, setStep] = useState(1);
   const [generatedOTP, setGeneratedOTP] = useState("");
   const [email, setEmail] = useState("");
-
-
-
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  // Handle Google redirect (mobile)
+  useEffect(() => {
+    const checkRedirect = async () => {
+      const result = await handleRedirectResult();
+      if (result?.success) {
+        navigate("/socialinfo"); // redirect after Google signup
+      }
+    };
+    checkRedirect();
+  }, [navigate]);
   // Step 1: Email
   const {
     register: registerEmail,
@@ -57,35 +66,19 @@ export default function SignUp() {
     mode: "onChange",
   });
   // Step 2: OTP
-
-
-
   const {
     register: registerOTP,
     handleSubmit: handleOTPSubmit,
     formState: { errors: otpErrors },
     reset: resetOTP,
   } = useForm();
-
-
-
   // Step 3: Name / Phone / Gender / Terms
-
-
-
   const {
     register: registerInfo,
     handleSubmit: handleInfoSubmit,
     formState: { errors: infoErrors },
   } = useForm();
-
-
-
-
-
-
-  // Step 1 submit
-
+  // Step 1 submit (email)
   const onEmailSubmit = (data) => {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     setGeneratedOTP(otp);
@@ -93,44 +86,36 @@ export default function SignUp() {
     setStep(2);
     setEmail(data.email);
   };
-
-
-
-
-
-  // Step 2 submit
-    
+  // Step 2 submit (OTP)
   const onOTPSubmitHandler = (data) => {
     if (data.otp === generatedOTP) {
       setStep(3);
     } else {
       alert("Invalid OTP");
       resetOTP();
-      
-      
     }
   };
-
-
-
-  // Step 3 submit
+  // Step 3 submit (info)
   const onInfoSubmitHandler = (data) => {
     console.log("Signup complete:", data);
     alert("Signup completed!");
   };
-
-  //going to kyc//
-  const navigate=useNavigate();
-  const handleNext=()=>{
-   navigate("/socialinfo");
-  }
- 
-
-   const goback = () => navigate("/");
-
+  // Google signup handler
+  const handleGoogleSignup = async () => {
+    setLoading(true);
+    setError("");
+    const result = await signInWithGoogle();
+    if (result?.success) {
+      navigate("/socialinfo");
+    } else if (result?.error) {
+      setError(result.error);
+    }
+    setLoading(false);
+  };
+  const goback = () => navigate("/");
   return (
     <div className="w-full bg-re-300 p-4 flex justify-center md:items-center relative">
-       <div className="absolute left-5 top-10" onClick={goback}>
+      <div className="absolute left-5 top-10" onClick={goback}>
         <BackArrow />
       </div>
       <AnimatePresence>
@@ -157,14 +142,22 @@ export default function SignUp() {
                 onSubmit={handleEmailSubmit(onEmailSubmit)}
                 className="mt-10 space-y-5"
               >
-                <div className="relative flex justify-center items-center w-full h-15 border-1 border-gray-500 rounded-md cursor-pointer">
+                <button
+                  type="button"
+                  onClick={handleGoogleSignup}
+                  disabled={loading}
+                  className="relative flex justify-center items-center w-full h-15 border-1 border-gray-500 rounded-md cursor-pointer"
+                >
                   <span>
                     <FcGoogle className="w-6 h-6 mr-6" />
                   </span>
                   <span className="font-medium text-xl text-gray-700">
-                    Sign up with Google
+                    {loading ? "Signing up..." : "Sign up with Google"}
                   </span>
-                </div>
+                </button>
+                {error && (
+                  <p className="text-red-500 text-sm mt-1">{error}</p>
+                )}
                 <div className="flex items-center mb-4 mt-8">
                   <hr className="flex-1 border-gray-300" />
                   <span className="px-2 text-gray-400 text-sm">or</span>
@@ -195,9 +188,8 @@ export default function SignUp() {
                   </span>
                 </button>
                 <div className="mt-5">
-                    <ChatHelp />
+                  <ChatHelp />
                 </div>
-                
               </form>
             </div>
           </motion.div>

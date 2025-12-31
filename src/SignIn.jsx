@@ -1,162 +1,86 @@
-// import { useState } from "react";
-// import { Link } from "react-router-dom";
-// import ChatHelp from "./components/chatHelp";
-// import { FcGoogle } from "react-icons/fc";
-// import { useNavigate } from "react-router-dom";
-// import BackArrow from "./components/Backarrow";
-
-// function SignIn() {
-//   const navigate=useNavigate();
-//    const goback = () => navigate("/");
-//   return (
-//     <div className="w-full h-screen bg-re-300 p-4">
-//         <div className="absolute left-5 top-10" onClick={goback}>
-//         <BackArrow />
-//       </div>
-//       <div className="p-2 w-full bg-white mt-17 rounded-xl shadow-">
-//         <h2 className="text-3xl leading-normal">Welcome Back</h2>
-//         <p className="text-gray-700 text-xl mt-6">
-//           New user?
-//           <Link to="/signup">
-//             <span className="ml-3 text-blue-700 font-medium text-xl">
-//               Create account
-//             </span>
-//           </Link>{" "}
-//         </p>
-
-//         <form action="" className="mt-10">
-//           <div
-//             type="text"
-//             className="relative flex justify-center items-center w-full h-15 border-1 border-gray-500 rounded-md "
-//           >
-//              <span><FcGoogle className="w-6 h-6 mr-6"/></span>
-//             <span className="font-medium text-xl text-gray-700">
-//               Sign in with Google
-//             </span>
-//           </div>
-          // <div className="flex items-center mb-4 mt-8">
-          //   <hr className="flex-1 border-gray-300" />
-          //   <span className="px-2 text-gray-400 text-md">or</span>
-          //   <hr className="flex-1 border-gray-300" />
-          // </div>
-
-          // <input
-          //   type="text"
-          //   placeholder="Email Address"
-          //   className="text-xl pl-4 text-gray-900 mt-5 w-full h-15 border-1 border-gray-500 rounded-md "
-          // />
-          // <input
-          //   type="text"
-          //   placeholder="Password"
-          //   className="mb-5 text-xl pl-4 text-gray-900 mt-5 w-full h-15 border-1 border-gray-500 rounded-md "
-          // />
-          // <label htmlFor="" className="text-lg font-medium text-blue-600 ">
-          //   Forgot password?
-          // </label>
-          // <button className="w-full h-15 bg-blue-600 rounded-md mt-10 mb-5 ">
-          //   <span className="font-medium text-white text-xl">Continue</span>
-          // </button>
-//           <ChatHelp />
-//         </form>
-//       </div>
-//     </div>
-//   );
-// }
-// export default SignIn;
-
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import ChatHelp from "./components/chatHelp";
 import { FcGoogle } from "react-icons/fc";
 import BackArrow from "./components/Backarrow";
-import { signInWithGoogle } from "./Config/auth";
-function SignIn() {
+import ChatHelp from "./components/chatHelp";
+import { signInWithGoogle, handleRedirectResult } from "./Config/auth";
+export default function SignIn() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const goback = () => navigate("/");
-  // Handle Google Sign In
+  // Handle redirect result (for mobile / redirect flow)
+  useEffect(() => {
+    const checkRedirect = async () => {
+      const result = await handleRedirectResult();
+      if (result?.error) {
+        setError(result.error);
+      }
+    };
+    checkRedirect();
+  }, []);
   const handleGoogleSignIn = async () => {
     setLoading(true);
     setError("");
-   
-    const result = await signInWithGoogle();
-   
-    if (result.success) {
-      console.log("Signed in:", result.user);
-      // Navigate to dashboard after successful sign in
-      navigate("/dashboard");
-    } else {
-      setError(result.error);
+    try {
+      const result = await signInWithGoogle(false); // false = sign-in
+      if (!result.success) {
+        setError(result.error || "Failed to sign in with Google");
+      }
+      // Don’t navigate here — onAuthStateChange will redirect
+    } catch (err) {
+      setError("Something went wrong during sign-in");
+    } finally {
+      setLoading(false);
     }
-   
-    setLoading(false);
   };
   return (
-    <div className="w-full h-screen bg-re-300 p-4">
-      <div className="absolute left-5 top-10" onClick={goback}>
+    <div className="w-full h-screen p-4 bg-white flex justify-center items-start relative">
+      <div className="absolute left-5 top-10" onClick={() => navigate("/")}>
         <BackArrow />
       </div>
-      <div className="p-2 w-full bg-white mt-17 rounded-xl shadow-">
-        <h2 className="text-3xl leading-normal">Welcome Back</h2>
+      <div className="mt-20 p-4">
+        <h2 className="text-3xl">Welcome Back</h2>
         <p className="text-gray-700 text-xl mt-6">
           New user?
           <Link to="/signup">
-            <span className="ml-3 text-blue-700 font-medium text-xl">
-              Create account
-            </span>
+            <span className="ml-3 text-blue-700 font-medium">Create account</span>
           </Link>
         </p>
-        <div className="mt-10">
-          {/* Error Message */}
-          {error && (
-            <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-md text-sm">
-              {error}
-            </div>
-          )}
-          {/* Google Sign In Button */}
-          <button
-            onClick={handleGoogleSignIn}
-            disabled={loading}
-            className="relative flex justify-center items-center w-full h-15 border-1 border-gray-500 rounded-md cursor-pointer hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <span>
-              <FcGoogle className="w-6 h-6 mr-6" />
-            </span>
-            <span className="font-medium text-xl text-gray-700">
-              {loading ? "Signing in..." : "Sign in with Google"}
-            </span>
-          </button>
-
-            <div className="flex items-center mb-4 mt-8">
-            <hr className="flex-1 border-gray-300" />
-            <span className="px-2 text-gray-400 text-md">or</span>
-            <hr className="flex-1 border-gray-300" />
+        {error && (
+          <div className="mt-6 p-3 bg-red-100 text-red-700 rounded">
+            {error}
           </div>
-
-          <input
-            type="text"
-            placeholder="Email Address"
-            className="text-xl pl-4 text-gray-900 mt-5 w-full h-15 border-1 border-gray-500 rounded-md "
-          />
-          <input
-            type="text"
-            placeholder="Password"
-            className="mb-5 text-xl pl-4 text-gray-900 mt-5 w-full h-15 border-1 border-gray-500 rounded-md "
-          />
-          <label htmlFor="" className="text-lg font-medium text-blue-600 ">
-            Forgot password?
-          </label>
-          <button className="w-full h-15 bg-blue-600 rounded-md mt-10 mb-5 ">
-            <span className="font-medium text-white text-xl">Continue</span>
-          </button>
-
-          
-          <ChatHelp />
+        )}
+        <button
+          onClick={handleGoogleSignIn}
+          disabled={loading}
+          className="mt-10 flex items-center justify-center gap-4 w-full h-14 border border-gray-400 rounded-lg disabled:opacity-60"
+        >
+          <FcGoogle className="w-6 h-6" />
+          <span className="text-lg font-medium">
+            {loading ? "Opening Google..." : "Sign in with Google"}
+          </span>
+        </button>
+        <div className="flex items-center my-8">
+          <hr className="flex-1 border-gray-300" />
+          <span className="px-3 text-gray-400">or</span>
+          <hr className="flex-1 border-gray-300" />
         </div>
+        <input
+          placeholder="Email Address"
+          className="w-full h-14 border border-gray-400 rounded-lg px-4 mb-4 text-lg"
+        />
+        <input
+          placeholder="Password"
+          type="password"
+          className="w-full h-14 border rounded-lg border-gray-400 px-4 mb-4 text-lg"
+        />
+        <span className="text-blue-600 font-medium">Forgot password?</span>
+        <button className="w-full h-14 bg-blue-600 rounded-lg text-white text-lg mt-6">
+          Continue
+        </button>
+        <ChatHelp />
       </div>
     </div>
   );
 }
-export default SignIn;

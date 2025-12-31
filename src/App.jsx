@@ -36,6 +36,7 @@ function calculateRiskProfile(answers) {
 }
 
 function App() {
+
   const [selectedId, setSelectedId] = useState(null);
    const [selected,setSelected]=useState(null);
   const [answers, setAnswers] = useState({});
