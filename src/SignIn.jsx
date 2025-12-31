@@ -8,11 +8,12 @@ export default function SignIn() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  // Handle redirect result (for mobile / redirect flow)
+  // Handle redirect result (mobile / redirect flow)
   useEffect(() => {
     const checkRedirect = async () => {
       const result = await handleRedirectResult();
-      if (result?.error) {
+      // Only show error if Firebase actually reported one
+      if (result && result.success === false && result.error) {
         setError(result.error);
       }
     };
@@ -23,10 +24,13 @@ export default function SignIn() {
     setError("");
     try {
       const result = await signInWithGoogle(false); // false = sign-in
-      if (!result.success) {
+      // Desktop (popup) flow: we get a result object
+      if (result && result.success === false) {
         setError(result.error || "Failed to sign in with Google");
       }
-      // Don’t navigate here — onAuthStateChange will redirect
+      // Mobile (redirect) flow:
+      // signInWithRedirect navigates away, so result is usually undefined.
+      // Do NOT treat "no result" as an error.
     } catch (err) {
       setError("Something went wrong during sign-in");
     } finally {
