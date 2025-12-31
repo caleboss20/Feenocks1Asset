@@ -135,20 +135,20 @@ function Dashboard({ profileName, totalAmount, transactions }) {
             <span className="text-sm">No transactions to display</span>
           </div>
         ) : (
-          <div className="flex flex-col mt-8 w-full bg-white gap-5">
+          <div className="flex flex-col mt-8 w-full bg-white gap-3">
             {transactions.map((transaction) => (
               <div
                 key={transaction.id}
-                className="flex w-full py-4 px-2 bg-gren-200 justify-between"
+                className="flex w-full py-4 px-2 bg-gree-200 justify-between"
               >
                 <div className="flex gap-3">
                   <div className="w-10 h-10 rounded-full bg-blue-50"></div>
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-1">
                     <h2 className="font-medium text-sm ">{transaction.type}</h2>
                     <span className="text-sm ">{transaction.date}</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-2.5 px-2">
+                <div className="flex flex-col  px-2">
                   <div className="px-2 mr-4">
                     <span className="text-green-400 font-medium text-sm ">
                       {transaction.valuepercent || "0%"}
