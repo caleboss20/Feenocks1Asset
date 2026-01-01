@@ -113,6 +113,14 @@ export default function SignUp() {
     setLoading(false);
   };
   const goback = () => navigate("/");
+
+
+  const handleNext=()=>{
+    navigate("/verification")
+  }
+
+
+
   return (
     <div className="w-full bg-re-300 p-4 flex justify-center md:items-center relative">
       <div className="absolute left-5 top-10" onClick={goback}>
@@ -352,7 +360,7 @@ export default function SignUp() {
                   </p>
                 )}
                 <button
-                onClick={handleNext}
+                  onClick={handleNext}
                   type="submit"
                   className="w-full h-15 bg-blue-600 rounded-md mt-10 flex justify-center items-center hover:bg-blue-700 transition"
                 >

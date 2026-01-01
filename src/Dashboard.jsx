@@ -145,7 +145,7 @@ function Dashboard({ profileName, totalAmount, transactions }) {
                   <div className="w-10 h-10 rounded-full bg-blue-50"></div>
                   <div className="flex flex-col gap-1">
                     <h2 className="font-medium text-sm ">{transaction.type}</h2>
-                    <span className="text-sm ">{transaction.date}</span>
+                    <span className="text-sm text-black">{transaction.date}</span>
                   </div>
                 </div>
                 <div className="flex flex-col  px-2">
