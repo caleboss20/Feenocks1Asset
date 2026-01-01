@@ -2,17 +2,24 @@ import deposit from "../assets/images/image3.jpg";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-function DepositConfirm({ inputAmount, setTotalAmount, AddTransaction }) {
+function DepositConfirm({ inputAmount, AddTransaction }) {
+  const [loading,setLoading]=useState(false);
+
     
   const navigate = useNavigate();
   const handleAmount = () => {
+    if(loading) return;
     const amount = Number(inputAmount); // convert string to number
-    if (!isNaN(amount) && amount > 0) {
-      setTotalAmount(prev => prev + amount); // numeric addition
-
-      navigate("/dashboard"); // go to dashboard
-    } 
+    if (isNaN(amount) || amount <=0) 
+      return;
+    setLoading(true);
      AddTransaction();
+   
+     setTimeout(()=>{
+      navigate("/dashboard");
+     },0);
+   
+    
   }
 
   
@@ -88,9 +95,10 @@ const formattedEstimatedDate = estimatedDate.toLocaleDateString("en-US", {
         </div>
         <div className="p-6">
           <button
+          disabled={loading}
             onClick={handleAmount}
             className="w-full text-lg cursor-pointer text-blue-600 py-3 rounded-full bg-white font-medium">
-            Complete
+            {loading ?"processing...":"complete"}
           </button>
           <p className="text-lg text-gray-400 text-center mt-4">View details</p>
         </div>

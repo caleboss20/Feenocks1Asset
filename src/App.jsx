@@ -190,8 +190,8 @@ function App() {
           path="/depositconfirm"
           element={
             <DepositConfirm
-              totalAmount={totalAmount}
-              setTotalAmount={setTotalAmount}
+              
+              
               inputAmount={inputAmount}
               AddTransaction={AddTransaction}
             />
