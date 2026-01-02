@@ -44,14 +44,17 @@ const formattedEstimatedDate = estimatedDate.toLocaleDateString("en-US", {
         <h2 className="text-xl font-medium text-center">
           Your deposit has been created
         </h2>
-        <img src={deposit} alt="" />
+        <div className="flex justify-center">
+          <img src={deposit} alt=""className="w-50 h-50 mt-5" />
+        </div>
+        
       </div>
-      <div className="mt-40 rounded-2xl w-full absolute bottom-0 bg-blue-600 shadow-xl pt-6">
+      <div className="mt-40 rounded-2xl w-full absolute bottom-0 bg-blue-600 shadow-xl pt-2">
         <div className="flex flex-col p-4">
           {/* Deposit details */}
           <div className="flex justify-between">
             <div className="flex gap-3">
-              <CheckCircleIcon className="w-9 h-9 text-white" />
+              <CheckCircleIcon className="w-7 h-7 text-white" />
               <div className="flex flex-col">
                 <h2 className="font-medium text-white text-lg">Date Created</h2>
                 <span className="text-white text-lg">{new Date().toLocaleDateString("en-US",{
@@ -68,10 +71,10 @@ const formattedEstimatedDate = estimatedDate.toLocaleDateString("en-US", {
               </div>
             </div>
           </div>
-          <div className="ml-4 w-[1px] bg-white mt-2 h-10"></div>
+          <div className="ml-4 w-[1px] bg-white mt-2 h-7"></div>
           <div className="flex justify-between mt-4">
             <div className="flex gap-3">
-              <CheckCircleIcon className="w-9 h-9 text-white" />
+              <CheckCircleIcon className="w-7 h-7 text-white" />
               <div className="flex flex-col">
                 <h2 className="font-medium text-white text-lg">
                   Deposit Initiated
@@ -84,10 +87,10 @@ const formattedEstimatedDate = estimatedDate.toLocaleDateString("en-US", {
               </div>
             </div>
           </div>
-          <div className="ml-4 w-[1px] bg-white mt-2 h-10"></div>
+          <div className="ml-4 w-[1px] bg-white mt-2 h-7"></div>
           <div className="flex justify-between mt-4">
             <div className="flex gap-3">
-              <div className="w-8 h-8 rounded-full border-2 border-blue-800"></div>
+              <div className="w-6 h-6 rounded-full border-2 border-blue-800"></div>
               <div className="flex flex-col">
                 <h2 className="font-medium text-white text-lg">
                   Estimated Deposit completion

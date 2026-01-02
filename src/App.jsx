@@ -26,6 +26,7 @@ import DepositConfirm from "./DepositFlow/Depositconfirm";
 import Transactions from "./Transactions";
 import WithDrawalMethod from "./withdrawflow/withdrawalmethod";
 import WithdrawPage from "./withdrawflow/withdrawpage";
+import Ottpverification from "./withdrawflow/Ottpverify";
 
 // Risk calculation utility
 function calculateRiskProfile(answers) {
@@ -54,6 +55,12 @@ function App() {
     const saved=localStorage.getItem("totalAmount");
     return saved? Number(saved):0;
   });
+  //for the withdraw page//
+    const [amount, setAmount] = useState("");
+
+  //for the withdrawal success//
+    const [withdrawsuccess,setwithdrawSuccess]=useState(false);
+
 
   const [transactions, setTransactions] = useState(()=>{
     const saved=localStorage.getItem("transactions");
@@ -89,6 +96,7 @@ function App() {
   };
 
   return (
+    <>
     <div className="w-full bg-white">
       <Routes>
         <Route path="/" element={<Homepage />} />
@@ -165,6 +173,9 @@ function App() {
               totalAmount={totalAmount}
               transactions={transactions}
               selected={selected}
+              withdrawsuccess={withdrawsuccess}
+              setwithdrawSuccess={setwithdrawSuccess}
+              selectedMethod={selectedMethod}
             />
           }
         />
@@ -218,9 +229,17 @@ function App() {
          <Route path="/withdrawpage" element={<WithdrawPage 
          selectedMethod={selectedMethod}
          totalAmount={totalAmount}
+         amount={amount}
+         setAmount={setAmount}
+         withdrawsuccess={withdrawsuccess}
+         setwithdrawSuccess={setwithdrawSuccess}
+
          />} />
       </Routes>
+      
     </div>
+    
+    </>
   );
 }
 

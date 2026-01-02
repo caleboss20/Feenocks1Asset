@@ -4,7 +4,12 @@ import { FiEye, FiArrowUpRight } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import photo5 from "./assets/images/photo5.png";
 import { useState, useEffect } from "react";
-function Dashboard({ profileName, totalAmount, transactions }) {
+import Ottpverification from "./withdrawflow/Ottpverify";
+import WithdrawSuccesss from "./withdrawflow/withdrawsuccess";
+
+
+
+function Dashboard({ profileName, totalAmount, transactions,selectedMethod,withdrawsuccess, setwithdrawSuccess }) {
   const [hide, setHide] = useState(false);
   const [popup, setPopup] = useState(false);
   const [amount, setAmount] = useState("");
@@ -57,7 +62,7 @@ function Dashboard({ profileName, totalAmount, transactions }) {
             <p className="text-4xl text-white mt-2">********</p>
           ) : (
             <div className="flex items-center gap-3">
-              <p className="text-2xl text-white mt-2">
+              <p className="text-xl text-white mt-2">
                 {`GH₵ ${totalAmount.toLocaleString() || "0"}.00`}
               </p>
               <div className="relative flex items-center right-0 h-10 bg-re-600">
@@ -221,6 +226,23 @@ function Dashboard({ profileName, totalAmount, transactions }) {
           </div>
         </div>
       )}
+
+      {withdrawsuccess ? (
+          <>
+            <div
+              onClick={() =>setwithdrawSuccess(false)}
+              className="fixed top-0 bottom-0 right-0 inset-0 bg-black/60 w-full z-20"
+            ></div>
+            <WithdrawSuccesss 
+            totalAmount={totalAmount}
+            amount={amount}
+            selectedMethod={selectedMethod}
+            withdrawsuccess={withdrawsuccess}
+            setwithdrawSuccess={setwithdrawSuccess}
+            />
+          </>
+        ) : null}
+
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-function Ottpverification() {
+function Ottpverification({withdrawsuccess,setwithdrawSuccess}) {
  const navigate = useNavigate();
   const [otp, setOtp] = useState(Array(6).fill(""));
   const [countdown, setCountdown] = useState(30);
@@ -57,22 +57,26 @@ function Ottpverification() {
       return;
     }
     setVerifying(true);
+    // setSuccess(true);
+    setwithdrawSuccess(true);
     setTimeout(() => {
-      navigate("/success"); // 🔁 change route if needed
+      navigate("/dashboard"); // 🔁 change route if needed
     }, 3000);
   };
   return (
     <div>
-      <div className="absolute top-55 left-4 right-4 bg-white h-130 rounded-lg z-30 shadow-xl p-4">
+      <div className="absolute top-55 left-2 right-2 bg-white h-130 rounded-lg z-30 shadow-xl p-4">
         <h2 className="mb-3 font-bold text-2xl leading-normal">
           Enter the code we texted to +** ****76
         </h2>
+        <span className="text-black">{}</span>
         <span className="text-gray-600">
           This helps us keep your account secure by verifying that's it's really
           you.
         </span>
         
-          <motion.div
+       
+       <motion.div
         animate={shake ? { x: [-8, 8, -8, 8, 0] } : {}}
         transition={{ duration: 0.4 }}
         className={`flex gap-3 mt-10 `}
@@ -86,7 +90,7 @@ function Ottpverification() {
             onChange={(e) => handleChange(e.target.value, index)}
             onKeyDown={(e) => handleKeyDown(e, index)}
             maxLength={1}
-            className={`w-12 h-13 text-center text-xl font-medium border-2 rounded-lg outline-none `}
+            className={` w-12 h-13 text-center text-xl font-medium border-2 rounded-lg outline-none `}
             animate={{
               borderColor: digit ? "#2563eb" : "#d1d5db",
             }}
@@ -94,6 +98,8 @@ function Ottpverification() {
           />
         ))}
       </motion.div>
+        
+        
       {/* Button */}
       <motion.button
         onClick={handleButtonClick}
@@ -110,7 +116,7 @@ function Ottpverification() {
           <>
             <motion.span
               animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+              transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
               className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
             />
             Verifying…

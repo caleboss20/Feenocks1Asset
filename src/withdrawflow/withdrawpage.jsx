@@ -7,9 +7,14 @@ import { motion } from "framer-motion";
 import { Navigate } from "react-router-dom";
 import Ottpverification from "./Ottpverify";
 
-function WithdrawPage({ selectedMethod, totalAmount }) {
+function WithdrawPage({
+  selectedMethod,
+  totalAmount,
+  withdrawsuccess,
+  setwithdrawSuccess,
+  amount,setAmount
+}) {
   const [clicked, setclicked] = useState(false);
-  const [amount, setAmount] = useState("");
   const [focused, setFocused] = useState(false);
   const [error, setError] = useState("");
   const [isValid, setIsValid] = useState(false);
@@ -45,6 +50,7 @@ function WithdrawPage({ selectedMethod, totalAmount }) {
   const handlecontinue = () => {
     if (!isValid) return;
     setPopup(true);
+   
   };
 
   const handleChange = (e) => {
@@ -52,6 +58,7 @@ function WithdrawPage({ selectedMethod, totalAmount }) {
     setAmount(value);
     setclicked(false);
     validateAmount(value);
+     console.log(amount);
   };
   const handleAllIn = () => {
     const value = String(totalAmount);
@@ -150,7 +157,10 @@ function WithdrawPage({ selectedMethod, totalAmount }) {
               onClick={() => setPopup(false)}
               className="fixed top-0 bottom-0 right-0 inset-0 bg-black/50 w-full z-20"
             ></div>
-           <Ottpverification />
+            <Ottpverification
+              withdrawsuccess={withdrawsuccess}
+              setwithdrawSuccess={setwithdrawSuccess}
+            />
           </>
         ) : null}
       </div>
