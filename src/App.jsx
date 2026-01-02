@@ -23,6 +23,7 @@ import Dashboard from "./Dashboard";
 import DepositAmount from "./DepositFlow/DepositAmount";
 import DepositMethod from "./DepositFlow/DepositMethod";
 import DepositConfirm from "./DepositFlow/Depositconfirm";
+import Transactions from "./Transactions";
 
 // Risk calculation utility
 function calculateRiskProfile(answers) {
@@ -197,6 +198,9 @@ function App() {
             />
           }
         />
+         <Route path="/transactions" element={<Transactions 
+         transactions={transactions}
+         />} />
       </Routes>
     </div>
   );

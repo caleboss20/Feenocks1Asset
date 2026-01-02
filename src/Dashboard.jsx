@@ -128,7 +128,10 @@ function Dashboard({ profileName, totalAmount, transactions }) {
       <div className="w-full bg-re-500 mt-14 mb-40">
         <div className="flex justify-between">
           <h2 className="font-medium text-gray-700 text-sm">RECENT TRANSACTIONS</h2>
-          <span className="mr-3 text-blue-600 font-medium">See All</span>
+          <Link to="/transactions">
+            <span className="mr-3 text-blue-600 font-medium">See All</span>
+          </Link>
+        
         </div>
         {transactions.length === 0 ? (
           <div className="w-full mt-10 py-3 rounded-lg bg-gray-100 flex items-center justify-center">
