@@ -92,7 +92,9 @@ function Dashboard({ profileName, totalAmount, transactions }) {
           </div>
           <p className="text-gray-800 font-small">Deposit</p>
         </Link>
-        <div className="flex-1 py-3 shadow-2xl bg-violet-100 rounded-full">
+
+        <Link to="/withdrawmethod" className="flex-1 py-3 shadow-2xl bg-violet-100 rounded-full">
+           <div >
           <div className="flex-1 gap-3 flex items-center rounded-full">
             <div className="rounded-sm w-5 h-5 border-1 border-violet-900 ml-4 flex items-center justify-center">
               <FiArrowUpRight className="transform rotate-135 text-violet-900" />
@@ -100,6 +102,8 @@ function Dashboard({ profileName, totalAmount, transactions }) {
             <p className="text-gray-800 font-small">Withdraw</p>
           </div>
         </div>
+        </Link>
+     
       </div>
       {/* Summary */}
       <div className="mt-10 w-full bg-re-400 p-1 flex flex-col gap-5">
@@ -141,7 +145,7 @@ function Dashboard({ profileName, totalAmount, transactions }) {
           <div className="flex flex-col mt-8 w-full bg-white gap-3">
             {transactions.map((transaction) => (
               <div
-                key={transaction.id}
+                kay={transaction.id}
                 className="flex w-full py-4 px-2 bg-gree-200 justify-between"
               >
                 <div className="flex gap-3">
@@ -158,7 +162,7 @@ function Dashboard({ profileName, totalAmount, transactions }) {
                     </span>
                   </div>
                   <h2 className="text-sm font-medium">
-                    GH₵ {transaction.amount.toLocaleString()}.00
+                  {`GH₵ ${transaction.amount ||0}.00`}
                   </h2>
                 </div>
               </div>

@@ -2,7 +2,7 @@ import deposit from "../assets/images/image3.jpg";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-function DepositConfirm({ inputAmount, AddTransaction }) {
+function DepositConfirm({ inputAmount, AddTransaction,transactions, setTransactions }) {
   const [loading,setLoading]=useState(false);
 
     
@@ -14,6 +14,10 @@ function DepositConfirm({ inputAmount, AddTransaction }) {
       return;
     setLoading(true);
      AddTransaction();
+
+     
+     
+
    
      setTimeout(()=>{
       navigate("/dashboard");

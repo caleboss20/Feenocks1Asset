@@ -24,6 +24,7 @@ import DepositAmount from "./DepositFlow/DepositAmount";
 import DepositMethod from "./DepositFlow/DepositMethod";
 import DepositConfirm from "./DepositFlow/Depositconfirm";
 import Transactions from "./Transactions";
+import WithDrawalMethod from "./withdrawflow/withdrawalmethod";
 
 // Risk calculation utility
 function calculateRiskProfile(answers) {
@@ -195,12 +196,24 @@ function App() {
               
               inputAmount={inputAmount}
               AddTransaction={AddTransaction}
+              setTransactions={setTransactions}
+              transactions={transactions}
             />
           }
         />
          <Route path="/transactions" element={<Transactions 
          transactions={transactions}
          />} />
+
+         <Route
+          path="/withdrawmethod"
+          element={
+            <WithDrawalMethod
+              selectedMethod={selectedMethod}
+              setSelectedMethod={setSelectedMethod}
+            />
+          }
+        />
       </Routes>
     </div>
   );
