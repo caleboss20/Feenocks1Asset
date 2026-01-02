@@ -25,6 +25,7 @@ import DepositMethod from "./DepositFlow/DepositMethod";
 import DepositConfirm from "./DepositFlow/Depositconfirm";
 import Transactions from "./Transactions";
 import WithDrawalMethod from "./withdrawflow/withdrawalmethod";
+import WithdrawPage from "./withdrawflow/withdrawpage";
 
 // Risk calculation utility
 function calculateRiskProfile(answers) {
@@ -214,6 +215,10 @@ function App() {
             />
           }
         />
+         <Route path="/withdrawpage" element={<WithdrawPage 
+         selectedMethod={selectedMethod}
+         totalAmount={totalAmount}
+         />} />
       </Routes>
     </div>
   );

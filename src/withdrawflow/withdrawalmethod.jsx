@@ -33,7 +33,7 @@ function WithDrawalMethod({selectedMethod,setSelectedMethod}) {
    const [error, setError] = useState(false);
   const navigate = useNavigate();
   const goNext = () => {
-    selectedMethod ?navigate("/depositamount"):setError(true);
+    selectedMethod ?navigate("/withdrawpage"):setError(true);
     
   };
 
