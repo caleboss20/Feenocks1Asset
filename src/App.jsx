@@ -176,6 +176,7 @@ function App() {
               withdrawsuccess={withdrawsuccess}
               setwithdrawSuccess={setwithdrawSuccess}
               selectedMethod={selectedMethod}
+              setTotalAmount={setTotalAmount}
             />
           }
         />

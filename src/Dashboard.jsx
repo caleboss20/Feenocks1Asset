@@ -6,10 +6,11 @@ import photo5 from "./assets/images/photo5.png";
 import { useState, useEffect } from "react";
 import Ottpverification from "./withdrawflow/Ottpverify";
 import WithdrawSuccesss from "./withdrawflow/withdrawsuccess";
+import { ArrowTopRightOnSquareIcon, ArrowTurnRightUpIcon } from "@heroicons/react/24/solid";
 
 
 
-function Dashboard({ profileName, totalAmount, transactions,selectedMethod,withdrawsuccess, setwithdrawSuccess }) {
+function Dashboard({ profileName, totalAmount,setTotalAmount, transactions,selectedMethod,withdrawsuccess, setwithdrawSuccess }) {
   const [hide, setHide] = useState(false);
   const [popup, setPopup] = useState(false);
   const [amount, setAmount] = useState("");
@@ -154,7 +155,9 @@ function Dashboard({ profileName, totalAmount, transactions,selectedMethod,withd
                 className="flex w-full py-4 px-2 bg-gree-200 justify-between"
               >
                 <div className="flex gap-3">
-                  <div className="w-10 h-10 rounded-full bg-blue-50"></div>
+                  <div className="w-10 h-10 rounded-full bg-green-100 flex justify-center items-center">
+                    <FiArrowUpRight className="w-6 h-6 text-green-700" />
+                  </div>
                   <div className="flex flex-col gap-1">
                     <h2 className="font-medium text-sm ">{transaction.type}</h2>
                     <span className="text-sm text-black">{transaction.date}</span>
@@ -239,6 +242,7 @@ function Dashboard({ profileName, totalAmount, transactions,selectedMethod,withd
             selectedMethod={selectedMethod}
             withdrawsuccess={withdrawsuccess}
             setwithdrawSuccess={setwithdrawSuccess}
+            setTotalAmount={setTotalAmount}
             />
           </>
         ) : null}
