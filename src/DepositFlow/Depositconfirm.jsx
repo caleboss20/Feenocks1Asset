@@ -66,7 +66,7 @@ const formattedEstimatedDate = estimatedDate.toLocaleDateString("en-US", {
             </div>
             <div>
               <div className="flex flex-col mr-4">
-                <h2 className="font-medium text-white text-lg">GH₵ {inputAmount}.00</h2>
+                <h2 className="font-medium text-white text-lg">{`GH₵ ${Number(inputAmount).toLocaleString()}.00`}</h2>
                 <span className="text-white text-lg">--433</span>
               </div>
             </div>
@@ -102,7 +102,7 @@ const formattedEstimatedDate = estimatedDate.toLocaleDateString("en-US", {
         </div>
         <div className="p-6">
           <button
-          disabled={loading}
+            disabled={loading}
             onClick={handleAmount}
             className="w-full text-lg cursor-pointer text-blue-600 py-3 rounded-full bg-white font-medium">
             {loading ?"processing...":"complete"}

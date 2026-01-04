@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { CheckCircleIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
 import { DocumentTextIcon } from "@heroicons/react/24/outline";
 
-function WithdrawSuccesss({ totalAmount, amount, selectedMethod,setwithdrawSuccess,setTotalAmount }) {
+function WithdrawSuccesss({ totalAmount,withdrawTransaction, amount, selectedMethod,setwithdrawSuccess,setTotalAmount }) {
   
   const completewithdraw=()=>{
   setwithdrawSuccess(false);
-  
+  withdrawTransaction();
   }
 
   return (

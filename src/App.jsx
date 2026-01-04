@@ -56,7 +56,7 @@ function App() {
     return saved? Number(saved):0;
   });
   //for the withdraw page//
-    const [amount, setAmount] = useState("");
+    
 
   //for the withdrawal success//
     const [withdrawsuccess,setwithdrawSuccess]=useState(false);
@@ -67,6 +67,19 @@ function App() {
     return saved? JSON.parse(saved):[];
   });
 
+  //for the total funded//
+   const [totalFunded, setTotalFunded]=useState(()=>{
+    const saved=localStorage.getItem("totalfunded");
+    return saved? Number(saved):0;
+  });
+
+   useEffect(()=>{
+    localStorage.setItem("totalfunded",
+      totalFunded);  
+  },[totalFunded]);
+
+
+
   useEffect(()=>{
     localStorage.setItem("transactions",
       JSON.stringify(transactions));  
@@ -76,6 +89,20 @@ function App() {
     localStorage.setItem("totalAmount",
       totalAmount);  
   },[totalAmount]);
+
+  const [amount,setAmount] =useState(()=>{
+    const save=localStorage.getItem("amount");
+    return save? Number(save):0;
+  });
+
+
+   useEffect(()=>{
+    localStorage.setItem("amount",
+      amount);  
+  },[amount]);
+
+
+
 
   const AddTransaction = () => {
     const today = new Date();
@@ -92,8 +119,15 @@ function App() {
     };
     setTransactions(prev=>[newtransaction,...prev]);
     setTotalAmount(prev=>prev+Number(inputAmount));
+    setTotalFunded(prev=>prev+Number(totalFunded));
     console.log("added");
+    
   };
+
+
+  const withdrawTransaction=()=>{
+   setTotalAmount(prev=>prev-Number(amount));
+  }
 
   return (
     <>
@@ -177,6 +211,10 @@ function App() {
               setwithdrawSuccess={setwithdrawSuccess}
               selectedMethod={selectedMethod}
               setTotalAmount={setTotalAmount}
+              withdrawTransaction={withdrawTransaction}
+              amount={amount} 
+              setTotalFunded={setTotalFunded}
+              totalFunded={totalFunded}
             />
           }
         />
@@ -227,7 +265,8 @@ function App() {
             />
           }
         />
-         <Route path="/withdrawpage" element={<WithdrawPage 
+         <Route path="/withdrawpage"
+          element={<WithdrawPage 
          selectedMethod={selectedMethod}
          totalAmount={totalAmount}
          amount={amount}

@@ -6,14 +6,26 @@ import photo5 from "./assets/images/photo5.png";
 import { useState, useEffect } from "react";
 import Ottpverification from "./withdrawflow/Ottpverify";
 import WithdrawSuccesss from "./withdrawflow/withdrawsuccess";
-import { ArrowTopRightOnSquareIcon, ArrowTurnRightUpIcon } from "@heroicons/react/24/solid";
+import {
+  ArrowTopRightOnSquareIcon,
+  ArrowTurnRightUpIcon,
+} from "@heroicons/react/24/solid";
 
-
-
-function Dashboard({ profileName, totalAmount,setTotalAmount, transactions,selectedMethod,withdrawsuccess, setwithdrawSuccess }) {
+function Dashboard({
+  profileName,
+  totalAmount,
+  setTotalAmount,
+  setTotalFunded,
+  transactions,
+  totalFunded,
+  selectedMethod,
+  withdrawsuccess,
+  withdrawTransaction,
+  setwithdrawSuccess,
+  amount,
+}) {
   const [hide, setHide] = useState(false);
   const [popup, setPopup] = useState(false);
-  const [amount, setAmount] = useState("");
   const [shake, setShake] = useState(false);
   const navigate = useNavigate();
   const handleNext = () => {
@@ -81,7 +93,9 @@ function Dashboard({ profileName, totalAmount,setTotalAmount, transactions,selec
           </div>
         </div>
         <div className="flex gap-7 items-center justify-between mt-14">
-          <p className="text-white font-medium mt-4 text-xl">+233 *** *** ***</p>
+          <p className="text-white font-medium mt-4 text-xl">
+            +233 *** *** ***
+          </p>
           <div className="mt-3 py-2 px-3 rounded-full text-blue-200 flex items-center bg-blue-700">
             Account No
           </div>
@@ -99,49 +113,52 @@ function Dashboard({ profileName, totalAmount,setTotalAmount, transactions,selec
           <p className="text-gray-800 font-small">Deposit</p>
         </Link>
 
-        <Link to="/withdrawmethod" className="flex-1 py-3 shadow-2xl bg-violet-100 rounded-full">
-           <div >
-          <div className="flex-1 gap-3 flex items-center rounded-full">
-            <div className="rounded-sm w-5 h-5 border-1 border-violet-900 ml-4 flex items-center justify-center">
-              <FiArrowUpRight className="transform rotate-135 text-violet-900" />
+        <Link
+          to="/withdrawmethod"
+          className="flex-1 py-3 shadow-2xl bg-violet-100 rounded-full"
+        >
+          <div>
+            <div className="flex-1 gap-3 flex items-center rounded-full">
+              <div className="rounded-sm w-5 h-5 border-1 border-violet-900 ml-4 flex items-center justify-center">
+                <FiArrowUpRight className="transform rotate-135 text-violet-900" />
+              </div>
+              <p className="text-gray-800 font-small">Withdraw</p>
             </div>
-            <p className="text-gray-800 font-small">Withdraw</p>
           </div>
-        </div>
         </Link>
-     
       </div>
       {/* Summary */}
       <div className="mt-10 w-full bg-re-400 p-1 flex flex-col gap-5">
         <div className="flex flex-col gap-1">
           <p className="text-lg font-medium text-gray-700">Total Funded</p>
           <span className="text-gray-800 text-lg font-normal">
-            {`GH₵ ${totalAmount.toLocaleString() || "0"}.00`}
+            {`GH₵ ${Number(totalFunded).toLocaleString() || 0}.00`}
           </span>
         </div>
         <div className="w-full h-[1px] bg-gray-100"></div>
         <div className="flex flex-col gap-1">
           <p className="text-lg font-medium text-gray-700">Total Earned</p>
           <span className="text-gray-800 text-lg font-normal">
-            {`GH₵ ${0..toLocaleString()}.00`}
+            {`GH₵ ${(0).toLocaleString()}.00`}
           </span>
         </div>
         <div className="w-full h-[1px] bg-gray-100"></div>
         <div className="flex flex-col gap-1">
           <p className="text-lg font-medium text-gray-700">Total Withdrawn</p>
           <span className="text-gray-800 text-lg font-normal">
-            {`GH₵ ${0..toLocaleString()}.00`}
+            {`GH₵ ${Number(amount).toLocaleString() || 0}.00`}
           </span>
         </div>
       </div>
       {/* Recent Transactions */}
       <div className="w-full bg-re-500 mt-14 mb-40">
         <div className="flex justify-between">
-          <h2 className="font-medium text-gray-700 text-sm">RECENT TRANSACTIONS</h2>
+          <h2 className="font-medium text-gray-700 text-sm">
+            RECENT TRANSACTIONS
+          </h2>
           <Link to="/transactions">
             <span className="mr-3 text-blue-600 font-medium">See All</span>
           </Link>
-        
         </div>
         {transactions.length === 0 ? (
           <div className="w-full mt-10 py-3 rounded-lg bg-gray-100 flex items-center justify-center">
@@ -160,7 +177,9 @@ function Dashboard({ profileName, totalAmount,setTotalAmount, transactions,selec
                   </div>
                   <div className="flex flex-col gap-1">
                     <h2 className="font-medium text-sm ">{transaction.type}</h2>
-                    <span className="text-sm text-black">{transaction.date}</span>
+                    <span className="text-sm text-black">
+                      {transaction.date}
+                    </span>
                   </div>
                 </div>
                 <div className="flex flex-col  px-2">
@@ -170,7 +189,7 @@ function Dashboard({ profileName, totalAmount,setTotalAmount, transactions,selec
                     </span>
                   </div>
                   <h2 className="text-sm font-medium">
-                  {`GH₵ ${transaction.amount ||0}.00`}
+                    {`GH₵ ${transaction.amount || 0}.00`}
                   </h2>
                 </div>
               </div>
@@ -188,13 +207,16 @@ function Dashboard({ profileName, totalAmount,setTotalAmount, transactions,selec
         </button>
       </div>
       {/* Popup */}
-      {popup && <div className="fixed top-0 bottom-0 right-0 inset-0 bg-black/50 w-full z-20"></div>}
+      {popup && (
+        <div className="fixed top-0 bottom-0 right-0 inset-0 bg-black/50 w-full z-20"></div>
+      )}
       {popup && (
         <div className="w-full pl-2 py-6 px-2 h-110 fixed bottom-0 left-0 right-0 bg-white shadow-xl z-50">
           <span className="text-4xl">🥳</span>
           <p className="ml-4 mt-6 font-small text-md text-black">
-            Now that your investment account is ready, how about you make that first deposit? Just enter the
-            amount to get started. It must be at least GH₵ 100.00
+            Now that your investment account is ready, how about you make that
+            first deposit? Just enter the amount to get started. It must be at
+            least GH₵ 100.00
           </p>
           <div className="ml-3 mr-3">
             <input
@@ -202,7 +224,9 @@ function Dashboard({ profileName, totalAmount,setTotalAmount, transactions,selec
               onChange={(e) => setAmount(e.target.value)}
               type="number"
               placeholder="GH₵ 100.00"
-              className={`${shake ? "shake border-1 border-red-500" : "border-gray-300"} text-xl pl-4 w-full h-18 bg-gray-100 rounded-lg mt-8`}
+              className={`${
+                shake ? "shake border-1 border-red-500" : "border-gray-300"
+              } text-xl pl-4 w-full h-18 bg-gray-100 rounded-lg mt-8`}
             />
             <style>
               {`
@@ -223,7 +247,10 @@ function Dashboard({ profileName, totalAmount,setTotalAmount, transactions,selec
             >
               Continue
             </button>
-            <div onClick={() => setPopup(false)} className="flex justify-center items-center mt-8">
+            <div
+              onClick={() => setPopup(false)}
+              className="flex justify-center items-center mt-8"
+            >
               <span className="font-medium text-gray-900 text-lg">Later</span>
             </div>
           </div>
@@ -231,22 +258,22 @@ function Dashboard({ profileName, totalAmount,setTotalAmount, transactions,selec
       )}
 
       {withdrawsuccess ? (
-          <>
-            <div
-              onClick={() =>setwithdrawSuccess(false)}
-              className="fixed top-0 bottom-0 right-0 inset-0 bg-black/60 w-full z-20"
-            ></div>
-            <WithdrawSuccesss 
+        <>
+          <div
+            onClick={() => setwithdrawSuccess(false)}
+            className="fixed top-0 bottom-0 right-0 inset-0 bg-black/60 w-full z-20"
+          ></div>
+          <WithdrawSuccesss
             totalAmount={totalAmount}
             amount={amount}
             selectedMethod={selectedMethod}
             withdrawsuccess={withdrawsuccess}
             setwithdrawSuccess={setwithdrawSuccess}
             setTotalAmount={setTotalAmount}
-            />
-          </>
-        ) : null}
-
+            withdrawTransaction={withdrawTransaction}
+          />
+        </>
+      ) : null}
     </div>
   );
 }

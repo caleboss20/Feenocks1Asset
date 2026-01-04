@@ -73,7 +73,7 @@ function Homepage() {
             </h2>
           </motion.div>
 
-          <div className="w-full h-60 bg--300 mt-2 flex flex-col justify-center items-center">
+          <div className="w-full h-35 bg--300 mt-2 flex flex-col justify-center items-center">
             <div className="w-1 h-60 bg- bg-blue-100"></div>
           </div>
 
@@ -94,7 +94,7 @@ function Homepage() {
             </h2>
           </motion.div>
 
-          <div className="w-full h-60 bg-300 mt-2 flex flex-col justify-center items-center">
+          <div className="w-full h-35 bg-300 mt-2 flex flex-col justify-center items-center">
             <div className="w-1 h-60 bg- bg-blue-100"></div>
           </div>
 
@@ -139,7 +139,7 @@ function Homepage() {
                 OUR BENEFITS
               </div>
             </div>
-            <h2 className="mt-10 text-5xl leading-normal font-medium">
+            <h2 className="mt-10 text-5xl leading-normal font-normal">
               Investing in Africa's Top Businesses,is now at your fingertips{" "}
             </h2>
           </motion.div>

@@ -133,7 +133,7 @@ const RightSidebar = ({ isOpen, setIsOpen }) => {
       <div className="flex flex-col h-full">
         {/* Header */}
         <div className="flex justify-between items-center p-4 border-b border-gray-700">
-          <h2 className="text-2xl font-bold">FEENICKS1</h2>
+          <h1 className="font-medium text-xl">FEENICKS1</h1>
           <button onClick={() => setIsOpen(false)}>
             <XMarkIcon className="w-6 h-6" />
           </button>

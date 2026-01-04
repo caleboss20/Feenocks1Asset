@@ -82,6 +82,7 @@ function DepositAmount({ selectedMethod, walletName,inputAmount,setInputAmount }
       }, 300);
     }
   };
+  
   const handleDragEnd = (_, info) => {
     if (info.point.x > MAX_X * 0.75) {
       confirmDeposit();
