@@ -1,41 +1,44 @@
+// ============= DASHBOARD.JSX =============
 import { BellIcon } from "@heroicons/react/24/outline";
 import { AiOutlineEyeInvisible, AiOutlineArrowUp } from "react-icons/ai";
-import { FiEye, FiArrowUpRight } from "react-icons/fi";
+import { FiEye, FiArrowUpRight, FiArrowDownLeft } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import photo5 from "./assets/images/photo5.png";
 import { useState, useEffect } from "react";
-import Ottpverification from "./withdrawflow/Ottpverify";
 import WithdrawSuccesss from "./withdrawflow/withdrawsuccess";
-import {
-  ArrowTopRightOnSquareIcon,
-  ArrowTurnRightUpIcon,
-} from "@heroicons/react/24/solid";
-
 function Dashboard({
   profileName,
-  totalAmount,
-  setTotalAmount,
-  setTotalFunded,
-  transactions,
   totalFunded,
-  selectedMethod,
+  totalEarned,
+  totalWithdrawn,
+  transactions,
   withdrawsuccess,
-  withdrawTransaction,
   setwithdrawSuccess,
-  amount,
+  selectedMethod,
+  withdrawAmount,
+  setWithdrawAmount,
+  completeWithdrawal,
+   confirmedWithdrawAmount,
+  setConfirmedWithdrawAmount,
 }) {
   const [hide, setHide] = useState(false);
   const [popup, setPopup] = useState(false);
   const [shake, setShake] = useState(false);
+  const [initialDepositAmount, setInitialDepositAmount] = useState("");
   const navigate = useNavigate();
+  // ===== CALCULATE CORRECT TOTAL BALANCE =====
+  const totalBalance = totalFunded + totalEarned - totalWithdrawn;
   const handleNext = () => {
-    if (!amount || parseFloat(amount) <= 0) {
+    if (!initialDepositAmount || parseFloat(initialDepositAmount) <= 0) {
       setShake(true);
       setTimeout(() => setShake(false), 500);
       return;
-    } else {
-      navigate("/depositmethod");
     }
+    if (parseFloat(initialDepositAmount) < 100) {
+      alert("Minimum deposit is GH₵ 100.00");
+      return;
+    }
+    navigate("/depositmethod");
   };
   const handleShow = () => setHide(!hide);
   useEffect(() => {
@@ -65,7 +68,7 @@ function Dashboard({
           <div className="absolute p-1 top-0 right-1 bg-red-600 rounded-full"></div>
         </div>
       </div>
-      {/* Total Balance */}
+      {/* Total Balance Card - FIXED */}
       <div className="p-4 rounded-md w-full bg-gradient-to-r from-blue-400 via-blue-800 to-blue-900 shadow-xl">
         <h2 className="text-white font-small text-2xl font-light">
           Total Balance
@@ -76,7 +79,7 @@ function Dashboard({
           ) : (
             <div className="flex items-center gap-3">
               <p className="text-xl text-white mt-2">
-                {`GH₵ ${totalAmount.toLocaleString() || "0"}.00`}
+                {`GH₵ ${totalBalance.toLocaleString()}.00`}
               </p>
               <div className="relative flex items-center right-0 h-10 bg-re-600">
                 <p className="text-green-400 mt-2 font-medium">2.03%</p>
@@ -112,7 +115,6 @@ function Dashboard({
           </div>
           <p className="text-gray-800 font-small">Deposit</p>
         </Link>
-
         <Link
           to="/withdrawmethod"
           className="flex-1 py-3 shadow-2xl bg-violet-100 rounded-full"
@@ -127,76 +129,112 @@ function Dashboard({
           </div>
         </Link>
       </div>
-      {/* Summary */}
-      <div className="mt-10 w-full bg-re-400 p-1 flex flex-col gap-5">
+      {/* Summary Section - FIXED */}
+      <div className="mt-10 w-full bg-re-400 p-4 flex flex-col gap-5 rounded-lg ">
+        {/* Total Funded */}
         <div className="flex flex-col gap-1">
           <p className="text-lg font-medium text-gray-700">Total Funded</p>
           <span className="text-gray-800 text-lg font-normal">
-            {`GH₵ ${Number(totalFunded).toLocaleString() || 0}.00`}
+            {`GH₵ ${Number(totalFunded).toLocaleString()}.00`}
           </span>
         </div>
         <div className="w-full h-[1px] bg-gray-100"></div>
+        {/* Total Earned */}
         <div className="flex flex-col gap-1">
           <p className="text-lg font-medium text-gray-700">Total Earned</p>
           <span className="text-gray-800 text-lg font-normal">
-            {`GH₵ ${(0).toLocaleString()}.00`}
+            {`GH₵ ${Number(totalEarned).toLocaleString()}.00`}
           </span>
         </div>
         <div className="w-full h-[1px] bg-gray-100"></div>
+        {/* Total Withdrawn - NOW SHOWS ACTUAL WITHDRAWN (NOT PENDING INPUT) */}
         <div className="flex flex-col gap-1">
           <p className="text-lg font-medium text-gray-700">Total Withdrawn</p>
           <span className="text-gray-800 text-lg font-normal">
-            {`GH₵ ${Number(amount).toLocaleString() || 0}.00`}
+            {`GH₵ ${Number(totalWithdrawn).toLocaleString()}.00`}
           </span>
         </div>
       </div>
       {/* Recent Transactions */}
-      <div className="w-full bg-re-500 mt-14 mb-40">
-        <div className="flex justify-between">
-          <h2 className="font-medium text-gray-700 text-sm">
-            RECENT TRANSACTIONS
-          </h2>
-          <Link to="/transactions">
-            <span className="mr-3 text-blue-600 font-medium">See All</span>
-          </Link>
-        </div>
-        {transactions.length === 0 ? (
-          <div className="w-full mt-10 py-3 rounded-lg bg-gray-100 flex items-center justify-center">
-            <span className="text-sm">No transactions to display</span>
-          </div>
+<div className="w-full bg-re-500 mt-14 mb-40">
+  <div className="flex justify-between">
+    <h2 className="font-medium text-gray-700 text-sm">
+      RECENT TRANSACTIONS
+    </h2>
+    <Link to="/transactions">
+      <span className="mr-3 text-blue-600 font-medium">See All</span>
+    </Link>
+  </div>
+  {transactions.length === 0 ? (
+    <div className="w-full mt-10 py-3 rounded-lg bg-gray-100 flex items-center justify-center">
+      <span className="text-sm">No transactions to display</span>
+    </div>
+  ) : (
+    <div className="flex flex-col mt-8 w-full gap-3">
+      {transactions.map((transaction) => {
+        // ===== DETERMINE IF DEPOSIT OR WITHDRAWAL =====
+        const isWithdrawal =
+          transaction.type === "Withdrawal" ||
+          transaction.type === "withdrawal";
+        // ===== SET COLORS AND ICON BASED ON TYPE =====
+        const bgColor = isWithdrawal ? "bg-red-100" : "bg-green-100";
+        const iconColor = isWithdrawal ? "text-red-700" : "text-green-700";
+        const amountColor = isWithdrawal ? "text-red-600" : "text-green-600";
+        const percentColor = isWithdrawal ? "text-red-400" : "text-green-400";
+        const amountSign = isWithdrawal ? "- " : "+ ";
+        const icon = isWithdrawal ? (
+          <FiArrowDownLeft className="w-6 h-6" />
         ) : (
-          <div className="flex flex-col mt-8 w-full bg-white gap-3">
-            {transactions.map((transaction) => (
-              <div
-                kay={transaction.id}
-                className="flex w-full py-4 px-2 bg-gree-200 justify-between"
-              >
-                <div className="flex gap-3">
-                  <div className="w-10 h-10 rounded-full bg-green-100 flex justify-center items-center">
-                    <FiArrowUpRight className="w-6 h-6 text-green-700" />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <h2 className="font-medium text-sm ">{transaction.type}</h2>
-                    <span className="text-sm text-black">
-                      {transaction.date}
-                    </span>
-                  </div>
-                </div>
-                <div className="flex flex-col  px-2">
-                  <div className="px-2 mr-4">
-                    <span className="text-green-400 font-medium text-sm ">
-                      {transaction.valuepercent || "0%"}
-                    </span>
-                  </div>
-                  <h2 className="text-sm font-medium">
-                    {`GH₵ ${transaction.amount || 0}.00`}
-                  </h2>
+          <FiArrowUpRight className="w-6 h-6" />
+        );
+        return (
+          <div
+            key={transaction.id}
+            className="flex w-full py-4 px-3 bg-white rounded-lg justify-between items-center hover:shadow-md transition-shadow"
+          >
+            {/* Left Section - Icon & Details */}
+            <div className="flex gap-3 flex-1">
+              {/* Icon Circle */}
+              <div className={`w-10 h-10 rounded-full ${bgColor} flex justify-center items-center flex-shrink-0`}>
+                <div className={`${iconColor}`}>
+                  {icon}
                 </div>
               </div>
-            ))}
+              {/* Transaction Info */}
+              <div className="flex flex-col gap-1">
+                <h2 className="font-medium text-sm text-gray-800">
+                  {transaction.type}
+                </h2>
+                <span className="text-xs text-gray-500">
+                  {transaction.date}
+                </span>
+              </div>
+            </div>
+            {/* Right Section - Amount & Percent */}
+            <div className="flex flex-col items-end gap-1">
+              {/* Amount */}
+              <h2 className={`text-sm font-bold ${amountColor}`}>
+                {`${amountSign}GH₵ ${Math.abs(transaction.amount).toLocaleString()}.00`}
+              </h2>
+              {/* Percentage/Status */}
+              {transaction.valuepercent && (
+                <span className={`text-xs font-medium ${percentColor}`}>
+                  {transaction.valuepercent}
+                </span>
+              )}
+              {/* Status Badge for Withdrawals */}
+              {/* {isWithdrawal && (
+                <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
+                  Pending
+                </span>
+              )} */}
+            </div>
           </div>
-        )}
-      </div>
+        );
+      })}
+    </div>
+  )}
+</div>
       {/* Add Funds Button */}
       <div className="z-10 fixed w-full h-20 p-4 bottom-0 right-0">
         <button
@@ -206,7 +244,7 @@ function Dashboard({
           Add Funds
         </button>
       </div>
-      {/* Popup */}
+      {/* Popup - First Deposit */}
       {popup && (
         <div className="fixed top-0 bottom-0 right-0 inset-0 bg-black/50 w-full z-20"></div>
       )}
@@ -220,8 +258,8 @@ function Dashboard({
           </p>
           <div className="ml-3 mr-3">
             <input
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
+              value={initialDepositAmount}
+              onChange={(e) => setInitialDepositAmount(e.target.value)}
               type="number"
               placeholder="GH₵ 100.00"
               className={`${
@@ -256,7 +294,7 @@ function Dashboard({
           </div>
         </div>
       )}
-
+      {/* Withdrawal Success Modal */}
       {withdrawsuccess ? (
         <>
           <div
@@ -264,13 +302,14 @@ function Dashboard({
             className="fixed top-0 bottom-0 right-0 inset-0 bg-black/60 w-full z-20"
           ></div>
           <WithdrawSuccesss
-            totalAmount={totalAmount}
-            amount={amount}
+            totalBalance={totalBalance}
+            withdrawAmount={withdrawAmount}
             selectedMethod={selectedMethod}
             withdrawsuccess={withdrawsuccess}
             setwithdrawSuccess={setwithdrawSuccess}
-            setTotalAmount={setTotalAmount}
-            withdrawTransaction={withdrawTransaction}
+            completeWithdrawal={completeWithdrawal}
+             confirmedWithdrawAmount={confirmedWithdrawAmount}
+ 
           />
         </>
       ) : null}
@@ -278,3 +317,4 @@ function Dashboard({
   );
 }
 export default Dashboard;
+      

@@ -1,3 +1,4 @@
+// ============= APP.JSX =============
 import Navbar from "./components/Navbar";
 import "./index.css";
 import Homepage from "./components/Homepage";
@@ -27,260 +28,313 @@ import Transactions from "./Transactions";
 import WithDrawalMethod from "./withdrawflow/withdrawalmethod";
 import WithdrawPage from "./withdrawflow/withdrawpage";
 import Ottpverification from "./withdrawflow/Ottpverify";
-
 // Risk calculation utility
 function calculateRiskProfile(answers) {
-  // Sum of all answer values
   const total = Object.values(answers).reduce((sum, val) => sum + val, 0);
-  // Map score ranges to profiles
   if (total <= 22) return { level: "Conservative", portfolioType: "Safe" };
   if (total <= 32) return { level: "Moderate", portfolioType: "Balanced" };
   if (total <= 42) return { level: "Growth", portfolioType: "Aggressive" };
   return { level: "Aggressive", portfolioType: "High-Risk" };
 }
-
 function App() {
-
   const [selectedId, setSelectedId] = useState(null);
-   const [selected,setSelected]=useState(null);
+  const [selected, setSelected] = useState(null);
   const [answers, setAnswers] = useState({});
   const [riskResult, setRiskResult] = useState(null);
-  //for the wallet section//
+  // ===== WALLET SECTION =====
   const [walletName, setWalletName] = useState("");
   const [profileName, setProfileName] = useState("");
-  //for deposit side//
+  // ===== DEPOSIT SECTION =====
   const [selectedMethod, setSelectedMethod] = useState(null);
   const [inputAmount, setInputAmount] = useState("");
-  const [totalAmount, setTotalAmount] =useState(()=>{
-    const saved=localStorage.getItem("totalAmount");
-    return saved? Number(saved):0;
+  // ===== BALANCE TRACKING - FIXED =====
+  const [totalFunded, setTotalFunded] = useState(() => {
+    const saved = localStorage.getItem("totalFunded");
+    return saved ? Number(saved) : 0;
   });
-  //for the withdraw page//
-    
-
-  //for the withdrawal success//
-    const [withdrawsuccess,setwithdrawSuccess]=useState(false);
-
-
-  const [transactions, setTransactions] = useState(()=>{
-    const saved=localStorage.getItem("transactions");
-    return saved? JSON.parse(saved):[];
+  const [totalWithdrawn, setTotalWithdrawn] = useState(() => {
+    const saved = localStorage.getItem("totalWithdrawn");
+    return saved ? Number(saved) : 0;
   });
-
-  //for the total funded//
-   const [totalFunded, setTotalFunded]=useState(()=>{
-    const saved=localStorage.getItem("totalfunded");
-    return saved? Number(saved):0;
+  const [totalEarned, setTotalEarned] = useState(() => {
+    const saved = localStorage.getItem("totalEarned");
+    return saved ? Number(saved) : 0;
   });
-
-   useEffect(()=>{
-    localStorage.setItem("totalfunded",
-      totalFunded);  
-  },[totalFunded]);
-
-
-
-  useEffect(()=>{
-    localStorage.setItem("transactions",
-      JSON.stringify(transactions));  
-  },[transactions]);
-
-    useEffect(()=>{
-    localStorage.setItem("totalAmount",
-      totalAmount);  
-  },[totalAmount]);
-
-  const [amount,setAmount] =useState(()=>{
-    const save=localStorage.getItem("amount");
-    return save? Number(save):0;
+  // ===== TRANSACTIONS =====
+  const [transactions, setTransactions] = useState(() => {
+    const saved = localStorage.getItem("transactions");
+    return saved ? JSON.parse(saved) : [];
   });
 
 
-   useEffect(()=>{
-    localStorage.setItem("amount",
-      amount);  
-  },[amount]);
+
+
+  // ===== WITHDRAWAL STATE =====
+  const [withdrawsuccess, setwithdrawSuccess] = useState(false);
+  const [amount, setAmount] = useState(() => {
+    const save = localStorage.getItem("withdrawAmount");
+    return save ? Number(save) : 0;
+  });
+
+  const [confirmedWithdrawAmount,setConfirmedWithdrawAmount]=useState(0);
 
 
 
 
+
+
+
+
+
+
+
+
+
+  // ===== PERSIST TOTAL FUNDED TO LOCALSTORAGE =====
+  useEffect(() => {
+    localStorage.setItem("totalFunded", totalFunded);
+  }, [totalFunded]);
+  // ===== PERSIST TOTAL WITHDRAWN TO LOCALSTORAGE =====
+  useEffect(() => {
+    localStorage.setItem("totalWithdrawn", totalWithdrawn);
+  }, [totalWithdrawn]);
+  // ===== PERSIST TOTAL EARNED TO LOCALSTORAGE =====
+  useEffect(() => {
+    localStorage.setItem("totalEarned", totalEarned);
+  }, [totalEarned]);
+  // ===== PERSIST TRANSACTIONS TO LOCALSTORAGE =====
+  useEffect(() => {
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+  }, [transactions]);
+  // ===== PERSIST WITHDRAW AMOUNT TO LOCALSTORAGE =====
+  useEffect(() => {
+    localStorage.setItem("withdrawAmount", amount);
+  }, [amount]);
+  // ===== ADD DEPOSIT TRANSACTION - FIXED =====
   const AddTransaction = () => {
+    // Validation
+    if (!inputAmount || Number(inputAmount) <= 0) {
+      alert("Please enter a valid amount");
+      return;
+    }
+    if (Number(inputAmount) < 100) {
+      alert("Minimum deposit amount is GH₵ 100.00");
+      return;
+    }
     const today = new Date();
     const options = { year: "numeric", month: "long", day: "numeric" };
     const time = today.toLocaleDateString("en-US", options);
-    const percent=Math.random()*10;
-    const valuepercent=`${percent.toFixed(2)}%`;
-    const newtransaction = {
+    const percent = Math.random() * 10;
+    const valuepercent = `${percent.toFixed(2)}%`;
+    const depositAmount = Number(inputAmount);
+    const newTransaction = {
       id: Date.now(),
-      type: selected,
-      amount: Number(inputAmount),
+      type: selected || "Deposit",
+      amount: depositAmount,
       date: time,
-      valuepercent:valuepercent
+      valuepercent: valuepercent,
+      status: "completed"
     };
-    setTransactions(prev=>[newtransaction,...prev]);
-    setTotalAmount(prev=>prev+Number(inputAmount));
-    setTotalFunded(prev=>prev+Number(totalFunded));
-    console.log("added");
-    
+    // Add to transactions
+    setTransactions(prev => [newTransaction, ...prev]);
+    // ✅ FIX: Add deposit amount to totalFunded (NOT totalFunded to itself)
+    setTotalFunded(prev => prev + depositAmount);
+    // Clear input
+    setInputAmount("");
+    console.log("Deposit added successfully - Amount:", depositAmount);
   };
-
-
-  const withdrawTransaction=()=>{
-   setTotalAmount(prev=>prev-Number(amount));
-  }
-
+  // ===== WITHDRAW TRANSACTION - FIXED =====
+  const completeWithdrawal = (withdrawAmount) => {
+    const amount = Number(withdrawAmount);
+    const totalBalance = totalFunded + totalEarned - totalWithdrawn;
+    // Validation checks
+    if (amount <= 0) {
+      alert("Withdrawal amount must be greater than 0");
+      return false;
+    }
+    if (amount > totalBalance) {
+      alert(
+        `Insufficient funds. Your available balance is GH₵ ${totalBalance.toLocaleString()}.00`
+      );
+      return false;
+    }
+    if (amount < 50) {
+      alert("Minimum withdrawal amount is GH₵ 50.00");
+      return false;
+    }
+    // Add to totalWithdrawn
+    setTotalWithdrawn(prev => prev + amount);
+    // Add to transactions
+    const today = new Date();
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const time = today.toLocaleDateString("en-US", options);
+    const withdrawalTransaction = {
+      id: Date.now(),
+      type: "Withdrawal",
+      amount: amount,
+      date: time,
+      valuepercent: "0%",
+      status: "completed"
+    };
+    setTransactions(prev => [withdrawalTransaction, ...prev]);
+    return true;
+  };
   return (
     <>
-    <div className="w-full bg-white">
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/support" element={<SupportCenter />} />
-
-        <Route path="" element={<Navbar />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/socialinfo" element={<SocialInfo />} />
-        <Route path="/verification" element={<Verification />} />
-        <Route
-          path="/verification2"
-          element={
-            <Verification2
-              selectedId={selectedId}
-              setSelectedId={setSelectedId}
-            />
-          }
-        />
-        <Route path="/verification3" element={<Verification3 />} />
-        <Route path="/verification4" element={<Verification4 />} />
-        <Route
-          path="/completeverify"
-          element={
-            <CompleteVerification
-              selectedId={selectedId}
-              setSelectedId={setSelectedId}
-            />
-          }
-        />
-        <Route
-          path="/assessment"
-          element={
-            <RiskAssessment
-              answers={answers}
-              setAnswers={setAnswers}
-              setRiskResult={setRiskResult}
-            />
-          }
-        />
-        <Route
-          path="/results"
-          element={
-            <RiskAssessmentResults
-              riskResult={riskResult}
-              selectedId={selectedId}
-            />
-          }
-        />
-        <Route path="/recommendation" element={<Recommendation 
-        selected={selected}
-        setSelected={setSelected}
-        />} />
-        <Route
-          path="/deposit"
-          element={
-            <DepositSection
-              walletName={walletName}
-              setWalletName={setWalletName}
-              profileName={profileName}
-              setProfileName={setProfileName}
-            />
-          }
-        />
-        <Route path="/profile" element={<InvestorProfile />} />
-        <Route path="/terms" element={<TermsAndConditions />} />
-        <Route path="/policy" element={<PrivacyPolicy />} />
-        <Route
-          path="/dashboard"
-          element={
-            <Dashboard
-              profileName={profileName}
-              inputAmount={inputAmount}
-              totalAmount={totalAmount}
-              transactions={transactions}
-              selected={selected}
-              withdrawsuccess={withdrawsuccess}
-              setwithdrawSuccess={setwithdrawSuccess}
-              selectedMethod={selectedMethod}
-              setTotalAmount={setTotalAmount}
-              withdrawTransaction={withdrawTransaction}
-              amount={amount} 
-              setTotalFunded={setTotalFunded}
-              totalFunded={totalFunded}
-            />
-          }
-        />
-        <Route
-          path="/depositmethod"
-          element={
-            <DepositMethod
-              selectedMethod={selectedMethod}
-              setSelectedMethod={setSelectedMethod}
-            />
-          }
-        />
-        <Route
-          path="/depositamount"
-          element={
-            <DepositAmount
-              selectedMethod={selectedMethod}
-              setSelectedMethod={setSelectedMethod}
-              walletName={walletName}
-              inputAmount={inputAmount}
-              setInputAmount={setInputAmount}
-            />
-          }
-        />
-        <Route
-          path="/depositconfirm"
-          element={
-            <DepositConfirm
-              
-              
-              inputAmount={inputAmount}
-              AddTransaction={AddTransaction}
-              setTransactions={setTransactions}
-              transactions={transactions}
-            />
-          }
-        />
-         <Route path="/transactions" element={<Transactions 
-         transactions={transactions}
-         />} />
-
-         <Route
-          path="/withdrawmethod"
-          element={
-            <WithDrawalMethod
-              selectedMethod={selectedMethod}
-              setSelectedMethod={setSelectedMethod}
-            />
-          }
-        />
-         <Route path="/withdrawpage"
-          element={<WithdrawPage 
-         selectedMethod={selectedMethod}
-         totalAmount={totalAmount}
-         amount={amount}
-         setAmount={setAmount}
-         withdrawsuccess={withdrawsuccess}
-         setwithdrawSuccess={setwithdrawSuccess}
-
-         />} />
-      </Routes>
-      
-    </div>
-    
+      <div className="w-full bg-white">
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/support" element={<SupportCenter />} />
+          <Route path="" element={<Navbar />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/socialinfo" element={<SocialInfo />} />
+          <Route path="/verification" element={<Verification />} />
+          <Route
+            path="/verification2"
+            element={
+              <Verification2
+                selectedId={selectedId}
+                setSelectedId={setSelectedId}
+              />
+            }
+          />
+          <Route path="/verification3" element={<Verification3 />} />
+          <Route path="/verification4" element={<Verification4 />} />
+          <Route
+            path="/completeverify"
+            element={
+              <CompleteVerification
+                selectedId={selectedId}
+                setSelectedId={setSelectedId}
+              />
+            }
+          />
+          <Route
+            path="/assessment"
+            element={
+              <RiskAssessment
+                answers={answers}
+                setAnswers={setAnswers}
+                setRiskResult={setRiskResult}
+              />
+            }
+          />
+          <Route
+            path="/results"
+            element={
+              <RiskAssessmentResults
+                riskResult={riskResult}
+                selectedId={selectedId}
+              />
+            }
+          />
+          <Route
+            path="/recommendation"
+            element={
+              <Recommendation selected={selected} setSelected={setSelected} />
+            }
+          />
+          <Route
+            path="/deposit"
+            element={
+              <DepositSection
+                walletName={walletName}
+                setWalletName={setWalletName}
+                profileName={profileName}
+                setProfileName={setProfileName}
+              />
+            }
+          />
+          <Route path="/profile" element={<InvestorProfile />} />
+          <Route path="/terms" element={<TermsAndConditions />} />
+          <Route path="/policy" element={<PrivacyPolicy />} />
+          <Route
+            path="/dashboard"
+            element={
+              <Dashboard
+                profileName={profileName}
+                inputAmount={inputAmount}
+                totalFunded={totalFunded}
+                totalEarned={totalEarned}
+                totalWithdrawn={totalWithdrawn}
+                transactions={transactions}
+                selected={selected}
+                withdrawsuccess={withdrawsuccess}
+                setwithdrawSuccess={setwithdrawSuccess}
+                selectedMethod={selectedMethod}
+                withdrawAmount={amount}
+                setWithdrawAmount={setAmount}
+                completeWithdrawal={completeWithdrawal}
+              confirmedWithdrawAmount={confirmedWithdrawAmount}
+              />
+            }
+          />
+          <Route
+            path="/depositmethod"
+            element={
+              <DepositMethod
+                selectedMethod={selectedMethod}
+                setSelectedMethod={setSelectedMethod}
+              />
+            }
+          />
+          <Route
+            path="/depositamount"
+            element={
+              <DepositAmount
+                selectedMethod={selectedMethod}
+                setSelectedMethod={setSelectedMethod}
+                walletName={walletName}
+                inputAmount={inputAmount}
+                setInputAmount={setInputAmount}
+              />
+            }
+          />
+          <Route
+            path="/depositconfirm"
+            element={
+              <DepositConfirm
+                inputAmount={inputAmount}
+                AddTransaction={AddTransaction}
+                setTransactions={setTransactions}
+                transactions={transactions}
+              />
+            }
+          />
+          <Route path="/transactions" element={<Transactions
+            transactions={transactions}
+          />} />
+          <Route
+            path="/withdrawmethod"
+            element={
+              <WithDrawalMethod
+                selectedMethod={selectedMethod}
+                setSelectedMethod={setSelectedMethod}
+              />
+            }
+          />
+          <Route
+            path="/withdrawpage"
+            element={
+              <WithdrawPage
+                selectedMethod={selectedMethod}
+                totalFunded={totalFunded}
+                totalEarned={totalEarned}
+                totalWithdrawn={totalWithdrawn}
+                withdrawAmount={amount}
+                setWithdrawAmount={setAmount}
+                withdrawsuccess={withdrawsuccess}
+                setwithdrawSuccess={setwithdrawSuccess}
+                completeWithdrawal={completeWithdrawal}
+                confirmedWithdrawAmount={confirmedWithdrawAmount}
+                setConfirmedWithdrawAmount={setConfirmedWithdrawAmount}
+                />
+            }
+          />
+        </Routes>
+      </div>
     </>
   );
 }
-
 export default App;

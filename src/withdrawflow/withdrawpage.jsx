@@ -4,165 +4,215 @@ import { CheckCircleIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
 import { MdErrorOutline } from "react-icons/md";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Navigate } from "react-router-dom";
 import Ottpverification from "./Ottpverify";
-
 function WithdrawPage({
   selectedMethod,
-  totalAmount,
+  totalFunded,
+  totalEarned,
+  totalWithdrawn,
+  withdrawAmount,
+  setWithdrawAmount,
   withdrawsuccess,
   setwithdrawSuccess,
-  amount,setAmount
+  completeWithdrawal,
+  confirmedWithdrawAmount,
+  setConfirmedWithdrawAmount,
 }) {
-  const [clicked, setclicked] = useState(false);
+  const [clicked, setClicked] = useState(false);
   const [focused, setFocused] = useState(false);
   const [error, setError] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [popup, setPopup] = useState(false);
+  // ✅ LOCAL STATE FOR WITHDRAWAL METHOD
+  const [method, setMethod] = useState(selectedMethod || "");
   const navigate = useNavigate();
-
+  // ===== CALCULATE AVAILABLE BALANCE =====
+  const availableBalance = totalFunded + totalEarned - totalWithdrawn;
+  // ===== VALIDATE WITHDRAWAL AMOUNT =====
   const validateAmount = (value) => {
     const num = Number(value);
-    if (!num) {
+    if (!num || value === "") {
       setError("");
       setIsValid(false);
       return;
     }
     if (num < 100) {
-      setError("Minimum withdrawal is GH₵100");
+      setError("Minimum withdrawal is GH₵ 100.00");
       setIsValid(false);
       return;
     }
     if (num > 100000) {
-      setError("Amount exceeds withdrawal limit");
+      setError("Amount exceeds maximum withdrawal limit of GH₵ 100,000");
       setIsValid(false);
       return;
     }
-    if (num > totalAmount) {
-      setError("Insufficient balance");
+    if (num > availableBalance) {
+      setError(
+        `Insufficient balance. Available: GH₵ ${availableBalance.toLocaleString()}.00`
+      );
       setIsValid(false);
       return;
     }
     setError("");
     setIsValid(true);
   };
-
-  const handlecontinue = () => {
-    if (!isValid) return;
+  // ===== HANDLE CONTINUE BUTTON =====
+  const handleContinue = () => {
+    if (!isValid) {
+      setError("Please enter a valid withdrawal amount");
+      return;
+    }
+    if (!method) {
+      setError("Please select a withdrawal method");
+      return;
+    }
     setPopup(true);
-   
   };
-
+  // ===== HANDLE AMOUNT INPUT CHANGE =====
   const handleChange = (e) => {
     const value = e.target.value.replace(/[^0-9]/g, "");
-    setAmount(value);
-    setclicked(false);
+    setWithdrawAmount(value);
+    setClicked(false);
     validateAmount(value);
-     console.log(amount);
   };
+  // ===== SET AMOUNT TO ALL AVAILABLE BALANCE =====
   const handleAllIn = () => {
-    const value = String(totalAmount);
-    setclicked(true);
-    setAmount(value);
+    if (availableBalance <= 0) {
+      setError("You have no available balance to withdraw");
+      return;
+    }
+    const value = String(availableBalance);
+    setClicked(true);
+    setWithdrawAmount(value);
     validateAmount(value);
   };
   return (
     <div>
-      <div className="p-6 flex gap-18">
+      {/* Header */}
+      <div className="p-6 flex gap-4 items-center">
         <Link to="/withdrawmethod">
           <BackArrow />
         </Link>
         <p className="font-medium text-lg">Withdraw money</p>
       </div>
+      {/* Main Content */}
       <div className="p-6">
-        <h2 className="text-xl font-medium">{selectedMethod}</h2>
-        <select className="px-2 w-full h-15 mt-7 border-gray-500 border-1 rounded-lg">
-          <option>MTN</option>
-          <option>Telecel</option>
+        {/* Selected Method */}
+        <h2 className="text-xl font-medium mb-2">
+          {method || "Select a method"}
+        </h2>
+        {/* Network Selection */}
+        <select
+          value={method}
+          onChange={(e) => {
+            setMethod(e.target.value);
+            setError("");
+          }}
+          className="px-3 w-full h-12 mt-4 border-gray-300 border-1 rounded-lg bg-white focus:border-blue-500 focus:outline-none"
+        >
+          <option value="">Select network</option>
+          <option value="MTN">MTN</option>
+          <option value="Telecel">Telecel</option>
+          <option value="AirtelTigo">AirtelTigo</option>
         </select>
-        {/* Withdraw box */}
+        {/* Withdrawal Amount Input */}
         <motion.div
           animate={{
-            borderColor: focused ? "#2563eb" : "#9ca3af",
+            borderColor: focused ? "#2563eb" : error ? "#ef4444" : "#d1d5db",
           }}
           transition={{ duration: 0.25 }}
-          className="flex justify-between mt-8 w-full rounded-lg border-2 py-3 px-2"
+          className="flex justify-between items-center mt-8 w-full rounded-lg border-2 py-3 px-4"
         >
-          <div className="flex flex-col">
+          <div className="flex flex-col flex-1">
             <span className="text-sm text-gray-500">Withdraw amount</span>
             <input
-              value={amount}
+              type="number"
+              value={withdrawAmount}
               onChange={handleChange}
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
               placeholder="GH₵ 100.00"
-              className="text-lg h-12 w-40 border-none outline-none"
+              className="text-lg h-12 w-full border-none outline-none bg-transparent"
             />
           </div>
-          <div className="flex gap-2 items-center">
-            <p className="text-blue-700 font-medium">All in</p>
-            <div onClick={handleAllIn}>
-              {clicked ? (
-                <CheckCircleIcon className="w-7 h-7 text-blue-700" />
-              ) : (
-                <PlusCircleIcon className="w-7 h-7 text-blue-700" />
-              )}
-            </div>
+          <div
+            onClick={handleAllIn}
+            className="flex gap-2 items-center cursor-pointer ml-4"
+          >
+            <p className="text-blue-700 font-medium text-sm whitespace-nowrap">
+              All in
+            </p>
+            {clicked ? (
+              <CheckCircleIcon className="w-6 h-6 text-blue-700 flex-shrink-0" />
+            ) : (
+              <PlusCircleIcon className="w-6 h-6 text-blue-700 flex-shrink-0" />
+            )}
           </div>
         </motion.div>
-        {/* Error */}
+        {/* Error Message */}
         {error && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-red-500 text-sm mt-2"
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex items-center gap-2 text-red-500 text-sm mt-3"
           >
-            {error}
-          </motion.p>
+            <MdErrorOutline className="w-4 h-4 flex-shrink-0" />
+            <p>{error}</p>
+          </motion.div>
         )}
-        <div className="flex gap-4 items-center mt-6">
-          <h2 className="text-md text-gray-700">Available withdraw balance:</h2>
-          <h2 className="font-medium text-lg">
-            GH₵ {Number(totalAmount).toLocaleString()}.00
+        {/* Available Balance Info */}
+        <div className="flex gap-4 items-center mt-8">
+          <h2 className="text-md text-gray-700">Available balance:</h2>
+          <h2 className="font-medium text-lg text-blue-700">
+            GH₵ {Number(availableBalance).toLocaleString()}.00
           </h2>
         </div>
-        {/* Button */}
+        {/* Continue Button */}
         <motion.button
-          onClick={handlecontinue}
+          onClick={handleContinue}
           disabled={!isValid}
           animate={{
-            backgroundColor: isValid ? "#2563eb" : "#9ca3af",
-            filter: isValid ? "blur(0px)" : "blur(1px) ",
+            backgroundColor: isValid ? "#2563eb" : "#d1d5db",
           }}
-          className="py-3 w-full mt-20 rounded-lg text-white font-medium"
+          whileHover={isValid ? { backgroundColor: "#1d4ed8" } : {}}
+          className="py-3 w-full mt-10 rounded-lg text-white font-medium disabled:cursor-not-allowed transition-all"
         >
           Continue
         </motion.button>
-        <div className="gap-3 flex py-3 px-2 w-full rounded-lg bg-blue-50 mt-10">
-          <MdErrorOutline className="mt-1 w-5 h-5 text-blue-600" />
+        {/* Info Box */}
+        <div className="gap-3 flex py-4 px-3 w-full rounded-lg bg-blue-50 mt-8">
+          <MdErrorOutline className="mt-0.5 w-5 h-5 text-blue-600 flex-shrink-0" />
           <div className="flex-1">
-            <h2 className="font-medium text-md">
-              Why do I need to make a deposit?
+            <h2 className="font-medium text-md text-gray-800">
+              Important Information
             </h2>
-            <span className="text-sm text-gray-800">
-              Make a deposit to link and verify your bank account. For your
-              safety, only withdrawals to verified accounts are permitted.
+            <span className="text-sm text-gray-700 block mt-1">
+              Withdrawals are processed within 24-48 hours to your selected
+              mobile money account. Make sure your account details are correct
+              before confirming.
             </span>
           </div>
         </div>
-
-        {popup ? (
+        {/* OTP Verification Popup */}
+        {popup && (
           <>
             <div
               onClick={() => setPopup(false)}
-              className="fixed top-0 bottom-0 right-0 inset-0 bg-black/50 w-full z-20"
+              className="fixed top-0 bottom-0 right-0 inset-0 bg-black/60 w-full z-20"
             ></div>
             <Ottpverification
+              withdrawAmount={withdrawAmount}
+              selectedMethod={method}
+              availableBalance={availableBalance}
               withdrawsuccess={withdrawsuccess}
               setwithdrawSuccess={setwithdrawSuccess}
+              setPopup={setPopup}
+              completeWithdrawal={completeWithdrawal}
+              confirmedWithdrawAmount={confirmedWithdrawAmount}
+              setConfirmedWithdrawAmount={setConfirmedWithdrawAmount}
             />
           </>
-        ) : null}
+        )}
       </div>
     </div>
   );
