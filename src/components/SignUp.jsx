@@ -45,6 +45,7 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [errormsg, setErrormsg] = useState(false);
   const navigate = useNavigate();
   // Handle Google redirect (mobile)
   useEffect(() => {
@@ -91,6 +92,7 @@ export default function SignUp() {
     if (data.otp === generatedOTP) {
       setStep(3);
     } else {
+      setErrormsg(true);
       alert("Invalid OTP");
       resetOTP();
     }
@@ -213,7 +215,7 @@ export default function SignUp() {
             exit={{ x: -500, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="p-2 w-full bg-white mt-32 md:p-6 w-full max-w-md bg-white mt-20">
+            <div className="p-2 w-full bg-white mt-3 md:p-6 w-full max-w-md bg-white mt-20">
               <span className="">{generatedOTP}</span>
               <h2 className="text-2xl font-medium leading-normal md:text-xl">
                 Enter the 6 digit code we've sent to
@@ -236,10 +238,12 @@ export default function SignUp() {
                     className="mb-10 text-xl pl-4 text-gray-900 w-full h-15 border-1 border-gray-500 rounded-md"
                   />
                   {otpErrors.otp && (
-                    <p className="text-red-500 text-sm mt-1">
+                    <p className="text-red-500 text-sm mt-2">
                       {otpErrors.otp.message}
                     </p>
                   )}
+
+                  
 
                   <h2 className="mb-5 text-blue-600 font-medium text-xl">
                     CHECK YOUR EMAIL
@@ -272,7 +276,7 @@ export default function SignUp() {
             exit={{ x: -500, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="p-2 w-full bg-white mt-32 md:p-6 w-full max-w-md bg-white mt-20">
+            <div className="p-2 w-full bg-white mt-3 md:p-6 w-full max-w-md bg-white mt-20">
               <h2 className="text-4xl leading-normal md:text-3xl">
                 Let Get To Know You More
               </h2>

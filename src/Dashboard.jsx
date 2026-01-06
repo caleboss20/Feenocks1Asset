@@ -189,7 +189,7 @@ function Dashboard({
         );
         return (
           <div
-            key={transaction.id}
+            key={crypto.randomUUID()}
             className="flex w-full py-4 px-3 bg-white rounded-lg justify-between items-center hover:shadow-md transition-shadow"
           >
             {/* Left Section - Icon & Details */}

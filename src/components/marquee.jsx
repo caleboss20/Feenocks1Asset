@@ -21,8 +21,8 @@ const CardMarquee = () => {
             key={idx}
             className="border border-gray-200 p-4 rounded-3xl h-60 w-80 bg-white-300 flex-shrink-0"
           >
-            <h2 className="text-7xl text-blue-600">"</h2>
-            <h2 className="text-4xl leading-tight font-bold text-blue-600">
+            <h2 className="text-7xl text-[#0b3c49]">"</h2>
+            <h2 className="text-4xl leading-tight font-bold text-[#0b3c49]">
               {text}
             </h2>
           </div>

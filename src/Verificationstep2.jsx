@@ -96,7 +96,7 @@ function Verification2({selectedId,setSelectedId}) {
           initial={{ opacity: 0, y: 20 }}
           animate={selectedId ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
-          className="mt-20 w-full px-4 py-3 bg-blue-600 rounded-lg text-white font-medium text-lg "
+          className="mt-10 w-full px-4 py-3 bg-blue-600 rounded-lg text-white font-medium text-lg "
         >
           Continue
         </motion.button>

@@ -19,7 +19,7 @@ function WithdrawSuccesss({
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8 }}
-      className="py-8 px-6 flex flex-col items-center fixed top-1/4 left-4 right-4 bg-white rounded-xl z-30 shadow-2xl"
+      className="py-7 px-6 flex flex-col items-center fixed top-20 left-4 right-4 bg-white rounded-xl z-30 shadow-2xl"
     >
       {/* Success Icon */}
       <motion.div

@@ -9,7 +9,7 @@ function ChatHelp() {
     <div className="relative">
       <div
       onClick={()=>navigate("/support")} 
-      className="fixed shadow-2xl right-3 flex justify-center items-center bottom-2 w-12 h-12 rounded-full bg-blue-600">
+      className="fixed shadow-2xl right-3 flex justify-center items-center bottom-2 w-12 h-12 rounded-full bg-[#0b3c49]">
         <MdQuestionMark className="w-6 h-6 text-white " />
       </div>
     </div>

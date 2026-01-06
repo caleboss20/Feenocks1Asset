@@ -93,19 +93,19 @@ function DepositAmount({ selectedMethod, walletName,inputAmount,setInputAmount }
   return (
     <div className="p-4 mt-4">
       {/* Header */}
-      <div className="flex gap-15">
-        <Link to="/depositmethod">
+      <div className="flex gap-10 items-center">
+        <Link to="/depositmethod"className="mt-3">
           <div>
             <BackArrow />
           </div>
         </Link>
         <div>
-          <p className="font-medium text-lg">{selectedMethod}</p>
+          <p className="font-medium text-md">{selectedMethod}</p>
         </div>
       </div>
       {/* Amount input */}
       <div>
-        <h2 className="mt-15 pl-2 text-2xl text-black font-medium">Amount:</h2>
+        <h2 className="mt-5 pl-2 text-xl text-black font-medium">Amount:</h2>
         <motion.input
           animate={shake ? { x: [0, -10, 10, -10, 10, 0] } : { x: 0 }}
           type="text"
@@ -138,7 +138,7 @@ function DepositAmount({ selectedMethod, walletName,inputAmount,setInputAmount }
         <div>
           <button
             onClick={handleContinue}
-            className={`w-full py-4 rounded-lg mt-27 font-medium text-lg ${
+            className={`w-full py-3 rounded-lg mt-10 font-medium text-lg ${
               inputAmount && !error ? "bg-blue-600 text-white" : "bg-gray-50 text-gray-50"
             }`}
           >

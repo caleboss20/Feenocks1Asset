@@ -24,12 +24,15 @@ function DepositSection({walletName,setWalletName,profileName,setProfileName}) {
   const inputWrapperClass = "relative mb-8";
   const iconClass = "absolute right-3 top-17 transform -translate-y-1/2 text-red-500 w-6 h-6";
   return (
-    <div className="w-full p-6 mb-10">
-      <div className="flex justify-center mb-4 mt-0">
+    <div className="w-full py-6 px-6 mb-10">
+      <div className="flex mb-4 mt-0">
         <div onClick={() => navigate("/recommendation")}>
           <BackArrow />
         </div>
-        <img src={deposit1} alt="Deposit" className="w-70 h-70" />
+        <div className="flex items-start">
+        <img src={deposit1} alt="Deposit" className="w-50 h-50" />
+        </div>
+        
       </div>
       <h2 className="font-medium text-2xl leading-normal text-center">
         Welcome to your wallet!
@@ -44,7 +47,7 @@ function DepositSection({walletName,setWalletName,profileName,setProfileName}) {
           variants={shakeAnimation}
           className={inputWrapperClass}
         >
-          <label className={`text-lg font-small mb-1 block ${walletInvalid ? "text-red-500" : "text-gray-700"}`}>
+          <label className={`text-md font-small mb-1 block ${walletInvalid ? "text-red-500" : "text-gray-700"}`}>
             Wallet Name
           </label>
           <input
@@ -52,7 +55,7 @@ function DepositSection({walletName,setWalletName,profileName,setProfileName}) {
             value={walletName}
             onChange={(e) => setWalletName(e.target.value)}
             placeholder="My growth wallet"
-            className={`pl-5 text-lg w-full border-1 py-4 mt-2 rounded-lg ${walletInvalid ? "border-red-500" : "border-gray-600"}`}
+            className={`pl-5 text-md w-full border-1 py-3 mt-2 rounded-lg ${walletInvalid ? "border-red-500" : "border-gray-600"}`}
           />
           {walletInvalid && <HiOutlineExclamationCircle className={iconClass} />}
         </motion.div>
@@ -61,7 +64,7 @@ function DepositSection({walletName,setWalletName,profileName,setProfileName}) {
           variants={shakeAnimation}
           className={inputWrapperClass}
         >
-          <label className={`text-lg font-small mb-1 block ${profileInvalid ? "text-red-500" : "text-gray-700"}`}>
+          <label className={`text-md font-small mb-1 block ${profileInvalid ? "text-red-500" : "text-gray-700"}`}>
             Profile Name
           </label>
           <input
@@ -69,7 +72,7 @@ function DepositSection({walletName,setWalletName,profileName,setProfileName}) {
             value={profileName}
             onChange={(e) => setProfileName(e.target.value)}
             placeholder="Profile Name"
-            className={`pl-5 text-lg w-full border-1 py-4 mt-2 rounded-lg ${profileInvalid ? "border-red-500" : "border-gray-600"}`}
+            className={`pl-5 text-md w-full border-1 py-3 mt-2 rounded-lg ${profileInvalid ? "border-red-500" : "border-gray-600"}`}
           />
           {profileInvalid && 
           <div className="">
@@ -80,7 +83,7 @@ function DepositSection({walletName,setWalletName,profileName,setProfileName}) {
       </div>
       <button
         onClick={handleContinue}
-        className="text-lg font-medium py-3 px-4 w-full mt-10 rounded-lg bg-blue-600 text-white"
+        className="text-md font-medium py-3 px-4 w-full mt-5 rounded-lg bg-blue-600 text-white"
       >
         Let's get started
       </button>

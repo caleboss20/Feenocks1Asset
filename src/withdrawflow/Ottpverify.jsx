@@ -98,7 +98,7 @@ const handleButtonClick = () => {
 
   return (
     <div>
-      <div className="absolute top-55 left-2 right-2 bg-white h-130 rounded-lg z-30 shadow-xl p-4">
+      <div className="absolute top-28 left-2 right-2 bg-white rounded-lg z-30 shadow-xl px-4 py-6">
         <h2 className="mb-3 font-bold text-2xl leading-normal">
           Enter the code we texted to +** ****76
         </h2>

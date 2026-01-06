@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon, BuildingLibraryIcon, CurrencyDollarIcon } from "@heroicons/react/24/outline";
 import image1 from "../assets/images/bestfamily.webp";
 import image2 from "../assets/images/family-savings.png";
 import image3 from "../assets/images/toy.jpg";
@@ -9,40 +9,121 @@ import FAQsection from "./FAQsection";
 import Footer from "./Footer";
 import { ChatBubbleBottomCenterIcon } from "@heroicons/react/24/outline";
 import Navbar from "./Navbar";
-import {MdQuestionMark  } from "react-icons/md";
+import { MdQuestionMark } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-
+import Cookie from "./Cookie";
+import { useState } from "react";
+import { FaBuilding, FaChartBar } from "react-icons/fa";
+import {GiPlantSeed} from "react-icons/gi";
 
 function Homepage() {
-  const navigate=useNavigate();
+  const [decline, setDecline] = useState(true);
+  const navigate = useNavigate();
   return (
     <div className="">
       <Navbar />
-      {/* hero-section */}
-      <section>
-        <div className="">
-          <motion.div
-            className="w-full h-210 bg-gradient-to-r from-bg-blue-700 to- bg-blue-900 flex flex-col justify-center items-center p-5"
-            initial={{ opacity: 0.3, y: 50 }} // start invisible, shifted down
-            whileInView={{ opacity: 1, y: 0 }} // animate into place when in viewport
-            viewport={{ once: true }} // animate only once
-            transition={{ duration: 0.8, ease: "easeOut" }} // smooth timing
-          >
-            <h2 className="text-4xl font-bold text-white text-center leading-normal mb-6">
-              Unlock seamless investment opportunities in Africa.
-            </h2>
-            <p className="text-xl text-white text-center mb-8">
-              Easily access public offers and rights issues on the continent's
-              Preferred Exchange
-            </p>
-            <Button />
+
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-[#0B3219]" />
+
+        <div className="absolute inset-0 bg-[#e6f2ef] backdrop-blur-2xl" />
+
+        <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-emerald-200/20" />
+        <motion.div
+          className="relative z-10 w-full py-10 flex flex-col justify-center items-center p-5 mt-30"
+          initial={{ opacity: 0.3, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <h2 className="text-4xl font-bold text-slate-900 text-center leading-normal mb-6">
+            Powering the Next Generation of Global Investing.
+          </h2>
+          <p className="text-lg text-slate-700 text-center mb-8 max-w-2xl">
+            Invest confidently across markets with secure,transparent access to
+            public offers and growth assets.
+          </p>
+          <Button />
+
+        
+          <div
+           className=" overflow-hidden w-full rounded-2xl bg-red-500 h-120 mt-20 border-10 border-white">
+            <div className="py-2 px-2 items-center flex justify-between absolute w-32 rounded-lg bg-white left-2 bottom-16 shadow-2xl">
+             <div className="flex flex-col">
+              <span className="font-medium text-sm text-blue-500">Bitsusu</span>
+              <span className="font-sm text-gray-900 font-bold">₵12,000</span>
+              <span className="text-[12px] text-gray-800">6% interest rate</span>
+             </div>
+             <div className="py-1 px-1 bg-blue-100 rounded-full">
+              <CurrencyDollarIcon className="w-5 h-5 text-blue-700"/>
+             </div>
+            </div>
+
+            <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white left-2 bottom-105 shadow-2xl">
+               <div className="flex flex-col">
+              <span className="font-medium text-sm text-pink-500">Real Estate</span>
+              <span className="font-sm text-gray-900 font-bold">₵40,000</span>
+              <span className="text-[12px] text-gray-800">9% interest rate</span>
+             </div>
+             <div className="py-1 px-1 bg-pink-100 rounded-full">
+              <BuildingLibraryIcon className="w-5 h-5 text-pink-700"/>
+             </div>
+            </div>
+
+            <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white left-2 bottom-58 shadow-2xl">
+                <div className="flex flex-col">
+              <span className="font-medium text-sm text-green-500">Agribusiness</span>
+              <span className="font-sm text-gray-900 font-bold">₵22,000</span>
+              <span className="text-[12px] text-gray-800">6% interest rate</span>
+             </div>
+             <div className="py-1 px-1 bg-green-100 rounded-full">
+              <GiPlantSeed className="w-5 h-5 text-green-700"/>
+             </div>
+            </div>
+
+            <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white right-2 bottom-110 shadow-2xl">
+              <div className="flex flex-col">
+              <span className="font-medium text-sm text-orange-500"> Mutual Fund</span>
+              <span className="font-sm text-gray-900 font-bold">₵48,000</span>
+              <span className="text-[12px] text-gray-800">5% interest rate</span>
+             </div>
+             <div className="py-1 px-1 bg-orange-100 rounded-full">
+              <FaChartBar className="w-5 h-5 text-orange-700"/>
+             </div>
+            </div>
+
+            <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white right-2 bottom-40 shadow-2xl">
+              <div className="flex flex-col">
+              <span className="font-medium text-sm text-blue-800">ForexTrading</span>
+              <span className="font-sm text-gray-900 font-bold">₵60,000</span>
+              <span className="text-[12px] text-gray-800">8% interest rate</span>
+             </div>
+             <div className="py-1 px-1 bg-blue-100 rounded-full">
+              <FaChartBar className="w-5 h-5 text-blue-700"/>
+             </div>
+            </div>
+
+            <div className="py-2 px-2 items-center justify-between flex absolute w-35 rounded-lg bg-white right-2 bottom-6 shadow-2xl">
+               <div className="flex flex-col">
+              <span className="font-medium text-sm text-violet-500">Investwise Cap</span>
+              <span className="font-sm text-gray-900 font-bold">₵5,000</span>
+              <span className="text-[12px] text-gray-800">7% interest rate</span>
+             </div>
+             <div className="py-1 px-1 bg-violet-100 rounded-full">
+              <FaChartBar className="w-5 h-5 text-violet-700"/>
+             </div>
+            </div>
+            <img src={image1} className="w-full h-full object-cover"></img>
+          </div>
           </motion.div>
-        </div>
+        
+        {/* Floating support button (unchanged) */}
         <div className="relative">
           <div
-          onClick={()=>navigate("/support")} 
-          className="z-30 fixed shadow-2xl right-3 flex justify-center items-center bottom-10 w-15 h-15 rounded-full bg-blue-600">
-            <MdQuestionMark className="w-6 h-6 text-white " />
+            onClick={() => navigate("/support")}
+            className="z-30 fixed shadow-2xl right-3 flex justify-center items-center bottom-10 w-15 h-15 rounded-full bg-[#0b3c49]"
+          >
+            <MdQuestionMark className="w-6 h-6 text-white" />
           </div>
         </div>
       </section>
@@ -50,8 +131,8 @@ function Homepage() {
       {/*getting started section*/}
       <section>
         <div className="mt-0 w-full h-480 bg-[#fafafa] flex flex-col p-10">
-          <div className="mt-15 flex gap-10 flex-col items-center justify-center w-full bg-300 pb-13 ">
-            <div className="text-white bg-blue-900 font-light text-base px-7 py-3 rounded-full bg- bg-blue-200">
+          <div className="mt-35 flex gap-10 flex-col items-center justify-center w-full bg-300 pb-13 ">
+            <div className="text-gray-900 bg-[#e6f2ef] font-light text-base px-7 py-3 rounded-full ">
               HOW TO GET STARTED
             </div>
             <h2 className="text-2xl font-medium">Invest in minutes</h2>
@@ -64,7 +145,7 @@ function Homepage() {
             transition={{ duration: 0.9, ease: "easeOut" }} //
             className="mt-0 flex gap-10 flex-col items-center justify-center w-full bg-re-300 pb-13 "
           >
-            <div className="w-10 h-10 p-7 text-xl flex justify-center items-center text-white font-medium text-base rounded-full bg- bg-blue-700 border-6 border- bg-blue-100">
+            <div className="w-10 h-10 p-7 text-xl flex justify-center items-center text-white font-medium text-base rounded-full  bg-[#0b3c49] border-6 ">
               <span>1</span>
             </div>
             <h2 className="text-2xl font-medium">Sign up</h2>
@@ -74,7 +155,7 @@ function Homepage() {
           </motion.div>
 
           <div className="w-full h-35 bg--300 mt-2 flex flex-col justify-center items-center">
-            <div className="w-1 h-60 bg- bg-blue-100"></div>
+            <div className="w-1 h-60 bg- bg-[#e6f2ef]"></div>
           </div>
 
           <motion.div
@@ -82,9 +163,9 @@ function Homepage() {
             whileInView={{ opacity: 1, y: 0 }} // animate to visible, y=0
             viewport={{ once: true, amount: 0.8 }} // animate once when 30% in view
             transition={{ duration: 0.9, ease: "easeOut" }} //
-            className="mt-10 flex gap-10 flex-col items-center justify-center w-full bg--300 pb-13 "
+            className="mt-10 flex gap-10 flex-col items-center justify-center w-full  pb-13 "
           >
-            <div className="w-10 h-10 p-7 text-xl flex justify-center items-center text-white font-medium text-base rounded-full bg- bg-blue-700 border-6 border- bg-blue-100">
+            <div className="w-10 h-10 p-7 text-xl flex justify-center items-center text-white font-medium text-base rounded-full bg- bg-[#0b3c49] border-6 ">
               <span>2</span>
             </div>
             <h2 className="text-2xl font-medium">Verification</h2>
@@ -95,7 +176,7 @@ function Homepage() {
           </motion.div>
 
           <div className="w-full h-35 bg-300 mt-2 flex flex-col justify-center items-center">
-            <div className="w-1 h-60 bg- bg-blue-100"></div>
+            <div className="w-1 h-60 bg- bg-[#e6f2ef]"></div>
           </div>
 
           <motion.div
@@ -105,7 +186,7 @@ function Homepage() {
             transition={{ duration: 0.9, ease: "easeOut" }} //
             className="mt-10 flex gap-10 flex-col items-center justify-center w-full bg-100 pb-13 "
           >
-            <div className="w-10 h-10 p-7 text-xl flex justify-center items-center text-white font-medium text-base rounded-full bg- bg-blue-700 border-6 border- bg-blue-100">
+            <div className="w-10 h-10 p-7 text-xl flex justify-center items-center text-white font-medium text-base rounded-full bg- bg-[#0b3c49] border-6 border- ">
               <span>3</span>
             </div>
             <h2 className="text-2xl font-medium">Invest</h2>
@@ -135,7 +216,7 @@ function Homepage() {
             className="flex flex-col w-full  bg--400"
           >
             <div className="w-full  ">
-              <div className="pl-4 mt-10 w-40 text-center flex flex-col justify-center items-center rounded-full h-10 bg- bg-blue-100 ">
+              <div className="pl-4 mt-10 w-40 text-center flex flex-col justify-center items-center rounded-full h-10 bg- bg-[#e6f2ef] ">
                 OUR BENEFITS
               </div>
             </div>
@@ -240,7 +321,7 @@ function Homepage() {
               whileInView={{ opacity: 1, y: 0 }} // animate to visible, y=0
               viewport={{ once: true, amount: 0.8 }} // animate once when 30% in view
               transition={{ duration: 0.9, ease: "easeOut" }} //
-              className=" w-full rounded- mt-20 bg-gradient-to-r from- bg-blue-900 to- bg-blue-600  p-6 pb-10"
+              className=" w-full rounded- mt-20 bg-gradient-to-r from- bg-[#0b3c49] to- bg-[#0b3c49]  p-6 pb-10"
             >
               <h2 className="text-5xl leading-normal text-white font-medium">
                 Widening Financial Inclusion
@@ -277,7 +358,7 @@ function Homepage() {
             whileInView={{ opacity: 1, y: 0 }} // animate to visible, y=0
             viewport={{ once: true, amount: 0.6 }} // animate once when 30% in view
             transition={{ duration: 0.6, ease: "easeOut" }} //
-            className="flex flex-col gap-10 w-full bg-gradient-to-r from- bg-blue-600 to- bg-blue-800 p-6 pt-15 mt-20"
+            className="flex flex-col gap-10 w-full bg-gradient-to-r from- bg-[#0b3c49] to- bg-[#0b3c49] p-6 pt-15 mt-20"
           >
             <div className="w-full bg-orang-500 p-2">
               <motion.h2
@@ -298,25 +379,6 @@ function Homepage() {
                 Start investing
               </button>
             </div>
-
-            {/* <div className="w-full bg- bg-blue-600 rounded-2xl p-8">
-              <p className="text-white font-medium text-lg">
-                If you invested every month{" "}
-              </p>
-              <p className="text-white font-medium text-xl">4 years ago</p>
-              <div className="flex mt-10">
-                <input
-                  type="text"
-                  placeholder="70,000"
-                  className="bg-none font-bold w-full flex-1 border-b outline-none border-white text-white text-3xl"
-                />
-                <select className="rounded-xl border border-1 border-gray-100">
-                  <option value="">Cedis</option>
-                  <option value="">Pounds</option>
-                  <option value="">Euros</option>
-                </select>
-              </div>
-            </div> */}
           </motion.div>
           {/**the FAQ section */}
 
@@ -328,7 +390,7 @@ function Homepage() {
               transition={{ duration: 0.6, ease: "easeOut" }} //
               className=" flex bg-rd-400 flex-col gap-10 w-full bg-gradient-to-r from-gree-600 to-gree-600 p-6 pt-15 mt-10"
             >
-              <div className="pl-4 mt-10 w-20 font-medium flex flex-col justify-center  rounded-full h-10 bg- bg-blue-100 ">
+              <div className="pl-4 mt-10 w-20 font-medium flex flex-col justify-center  rounded-full h-10 bg- bg-[#e6f2ef] ">
                 <span>FAQs</span>
               </div>
               <h2 className="text-4xl leading-normal">
@@ -338,7 +400,7 @@ function Homepage() {
                 Find answers to your most pressing questions about our products
                 and services.
               </span>
-              <button className="border-none outline-none flex justify-center items-center text-lg mt-12 px-20 py-4 bg- bg-blue-700 text-white rounded-sm">
+              <button className="border-none outline-none flex justify-center items-center text-lg mt-12 px-20 py-4 bg- bg-[#0b3c49] text-white rounded-sm">
                 View all
                 <span>
                   <ArrowRightIcon className="w-5 h-5 ml-2" />
@@ -358,11 +420,15 @@ function Homepage() {
           </section>
 
           <section>
-            <div className="w-full bg-blue-900 ">
+            <div className="w-full bg-[#0b3c49] ">
               <Footer />
             </div>
           </section>
         </div>
+      </section>
+
+      <section>
+        {decline && <Cookie decline={decline} setDecline={setDecline} />}
       </section>
     </div>
   );
