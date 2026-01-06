@@ -114,7 +114,7 @@ function CompleteVerification({ selectedId, setSelectedId }) {
          initial={{ opacity: 0, y: 20 }}
           animate={ show? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }} 
-        className="mt-10 w-full py-3 bg-blue-600 text-white font-medium text-lg rounded-md">Continue
+        className="mt-10 w-full py-3 bg-[#0b3c39] text-white font-medium text-lg rounded-md">Continue
         </motion.button>
       </div> 
     </div>

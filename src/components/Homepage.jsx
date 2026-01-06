@@ -4,7 +4,8 @@ import image2 from "../assets/images/family-savings.png";
 import image3 from "../assets/images/toy.jpg";
 import Button from "./Button";
 import CardMarquee from "./marquee";
-import { motion } from "framer-motion";
+import { motion,useAnimation } from "framer-motion";
+import { useEffect } from "react";
 import FAQsection from "./FAQsection";
 import Footer from "./Footer";
 import { ChatBubbleBottomCenterIcon } from "@heroicons/react/24/outline";
@@ -18,7 +19,33 @@ import {GiPlantSeed} from "react-icons/gi";
 
 function Homepage() {
   const [decline, setDecline] = useState(true);
+    useEffect(() => {
+    const consent = localStorage.getItem("cookie_consent");
+    if (!consent) {
+      setDecline(true); // show banner
+    }
+  }, []);
   const navigate = useNavigate();
+  
+  const target = 50000; //  amount
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    let start = 0;
+    const duration = 200000; //  seconds
+    const stepTime = Math.floor(duration / 500); // time per increment
+    const interval = setInterval(() => {
+      start += 1000; // increment amount (adjust as needed)
+      if (start >= target) {
+        start = target;
+        clearInterval(interval);
+      }
+      setCount(start);
+    }, stepTime);
+    return () => clearInterval(interval);
+  }, []);
+
+
+
   return (
     <div className="">
       <Navbar />
@@ -45,13 +72,13 @@ function Homepage() {
           </p>
           <Button />
 
-        
+         <div className=" inset-0 bg-black/1">
           <div
-           className=" overflow-hidden w-full rounded-2xl bg-red-500 h-120 mt-20 border-10 border-white">
+           className=" overflow-hidden w-full rounded-2xl h-120 mt-20 border-10 border-white">
             <div className="py-2 px-2 items-center flex justify-between absolute w-32 rounded-lg bg-white left-2 bottom-16 shadow-2xl">
              <div className="flex flex-col">
               <span className="font-medium text-sm text-blue-500">Bitsusu</span>
-              <span className="font-sm text-gray-900 font-bold">₵12,000</span>
+              <span className="font-sm text-gray-900 font-bold">₵{count.toLocaleString()}</span>
               <span className="text-[12px] text-gray-800">6% interest rate</span>
              </div>
              <div className="py-1 px-1 bg-blue-100 rounded-full">
@@ -62,7 +89,7 @@ function Homepage() {
             <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white left-2 bottom-105 shadow-2xl">
                <div className="flex flex-col">
               <span className="font-medium text-sm text-pink-500">Real Estate</span>
-              <span className="font-sm text-gray-900 font-bold">₵40,000</span>
+              <span className="font-sm text-gray-900 font-bold">₵{count.toLocaleString()}</span>
               <span className="text-[12px] text-gray-800">9% interest rate</span>
              </div>
              <div className="py-1 px-1 bg-pink-100 rounded-full">
@@ -81,7 +108,7 @@ function Homepage() {
              </div>
             </div>
 
-            <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white right-2 bottom-110 shadow-2xl">
+            <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white right-2 bottom-104 shadow-2xl">
               <div className="flex flex-col">
               <span className="font-medium text-sm text-orange-500"> Mutual Fund</span>
               <span className="font-sm text-gray-900 font-bold">₵48,000</span>
@@ -114,6 +141,7 @@ function Homepage() {
              </div>
             </div>
             <img src={image1} className="w-full h-full object-cover"></img>
+          </div>
           </div>
           </motion.div>
         
@@ -314,7 +342,7 @@ function Homepage() {
           <div className="flex flex-col gap-30">
             <img
               src={image2}
-              className="rounde mt-10 bg-gradient-to-r from- bg-blue-300 to- bg-blue-100 w-full h-120 flex bg-gree-100 flex flex-col "
+              className="shadow-xl mt-10 bg-gradient-to-r from- bg-blue-300 to- bg-blue-100 w-full h-90 rounded-2xl flex bg-gree-100 flex flex-col "
             ></img>
             <motion.div
               initial={{ opacity: 0, y: 50 }} // start invisible, 50px below

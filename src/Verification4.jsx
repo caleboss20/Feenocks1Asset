@@ -137,7 +137,7 @@ function Verification4() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: verified ? 1 : 0, y: verified ? 0 : 20 }}
             transition={{ duration: 0.5 }}
-            className="absolute bottom-15 px-34 py-3 bg-blue-600 rounded-lg text-white font-medium mt-4"
+            className="absolute bottom-15 px-34 py-3 bg-[#0b3c39] rounded-lg text-white font-medium mt-4"
           >
             Continue
           </motion.button>

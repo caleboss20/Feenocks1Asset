@@ -71,23 +71,23 @@ function Recommendation({selected,setSelected}) {
            <div key={item.name
            }
            onClick={()=>setSelected(item.name)}
-           className={`${selected==item.name?'bg-blue-50 border-blue-400 border-2':"bg-white border-gray-300 text-gray-800" 
+           className={`${selected==item.name?'bg-[#e6f2ef] border-[#0b3c39] border-2':"bg-white border-gray-300 text-gray-800" 
             } 
            p-4 border-1 w-full rounded-lg flex`}
            >
             <div>
-            <div className=" inline-flex items-center py-2  px-3 justify-center bg-blue-100 border-1 border-blue-300  text-blue-600 font-medium rounded-2xl">{item.price}</div>
+            <div className=" inline-flex items-center py-2  px-3 justify-center bg-[#e6f2ef] border-1 border-[#0b3c39]  text-[#0b3c39] font-medium rounded-2xl">{item.price}</div>
             <h2 className="text-md font-medium mt-3 mb-3">{item.name}</h2>
            <span className="">{item.description}</span>
            <div className="flex items-center gap-1">
-              <p className="text-blue-600 mt-7 underline">Learn more</p>
-            <HiChevronRight className="mt-8 text-blue-600"/>
+              <p className="text-[#0b3c39] mt-7 underline">Learn more</p>
+            <HiChevronRight className="mt-8 text-[#0b3c39]"/>
            </div>
            
             </div>
             {selected===item.name ? 
             ( <div className="flex-1 mt-2 ">
-            <CheckCircleIcon className="w-6 h-6 text-blue-500"/>
+            <CheckCircleIcon className="w-6 h-6 text-[#0b3c39]"/>
            </div>):
            <div>
             <input type="radio" className="w-5 h-5" />
@@ -108,7 +108,7 @@ function Recommendation({selected,setSelected}) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 40 }}
           transition={{ duration: 0.5 }}
-          className="mb-10 p-5 py-3 bg-blue-600 rounded-lg text-white font-medium text-lg "
+          className="mb-10 p-5 py-3 bg-[#0b3c39] rounded-lg text-white font-medium text-lg "
         >
           Continue
         </motion.button>

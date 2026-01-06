@@ -42,7 +42,7 @@ function TermsAndConditions() {
   return (
     <div className="relative w-full px-6 py-10 max-w-5xl mx-auto text-gray-800 leading-relaxed">
       <h1 className="text-3xl font-light mb-2">Terms & Conditions</h1>
-      <p className="text-lg font-medium mt-8 mb-5 text-blue-600">
+      <p className="text-lg font-medium mt-8 mb-5 text-[#0b3c39]">
         (Last Updated: December, 2025)
       </p>
       {/* CONTENT */}
@@ -411,7 +411,7 @@ function TermsAndConditions() {
       {/* FLOATING SCROLL BUTTON */}
       <button
         onClick={scrollAction}
-        className="fixed bottom-40 right-6 w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition"
+        className="fixed bottom-40 right-6 w-12 h-12 rounded-full bg-[#0b3c39] text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition"
       >
         {atBottom ? <HiChevronUp size={22} /> : <HiChevronDown size={22} />}
       </button>
@@ -424,12 +424,12 @@ function TermsAndConditions() {
             setAgreed(e.target.checked);
             if (e.target.checked) setError(false); // remove error once checked
           }}
-          className="w-5 h-5 accent-blue-600"
+          className="w-5 h-5 accent-[#0b3c39]"
         />
         <p className=" text-sm text-gray-800">
           I agree to the Feenicks1 Terms & Conditions and {""}
           <Link to="/policy">
-          <span className="text-blue-600 underline text-md">Privacy Policy</span>
+          <span className="text-[#0b3c39] underline text-md">Privacy Policy</span>
           </Link>
           
         </p>
@@ -451,9 +451,9 @@ function TermsAndConditions() {
           opacity: agreed ? 1 : 0.6,
         }}
         transition={{ type: "spring", stiffness: 300 }}
-        className={`w-full py-3 bg-blue-600 rounded-lg text-white font-medium mt-10 border-none outline-none ${
+        className={`w-full py-3 bg-[#0b3c39] rounded-lg text-white font-medium mt-10 border-none outline-none ${
           agreed
-            ? "bg-blue-600 text-white cursor-pointer"
+            ? "bg-[#0b3c39] text-white cursor-pointer"
             : " bg-gray-300 text-gray-500 cursor-not-allowed"
         }`}
       >

@@ -115,7 +115,7 @@ function Verification3() {
           transition={{ duration: 0.5 }}
           disabled={!verified}
           onClick={verified? gotoNext:null}
-          className={`w-full py-3 bg-blue-600 rounded-lg text-white font-medium pointer-events-${
+          className={`w-full py-3 bg-[#0b3c39] rounded-lg text-white font-medium pointer-events-${
             verified ? "auto" : "none"
           } mt-4`}
         >

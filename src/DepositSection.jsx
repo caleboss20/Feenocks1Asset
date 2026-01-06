@@ -83,7 +83,7 @@ function DepositSection({walletName,setWalletName,profileName,setProfileName}) {
       </div>
       <button
         onClick={handleContinue}
-        className="text-md font-medium py-3 px-4 w-full mt-5 rounded-lg bg-blue-600 text-white"
+        className="text-md font-medium py-3 px-4 w-full mt-5 rounded-lg bg-[#0b3c39] text-white"
       >
         Let's get started
       </button>

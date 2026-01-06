@@ -69,7 +69,7 @@ function Dashboard({
         </div>
       </div>
       {/* Total Balance Card - FIXED */}
-      <div className="p-4 rounded-md w-full bg-gradient-to-r from-blue-400 via-blue-800 to-blue-900 shadow-xl">
+      <div className="p-4 rounded-md w-full bg-gradient-to-r from-[#0b3c39] via-[#0b9999] to-[#0b3d39] shadow-2xl">
         <h2 className="text-white font-small text-2xl font-light">
           Total Balance
         </h2>
@@ -99,7 +99,7 @@ function Dashboard({
           <p className="text-white font-medium mt-4 text-xl">
             +233 *** *** ***
           </p>
-          <div className="mt-3 py-2 px-3 rounded-full text-blue-200 flex items-center bg-blue-700">
+          <div className="mt-3 py-2 px-3 rounded-full text-[#e6f2ef] flex items-center bg-[#00bb3c39]">
             Account No
           </div>
         </div>
@@ -108,21 +108,21 @@ function Dashboard({
       <div className="flex w-full mt-10 gap-6">
         <Link
           to="/depositmethod"
-          className="shadow-2xl flex-1 gap-3 flex items-center bg-blue-100 rounded-full"
+          className="shadow-2xl flex-1 gap-3 flex items-center bg-[#e6f2ef] rounded-full"
         >
-          <div className="rounded-sm w-5 h-5 border-1 border-blue-900 ml-4 flex items-center justify-center">
-            <FiArrowUpRight className="transform text-blue-900" />
+          <div className="rounded-sm w-5 h-5 border-1 border-[#e6f2ef] ml-4 flex items-center justify-center">
+            <FiArrowUpRight className="transform text-[#0b3c39]" />
           </div>
           <p className="text-gray-800 font-small">Deposit</p>
         </Link>
         <Link
           to="/withdrawmethod"
-          className="flex-1 py-3 shadow-2xl bg-violet-100 rounded-full"
+          className="flex-1 py-3 shadow-2xl bg-[#e6f2ef] rounded-full"
         >
           <div>
             <div className="flex-1 gap-3 flex items-center rounded-full">
-              <div className="rounded-sm w-5 h-5 border-1 border-violet-900 ml-4 flex items-center justify-center">
-                <FiArrowUpRight className="transform rotate-135 text-violet-900" />
+              <div className="rounded-sm w-5 h-5 border- border-[#0b3c39] ml-4 flex items-center justify-center">
+                <FiArrowDownLeft className="transform  text-[#0b3c39]" />
               </div>
               <p className="text-gray-800 font-small">Withdraw</p>
             </div>
@@ -239,7 +239,7 @@ function Dashboard({
       <div className="z-10 fixed w-full h-20 p-4 bottom-0 right-0">
         <button
           onClick={() => navigate("/depositmethod")}
-          className="py-3 bg-blue-700 text-white w-full rounded-lg font-medium border-none outline-none"
+          className="py-3 bg-[#0b3c39] text-white w-full rounded-lg font-medium border-none outline-none"
         >
           Add Funds
         </button>

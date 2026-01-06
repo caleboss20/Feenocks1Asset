@@ -143,7 +143,7 @@ export default function SignUp() {
               <p className="text-gray-700 text-xl mt-6">
                 Got an account?
                 <Link to="/signin">
-                  <span className="ml-3 text-blue-700 font-medium text-xl">
+                  <span className="ml-3 text-[#0b3c39] font-medium text-xl">
                     Sign In
                   </span>
                 </Link>
@@ -188,8 +188,8 @@ export default function SignUp() {
                 </div>
                 <button
                   type="submit"
-                  className={`w-full h-15 bg-blue-600 rounded-md mt-15 flex justify-center items-center hover:bg-blue-700 transition ${
-                    !isEmailValid ? "bg-blue-200 cursor-not-allowed" : ""
+                  className={`w-full h-15 bg-[#0b3c39] rounded-md mt-15 flex justify-center items-center hover:bg-blue-700 transition ${
+                    !isEmailValid ? "bg-[#0b3c39] cursor-not-allowed" : ""
                   }`}
                   disabled={!isEmailValid}
                 >
@@ -223,7 +223,7 @@ export default function SignUp() {
               <p className="mb-7 text-gray-600 font-medium text-2xl mt-6">
                 {email}
               </p>
-              <span className="text-xl text-blue-600 font-medium ">
+              <span className="text-xl text-[#0b3c39] font-medium ">
                 Wrong email?
               </span>
               <form
@@ -245,17 +245,17 @@ export default function SignUp() {
 
                   
 
-                  <h2 className="mb-5 text-blue-600 font-medium text-xl">
+                  <h2 className="mb-5 text-[#0b3c39] font-medium text-xl">
                     CHECK YOUR EMAIL
                   </h2>
                   <span className="text-gray-600 text-xl">
                     Didn't get OTP?{" "}
-                    <span className="text-blue-600 font-medium">Resend</span>
+                    <span className="text-[#0b3c39] font-medium">Resend</span>
                   </span>
                 </div>
                 <button
                   type="submit"
-                  className="w-full h-15 bg-blue-600 rounded-md mt-15 flex justify-center items-center hover:bg-blue-700 transition"
+                  className="w-full h-15 bg-[#0b3c39] rounded-md mt-15 flex justify-center items-center hover:bg-blue-700 transition"
                 >
                   <span className="font-medium text-white text-xl">
                     Verify OTP
@@ -349,11 +349,11 @@ export default function SignUp() {
                   />
                   <label htmlFor="terms" className="text-gray-700 text-lg mt-4">
                     By checking this checkbox, you agree to our{" "}
-                    <span className="text-blue-600 font-medium">
+                    <span className="text-[#0b3c39] font-medium">
                       Terms and Conditions
                     </span>{" "}
                     and{" "}
-                    <span className="font-medium text-blue-600">
+                    <span className="font-medium text-[#0b3c39]">
                       Privacy Policy
                     </span>
                   </label>
@@ -366,7 +366,7 @@ export default function SignUp() {
                 <button
                   onClick={handleNext}
                   type="submit"
-                  className="w-full h-15 bg-blue-600 rounded-md mt-10 flex justify-center items-center hover:bg-blue-700 transition"
+                  className="w-full h-15 bg-[#0b3c39] rounded-md mt-10 flex justify-center items-center hover:bg-blue-700 transition"
                 >
                   <span className="font-medium text-white text-xl">
                     Complete Signup
