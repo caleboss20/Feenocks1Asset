@@ -10,7 +10,7 @@ function DepositSection({walletName,setWalletName,profileName,setProfileName}) {
   const handleContinue = () => {
     setTouched(true);
     if (walletName.trim() && profileName.trim()) {
-      navigate("/dashboard");
+      navigate("/setpin");
     }
   };
   const shakeAnimation = {

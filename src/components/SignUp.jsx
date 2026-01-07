@@ -40,23 +40,13 @@ const signupSchema = yup.object().shape({
   email: emailValidation,
 });
 export default function SignUp() {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [generatedOTP, setGeneratedOTP] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [errormsg, setErrormsg] = useState(false);
-  const navigate = useNavigate();
-  // Handle Google redirect (mobile)
-  useEffect(() => {
-    const checkRedirect = async () => {
-      const result = await handleRedirectResult();
-      if (result?.success) {
-        navigate("/socialinfo"); // redirect after Google signup
-      }
-    };
-    checkRedirect();
-  }, [navigate]);
   // Step 1: Email
   const {
     register: registerEmail,
@@ -73,12 +63,33 @@ export default function SignUp() {
     formState: { errors: otpErrors },
     reset: resetOTP,
   } = useForm();
-  // Step 3: Name / Phone / Gender / Terms
+  // Step 3: Name / Phone / Password / Terms
+  const infoSchema = yup.object().shape({
+    fullName: yup.string().required("First name is required"),
+    lastName: yup.string().required("Last name is required"),
+    phone: yup.string().required("Phone number is required"),
+    password: yup.string().required("Password is required").min(6, "Password must be at least 6 characters"),
+    terms: yup.bool().oneOf([true], "You must accept terms"),
+  });
   const {
     register: registerInfo,
     handleSubmit: handleInfoSubmit,
-    formState: { errors: infoErrors },
-  } = useForm();
+    formState: { errors: infoErrors, isValid: isInfoValid },
+    watch,
+  } = useForm({
+    resolver: yupResolver(infoSchema),
+    mode: "onChange",
+  });
+  // Handle Google redirect (mobile)
+  useEffect(() => {
+    const checkRedirect = async () => {
+      const result = await handleRedirectResult();
+      if (result?.success) {
+        navigate("/socialinfo"); // redirect after Google signup
+      }
+    };
+    checkRedirect();
+  }, [navigate]);
   // Step 1 submit (email)
   const onEmailSubmit = (data) => {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
@@ -97,10 +108,16 @@ export default function SignUp() {
       resetOTP();
     }
   };
-  // Step 3 submit (info)
+  // Step 3 submit (info) + store in localStorage
   const onInfoSubmitHandler = (data) => {
     console.log("Signup complete:", data);
+    // Store email + password in localStorage
+    localStorage.setItem(
+      "signupData",
+      JSON.stringify({ email, password: data.password })
+    );
     alert("Signup completed!");
+    navigate("/socialinfo"); // redirect to dashboard
   };
   // Google signup handler
   const handleGoogleSignup = async () => {
@@ -115,14 +132,6 @@ export default function SignUp() {
     setLoading(false);
   };
   const goback = () => navigate("/");
-
-
-  const handleNext=()=>{
-    navigate("/verification")
-  }
-
-
-
   return (
     <div className="w-full bg-re-300 p-4 flex justify-center md:items-center relative">
       <div className="absolute left-5 top-10" onClick={goback}>
@@ -136,7 +145,7 @@ export default function SignUp() {
             exit={{ x: -500, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="p-2 w-full bg-white mt-2 md:p-6 w-full max-w-md bg-white mt-20">
+            <div className="p-2 w-full bg-white mt-2 md:p-6 max-w-md mt-20">
               <h2 className="text-3xl leading-normal md:text-3xl">
                 Become An Elite Investor
               </h2>
@@ -215,7 +224,7 @@ export default function SignUp() {
             exit={{ x: -500, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="p-2 w-full bg-white mt-3 md:p-6 w-full max-w-md bg-white mt-20">
+            <div className="p-2 w-full bg-white mt-3 md:p-6 max-w-md mt-20">
               <span className="">{generatedOTP}</span>
               <h2 className="text-2xl font-medium leading-normal md:text-xl">
                 Enter the 6 digit code we've sent to
@@ -242,9 +251,6 @@ export default function SignUp() {
                       {otpErrors.otp.message}
                     </p>
                   )}
-
-                  
-
                   <h2 className="mb-5 text-[#0b3c39] font-medium text-xl">
                     CHECK YOUR EMAIL
                   </h2>
@@ -266,7 +272,7 @@ export default function SignUp() {
           </motion.div>
         )}
       </AnimatePresence>
-      {/* Step 3: Name / Phone / Gender / Terms */}
+      {/* Step 3: Name / Phone / Password / Terms */}
       <AnimatePresence>
         {step === 3 && (
           <motion.div
@@ -276,7 +282,7 @@ export default function SignUp() {
             exit={{ x: -500, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="p-2 w-full bg-white mt-3 md:p-6 w-full max-w-md bg-white mt-20">
+            <div className="p-2 w-full bg-white mt-3 md:p-6 max-w-md mt-20">
               <h2 className="text-4xl leading-normal md:text-3xl">
                 Let Get To Know You More
               </h2>
@@ -286,7 +292,7 @@ export default function SignUp() {
               >
                 <div>
                   <input
-                    {...registerInfo("fullName", { required: true })}
+                    {...registerInfo("fullName")}
                     type="text"
                     placeholder="Legal First Name"
                     className="text-xl pl-4 text-gray-800 w-full h-15 border-1 border-gray-500 rounded-md"
@@ -297,24 +303,22 @@ export default function SignUp() {
                     </p>
                   )}
                 </div>
-
                 <div>
                   <input
-                    {...registerInfo("LastName", { required: true })}
+                    {...registerInfo("lastName")}
                     type="text"
                     placeholder="Legal Last Name"
                     className="text-xl pl-4 text-gray-800 w-full h-15 border-1 border-gray-500 rounded-md"
                   />
-                  {infoErrors.fullName && (
+                  {infoErrors.lastName && (
                     <p className="text-red-500 text-sm mt-1">
-                      {infoErrors.fullName.message}
+                      {infoErrors.lastName.message}
                     </p>
                   )}
                 </div>
-
                 <div>
                   <input
-                    {...registerInfo("phone", { required: true })}
+                    {...registerInfo("phone")}
                     type="text"
                     placeholder="Phone Number"
                     className="text-xl pl-4 text-gray-800 w-full h-15 border-1 border-gray-500 rounded-md"
@@ -325,25 +329,23 @@ export default function SignUp() {
                     </p>
                   )}
                 </div>
-
                 <div>
                   <input
-                    {...registerInfo("password", { required: true })}
-                    type="text"
+                    {...registerInfo("password")}
+                    type="password"
                     placeholder="Password"
                     className="text-xl pl-4 text-gray-800 w-full h-15 border-1 border-gray-500 rounded-md"
                   />
-                  {infoErrors.phone && (
+                  {infoErrors.password && (
                     <p className="text-red-500 text-sm mt-1">
-                      {infoErrors.phone.message}
+                      {infoErrors.password.message}
                     </p>
                   )}
                 </div>
-
                 <div className="flex items-center">
                   <input
                     type="checkbox"
-                    {...registerInfo("terms", { required: true })}
+                    {...registerInfo("terms")}
                     id="terms"
                     className="mr-5 w-10 h-10 accent-blue-500"
                   />
@@ -364,7 +366,6 @@ export default function SignUp() {
                   </p>
                 )}
                 <button
-                  onClick={handleNext}
                   type="submit"
                   className="w-full h-15 bg-[#0b3c39] rounded-md mt-10 flex justify-center items-center hover:bg-blue-700 transition"
                 >
@@ -394,7 +395,6 @@ export default function SignUp() {
             step === 3 ? "bg-blue-600" : "bg-gray-300"
           }`}
         ></span>
-        
       </div>
     </div>
   );

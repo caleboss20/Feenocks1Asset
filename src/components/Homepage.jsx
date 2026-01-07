@@ -30,6 +30,7 @@ import Cookie from "./Cookie";
 import { useState } from "react";
 import { FaBuilding, FaChartBar } from "react-icons/fa";
 import { GiPlantSeed } from "react-icons/gi";
+import ScrollingNeedHelpBox from "./chatHelp";
 
 function Homepage() {
   const [decline, setDecline] = useState(true);
@@ -68,6 +69,7 @@ function Homepage() {
       <div className="absolute inset-0 bg-[#0B3219]" />
       <div className="absolute inset-0 bg-[#e6f2ef] backdrop-blur-2xl" />
       <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-emerald-200/20" />
+     
       <motion.div
         className="relative z-10 w-full py-10 flex flex-col justify-center items-center p-5 mt-30"
         initial={{ opacity: 0.3, y: 50 }}
@@ -202,26 +204,15 @@ function Homepage() {
               </div>
             </div>
           </motion.div>
+          <div className="flex justify-center mt-30">
+             <Button />
+          </div>
+          
         </div>
       </motion.div>
       {/* Floating support button */}
-      <div className="relative">
-        <motion.div
-          className="z-30 fixed shadow-2xl right-3 flex justify-center items-center bottom-10 w-15 h-15 rounded-full bg-[#0b3c49] cursor-pointer"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          animate={{ y: [0, -10, 0] }}
-          transition={{
-            y: {
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }
-          }}
-        >
-          <MdQuestionMark className="w-6 h-6 text-white" />
-        </motion.div>
-      </div>
+      <ScrollingNeedHelpBox />
+    
     </section>
 
       {/*getting started section*/}
@@ -427,8 +418,7 @@ function Homepage() {
                 Trading Agribusiness and Real Estate with huge returns.Join the
                 community of Investors now
               </p>
-              {/**hydration error */}{" "}
-              {/* <button className=""><Button /></button> */}
+              
               <Button />
             </motion.div>
           </div>
