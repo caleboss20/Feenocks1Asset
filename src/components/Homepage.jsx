@@ -85,8 +85,8 @@ function Homepage() {
         <div className="inset-0 bg-black/1">
           {/* Floating Container with Image */}
           <motion.div
-            className="overflow-visible w-full rounded-2xl h-120 mt-40 border-10 border-white relative"
-            animate={{ y: [20, -15, 20] }}
+            className="overflow-visible w-full rounded-2xl h-120 mt-20 border-10 border-white relative"
+            animate={{ y: [30, -15, 30] }}
             transition={{
               duration: 4,
               repeat: Infinity,
