@@ -18,7 +18,7 @@ function Cookie({ decline, setDecline }) {
         All information shared with us through cookies are secure
         and covered by our data privacy obligations. You can access
         our Privacy Policy{" "}
-        <Link to="/policy">
+        <Link to="/policydraft">
           <span className="underline font-medium">here</span>
         </Link>
       </span>

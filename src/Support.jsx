@@ -67,7 +67,7 @@ function SupportCenter() {
   
   return (
     <div className="w-full">
-      <div className="z-1 flex gap-2 justify-between w-full h-60 bg-gradient-to-r from-bg-blue-700 to- bg-blue-900 p-4">
+      <div className="z-1 flex gap-2 justify-between w-full h-60 bg-[#2f5d50] p-4">
         <div>
           <h2 className="mt-5 leading-normal text-2xl text-white font-medium">
             Hi there 👋
@@ -92,7 +92,7 @@ function SupportCenter() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <div className="flex justify-center items-center w-10 bg-blue-600 rounded-lg">
+            <div className="flex justify-center items-center w-10 bg-[#2f5d57bb] rounded-lg">
               <MagnifyingGlassIcon className="text-white w-6 h-6" />
             </div>
           </div>

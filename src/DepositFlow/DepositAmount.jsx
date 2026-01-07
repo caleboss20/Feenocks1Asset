@@ -127,7 +127,7 @@ function DepositAmount({ selectedMethod, walletName,inputAmount,setInputAmount }
               key={item.id}
               onClick={() => handleSelectPreset(item)}
               className={`py-4 px-8 text-black font-medium rounded-3xl ${
-                selectedId === item.id ? "border-1 border-blue-600 bg-blue-200" : "bg-gray-100"
+                selectedId === item.id ? "border-1 border-[#2f5d50] bg-[#e6f2ef]" : "bg-gray-100"
               }`}
             >
               {item.amount}
@@ -139,7 +139,7 @@ function DepositAmount({ selectedMethod, walletName,inputAmount,setInputAmount }
           <button
             onClick={handleContinue}
             className={`w-full py-3 rounded-lg mt-10 font-medium text-lg ${
-              inputAmount && !error ? "bg-blue-600 text-white" : "bg-gray-50 text-gray-50"
+              inputAmount && !error ? "bg-[#2f5d50] text-white" : "bg-gray-50 text-gray-50"
             }`}
           >
             Confirm Deposit
@@ -201,7 +201,7 @@ function DepositAmount({ selectedMethod, walletName,inputAmount,setInputAmount }
                     whileHover={!confirmed && !loading ? { scale: 1.05 } : {}}
                     onClick={() => confirmDeposit()}
                     tabIndex={0}
-                    className="absolute w-12 h-12 flex items-center justify-center rounded-full shadow-md bg-blue-600 cursor-pointer text-white"
+                    className="absolute w-12 h-12 flex items-center justify-center rounded-full shadow-md bg-[#2f5d50] cursor-pointer text-white"
                     style={{
                       left: movedToCenter ? "50%" : `${PADDING}px`,
                       transform: movedToCenter ? "translateX(-50%)" : "none",
@@ -221,7 +221,7 @@ function DepositAmount({ selectedMethod, walletName,inputAmount,setInputAmount }
                           cy="18"
                         />
                         <motion.circle
-                          className="text-blue-600"
+                          className="text-[#a8e6cf]"
                           strokeWidth="4"
                           stroke="currentColor"
                           fill="transparent"

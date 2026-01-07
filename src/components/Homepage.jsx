@@ -1,10 +1,17 @@
-import { ArrowRightIcon, BuildingLibraryIcon, CurrencyDollarIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowRightIcon,
+  BuildingLibraryIcon,
+  CurrencyDollarIcon,
+} from "@heroicons/react/24/outline";
 import image1 from "../assets/images/bestfamily.webp";
 import image2 from "../assets/images/family-savings.png";
-import image3 from "../assets/images/toy.jpg";
+import hero from "../assets/images/hero1.png";
+import hero5 from "../assets/images/hero6.jpg";
+
+
 import Button from "./Button";
 import CardMarquee from "./marquee";
-import { motion,useAnimation } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import FAQsection from "./FAQsection";
 import Footer from "./Footer";
@@ -15,18 +22,18 @@ import { useNavigate } from "react-router-dom";
 import Cookie from "./Cookie";
 import { useState } from "react";
 import { FaBuilding, FaChartBar } from "react-icons/fa";
-import {GiPlantSeed} from "react-icons/gi";
+import { GiPlantSeed } from "react-icons/gi";
 
 function Homepage() {
   const [decline, setDecline] = useState(true);
-    useEffect(() => {
+  useEffect(() => {
     const consent = localStorage.getItem("cookie_consent");
     if (!consent) {
       setDecline(true); // show banner
     }
   }, []);
   const navigate = useNavigate();
-  
+
   const target = 50000; //  amount
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -43,8 +50,6 @@ function Homepage() {
     }, stepTime);
     return () => clearInterval(interval);
   }, []);
-
-
 
   return (
     <div className="">
@@ -72,79 +77,115 @@ function Homepage() {
           </p>
           <Button />
 
-         <div className=" inset-0 bg-black/1">
-          <div
-           className=" overflow-hidden w-full rounded-2xl h-120 mt-20 border-10 border-white">
-            <div className="py-2 px-2 items-center flex justify-between absolute w-32 rounded-lg bg-white left-2 bottom-16 shadow-2xl">
-             <div className="flex flex-col">
-              <span className="font-medium text-sm text-blue-500">Bitsusu</span>
-              <span className="font-sm text-gray-900 font-bold">₵{count.toLocaleString()}</span>
-              <span className="text-[12px] text-gray-800">6% interest rate</span>
-             </div>
-             <div className="py-1 px-1 bg-blue-100 rounded-full">
-              <CurrencyDollarIcon className="w-5 h-5 text-blue-700"/>
-             </div>
-            </div>
-
-            <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white left-2 bottom-105 shadow-2xl">
-               <div className="flex flex-col">
-              <span className="font-medium text-sm text-pink-500">Real Estate</span>
-              <span className="font-sm text-gray-900 font-bold">₵{count.toLocaleString()}</span>
-              <span className="text-[12px] text-gray-800">9% interest rate</span>
-             </div>
-             <div className="py-1 px-1 bg-pink-100 rounded-full">
-              <BuildingLibraryIcon className="w-5 h-5 text-pink-700"/>
-             </div>
-            </div>
-
-            <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white left-2 bottom-58 shadow-2xl">
+          <div className=" inset-0 bg-black/1">
+            <div className=" overflow-hidden w-full rounded-2xl h-120 mt-20 border-10 border-white">
+              <div className="py-2 px-2 items-center flex justify-between absolute w-32 rounded-lg bg-white left-2 bottom-6 shadow-2xl">
                 <div className="flex flex-col">
-              <span className="font-medium text-sm text-green-500">Agribusiness</span>
-              <span className="font-sm text-gray-900 font-bold">₵22,000</span>
-              <span className="text-[12px] text-gray-800">6% interest rate</span>
-             </div>
-             <div className="py-1 px-1 bg-green-100 rounded-full">
-              <GiPlantSeed className="w-5 h-5 text-green-700"/>
-             </div>
-            </div>
+                  <span className="font-medium text-sm text-blue-500">
+                    Bitsusu
+                  </span>
+                  <span className="font-sm text-gray-900 font-bold">
+                    ₵{count.toLocaleString()}
+                  </span>
+                  <span className="text-[12px] text-gray-800">
+                    6% interest rate
+                  </span>
+                </div>
+                <div className="py-1 px-1 bg-blue-100 rounded-full">
+                  <CurrencyDollarIcon className="w-5 h-5 text-blue-700" />
+                </div>
+              </div>
 
-            <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white right-2 bottom-104 shadow-2xl">
-              <div className="flex flex-col">
-              <span className="font-medium text-sm text-orange-500"> Mutual Fund</span>
-              <span className="font-sm text-gray-900 font-bold">₵48,000</span>
-              <span className="text-[12px] text-gray-800">5% interest rate</span>
-             </div>
-             <div className="py-1 px-1 bg-orange-100 rounded-full">
-              <FaChartBar className="w-5 h-5 text-orange-700"/>
-             </div>
-            </div>
+              <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white left-2 bottom-105 shadow-2xl">
+                <div className="flex flex-col">
+                  <span className="font-medium text-sm text-pink-500">
+                    Real Estate
+                  </span>
+                  <span className="font-sm text-gray-900 font-bold">
+                    ₵{count.toLocaleString()}
+                  </span>
+                  <span className="text-[12px] text-gray-800">
+                    9% interest rate
+                  </span>
+                </div>
+                <div className="py-1 px-1 bg-pink-100 rounded-full">
+                  <BuildingLibraryIcon className="w-5 h-5 text-pink-700" />
+                </div>
+              </div>
 
-            <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white right-2 bottom-40 shadow-2xl">
-              <div className="flex flex-col">
-              <span className="font-medium text-sm text-blue-800">ForexTrading</span>
-              <span className="font-sm text-gray-900 font-bold">₵60,000</span>
-              <span className="text-[12px] text-gray-800">8% interest rate</span>
-             </div>
-             <div className="py-1 px-1 bg-blue-100 rounded-full">
-              <FaChartBar className="w-5 h-5 text-blue-700"/>
-             </div>
-            </div>
+              <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white left-2 bottom-42 shadow-2xl">
+                <div className="flex flex-col">
+                  <span className="font-medium text-sm text-green-500">
+                    Agribusiness
+                  </span>
+                  <span className="font-sm text-gray-900 font-bold">
+                    ₵22,000
+                  </span>
+                  <span className="text-[12px] text-gray-800">
+                    6% interest rate
+                  </span>
+                </div>
+                <div className="py-1 px-1 bg-green-100 rounded-full">
+                  <GiPlantSeed className="w-5 h-5 text-green-700" />
+                </div>
+              </div>
 
-            <div className="py-2 px-2 items-center justify-between flex absolute w-35 rounded-lg bg-white right-2 bottom-6 shadow-2xl">
-               <div className="flex flex-col">
-              <span className="font-medium text-sm text-violet-500">Investwise Cap</span>
-              <span className="font-sm text-gray-900 font-bold">₵5,000</span>
-              <span className="text-[12px] text-gray-800">7% interest rate</span>
-             </div>
-             <div className="py-1 px-1 bg-violet-100 rounded-full">
-              <FaChartBar className="w-5 h-5 text-violet-700"/>
-             </div>
+              <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white right-2 bottom-104 shadow-2xl">
+                <div className="flex flex-col">
+                  <span className="font-medium text-sm text-orange-500">
+                    {" "}
+                    Mutual Fund
+                  </span>
+                  <span className="font-sm text-gray-900 font-bold">
+                    ₵48,000
+                  </span>
+                  <span className="text-[12px] text-gray-800">
+                    5% interest rate
+                  </span>
+                </div>
+                <div className="py-1 px-1 bg-orange-100 rounded-full">
+                  <FaChartBar className="w-5 h-5 text-orange-700" />
+                </div>
+              </div>
+
+              <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white right-2 bottom-53 shadow-2xl">
+                <div className="flex flex-col">
+                  <span className="font-medium text-sm text-blue-800">
+                    ForexTrading
+                  </span>
+                  <span className="font-sm text-gray-900 font-bold">
+                    ₵60,000
+                  </span>
+                  <span className="text-[12px] text-gray-800">
+                    8% interest rate
+                  </span>
+                </div>
+                <div className="py-1 px-1 bg-blue-100 rounded-full">
+                  <FaChartBar className="w-5 h-5 text-blue-700" />
+                </div>
+              </div>
+
+              <div className="py-2 px-2 items-center justify-between flex absolute w-35 rounded-lg bg-white right-2 bottom-6 shadow-2xl">
+                <div className="flex flex-col">
+                  <span className="font-medium text-sm text-violet-500">
+                    Investwise Cap
+                  </span>
+                  <span className="font-sm text-gray-900 font-bold">
+                    ₵5,000
+                  </span>
+                  <span className="text-[12px] text-gray-800">
+                    7% interest rate
+                  </span>
+                </div>
+                <div className="py-1 px-1 bg-violet-100 rounded-full">
+                  <FaChartBar className="w-5 h-5 text-violet-700" />
+                </div>
+              </div>
+              <img src={hero5} className="w-full h-full object-cover"></img>
             </div>
-            <img src={image1} className="w-full h-full object-cover"></img>
           </div>
-          </div>
-          </motion.div>
-        
+        </motion.div>
+
         {/* Floating support button (unchanged) */}
         <div className="relative">
           <div

@@ -63,8 +63,8 @@ function WithdrawSuccesss({
         {/* Done Button */}
         <motion.button
           onClick={handleDone}
-          whileHover={{ backgroundColor: "#1d4ed8" }}
-          className="py-3 w-full mt-8 rounded-lg text-white font-semibold bg-blue-600 transition-all"
+          whileHover={{ backgroundColor: "#2f5d5" }}
+          className="py-3 w-full mt-8 rounded-lg text-white font-semibold bg-[#2f5d50] transition-all"
         >
           Done
         </motion.button>

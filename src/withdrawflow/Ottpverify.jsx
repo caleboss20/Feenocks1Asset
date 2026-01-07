@@ -106,9 +106,9 @@ const handleButtonClick = () => {
           This helps us keep your account secure by verifying that it's really you.
         </span>
         {/* OTP (DEV ONLY) */}
-        <div className="mb-6 p-3 bg-blue-50 rounded-lg border-1 border-blue-200">
+        <div className="mb-6 p-3 bg-[#e6f2ef] rounded-lg border-1 border-blue-200">
           <p className="text-xs text-gray-600 font-medium">
-            <span className="text-blue-700 font-bold text-sm">OTP CODE:</span>
+            <span className="text-[#2f5d50] font-bold text-sm">OTP CODE:</span>
             <span className="text-lg ml-3">
               {String(generatedOtpRef.current).padStart(6, "0")}
             </span>
@@ -131,7 +131,7 @@ const handleButtonClick = () => {
               maxLength={1}
               className="w-12 h-13 text-center text-xl font-medium border-2 rounded-lg outline-none"
               animate={{
-                borderColor: digit ? "#2563eb" : "#d1d5db",
+                borderColor: digit ? "#aecb28" : "#d1d5db",
               }}
               transition={{ duration: 0.2 }}
             />
@@ -153,7 +153,7 @@ const handleButtonClick = () => {
           disabled={verifying}
           animate={{
             backgroundColor:
-              verifying || isOtpComplete ? "#2563eb" : "#e5e7eb",
+              verifying || isOtpComplete ? "#2f5d50" : "#e5e7eb",
             color:
               verifying || isOtpComplete ? "#ffffff" : "#6b7280",
           }}
@@ -180,7 +180,7 @@ const handleButtonClick = () => {
             `Resend code in ${countdown}s`
           )}
         </motion.button>
-        <p className="text-center mt-8 font-medium text-blue-700 cursor-pointer hover:underline">
+        <p className="text-center mt-8 font-medium text-[#2f5d50] cursor-pointer hover:underline">
           Try another way
         </p>
       </div>

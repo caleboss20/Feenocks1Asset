@@ -64,7 +64,7 @@ function DepositMethod({selectedMethod,setSelectedMethod}) {
                 className={`w-full flex items-center justify-between px-4 py-6 rounded-xl border transition
               ${
                 isSelected
-                  ? "border-blue-600 border-2 bg-blue-50"
+                  ? "border-[#2f5d50] border-2 bg-[#e6f2ef]"
                   : "border-gray-200 bg-white hover:bg-gray-50"
               }`}
               >
@@ -74,7 +74,7 @@ function DepositMethod({selectedMethod,setSelectedMethod}) {
                     className={`h-10 w-10 rounded-full flex items-center justify-center
                   ${
                     isSelected
-                      ? "bg-blue-600 text-white"
+                      ? "bg-[#2f5d50] text-white"
                       : "bg-gray-100 text-gray-600"
                   }`}
                   >
@@ -89,7 +89,7 @@ function DepositMethod({selectedMethod,setSelectedMethod}) {
                 </div>
                 {/* Right side: chevron or check */}
                 {isSelected ? (
-                  <FiCheck className="text-blue-600" />
+                  <FiCheck className="text-[#2f5d50]" />
                 ) : (
                   <FiChevronRight className="text-gray-600" />
                 )}
@@ -114,7 +114,7 @@ function DepositMethod({selectedMethod,setSelectedMethod}) {
 
         <button
         onClick={goNext}
-          className={`${selectedMethod ? "bg-blue-600" : " bg-gray-200 "}
+          className={`${selectedMethod ? "bg-[#2f5d50]" : " bg-gray-200 "}
     w-full py-3 rounded-lg mt-7 text-white font-medium text-lg`}
         >
           Next

@@ -28,6 +28,8 @@ import Transactions from "./Transactions";
 import WithDrawalMethod from "./withdrawflow/withdrawalmethod";
 import WithdrawPage from "./withdrawflow/withdrawpage";
 import Ottpverification from "./withdrawflow/Ottpverify";
+import PrivacyPolicyAny from "./PrivacyPolicyany";
+import TermsAndConditionsAny from "./TermsAndConditionsAny";
 // Risk calculation utility
 function calculateRiskProfile(answers) {
   const total = Object.values(answers).reduce((sum, val) => sum + val, 0);
@@ -248,7 +250,9 @@ function App() {
           />
           <Route path="/profile" element={<InvestorProfile />} />
           <Route path="/terms" element={<TermsAndConditions />} />
+           <Route path="/termsdraft" element={<TermsAndConditionsAny />} />
           <Route path="/policy" element={<PrivacyPolicy />} />
+          <Route path="/policydraft" element={<PrivacyPolicyAny />} />
           <Route
             path="/dashboard"
             element={

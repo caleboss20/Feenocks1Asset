@@ -133,7 +133,7 @@ const RightSidebar = ({ isOpen, setIsOpen }) => {
       <div className="flex flex-col h-full">
         {/* Header */}
         <div className="flex justify-between items-center p-4 border-b border-gray-700">
-          <h1 className="font-medium text-xl">FEENICKS1</h1>
+          <h1 className="font-bold text-2xl">FEENICKS1</h1>
           <button onClick={() => setIsOpen(false)}>
             <XMarkIcon className="w-6 h-6" />
           </button>
@@ -155,7 +155,7 @@ const RightSidebar = ({ isOpen, setIsOpen }) => {
             <a
               key={idx}
               href="#"
-              className="bg-gradient-to-r from-blue-600 to-blue-900 flex justify-center items-center text-lg px-20 py-4 text-white rounded-sm"
+              className="bg-[#2f5d50] flex justify-center items-center text-lg px-0 py-4 text-white rounded-sm"
             >
               {btn}
             </a>

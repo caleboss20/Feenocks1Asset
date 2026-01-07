@@ -49,7 +49,7 @@ const formattedEstimatedDate = estimatedDate.toLocaleDateString("en-US", {
         </div>
         
       </div>
-      <div className="mt-40 rounded-2xl w-full absolute bottom-0 bg-blue-600 shadow-xl pt-2">
+      <div className="mt-40 rounded-2xl w-full absolute bottom-0 bg-[#2f5d50] shadow-xl pt-2">
         <div className="flex flex-col p-4">
           {/* Deposit details */}
           <div className="flex justify-between">
@@ -90,7 +90,7 @@ const formattedEstimatedDate = estimatedDate.toLocaleDateString("en-US", {
           <div className="ml-4 w-[1px] bg-white mt-2 h-7"></div>
           <div className="flex justify-between mt-4">
             <div className="flex gap-3">
-              <div className="w-6 h-6 rounded-full border-2 border-blue-800"></div>
+              <div className="mt-1 w-6 h-6 rounded-full border-2 border-[#a8e6cf]"></div>
               <div className="flex flex-col">
                 <h2 className="font-medium text-white text-lg">
                   Estimated Deposit completion
@@ -104,7 +104,7 @@ const formattedEstimatedDate = estimatedDate.toLocaleDateString("en-US", {
           <button
             disabled={loading}
             onClick={handleAmount}
-            className="w-full text-lg cursor-pointer text-blue-600 py-3 rounded-full bg-white font-medium">
+            className="w-full text-lg cursor-pointer text-[#2f5d50] py-3 rounded-full bg-white font-medium">
             {loading ?"processing...":"complete"}
           </button>
           <p className="text-lg text-gray-400 text-center mt-4">View details</p>

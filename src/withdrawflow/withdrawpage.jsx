@@ -90,7 +90,7 @@ function WithdrawPage({
     <div>
       {/* Header */}
       <div className="p-6 flex gap-4 items-center">
-        <Link to="/withdrawmethod">
+        <Link to="/withdrawmethod"className="mt-4">
           <BackArrow />
         </Link>
         <p className="font-medium text-lg">Withdraw money</p>
@@ -108,7 +108,7 @@ function WithdrawPage({
             setMethod(e.target.value);
             setError("");
           }}
-          className="px-3 w-full h-12 mt-4 border-gray-300 border-1 rounded-lg bg-white focus:border-blue-500 focus:outline-none"
+          className="px-3 w-full h-12 mt-4 border-gray-300 border-1 rounded-lg bg-white focus:border-[#e6f2ef] focus:outline-none"
         >
           <option value="">Select network</option>
           <option value="MTN">MTN</option>
@@ -139,13 +139,13 @@ function WithdrawPage({
             onClick={handleAllIn}
             className="flex gap-2 items-center cursor-pointer ml-4"
           >
-            <p className="text-blue-700 font-medium text-sm whitespace-nowrap">
+            <p className="text-[#2f5d50] font-medium text-sm whitespace-nowrap">
               All in
             </p>
             {clicked ? (
               <CheckCircleIcon className="w-6 h-6 text-blue-700 flex-shrink-0" />
             ) : (
-              <PlusCircleIcon className="w-6 h-6 text-blue-700 flex-shrink-0" />
+              <PlusCircleIcon className="w-6 h-6 text-[#2f5d50] flex-shrink-0" />
             )}
           </div>
         </motion.div>
@@ -163,7 +163,7 @@ function WithdrawPage({
         {/* Available Balance Info */}
         <div className="flex gap-4 items-center mt-8">
           <h2 className="text-md text-gray-700">Available balance:</h2>
-          <h2 className="font-medium text-lg text-blue-700">
+          <h2 className="font-medium text-lg text-[#2f5d50]">
             GH₵ {Number(availableBalance).toLocaleString()}.00
           </h2>
         </div>
@@ -172,9 +172,9 @@ function WithdrawPage({
           onClick={handleContinue}
           disabled={!isValid}
           animate={{
-            backgroundColor: isValid ? "#2563eb" : "#d1d5db",
+            backgroundColor: isValid ? "#2f5d5" : "#d1d5db",
           }}
-          whileHover={isValid ? { backgroundColor: "#1d4ed8" } : {}}
+          whileHover={isValid ? { backgroundColor: "bg-[#2f5d50]" } : {}}
           className="py-3 w-full mt-10 rounded-lg text-white font-medium disabled:cursor-not-allowed transition-all"
         >
           Continue
