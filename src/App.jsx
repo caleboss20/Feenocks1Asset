@@ -183,7 +183,13 @@ function App() {
   };
   return (
     <>
-      <div className="w-full bg-white">
+      <div className="w-full bg-white ">
+        <div className="hidden md:flex flex-col justify-center items-center h-screen w-full">
+       {/* <img src={male} className="w-60 h-60" alt="" /> */}
+        <h2 className="text-2xl">Desktop version will be launching soon.stay tuned🚀</h2>
+        
+      </div>
+        <div className="md:hidden">
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/support" element={<SupportCenter />} />
@@ -337,6 +343,7 @@ function App() {
             }
           />
         </Routes>
+      </div>
       </div>
     </>
   );

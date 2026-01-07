@@ -7,6 +7,13 @@ import image1 from "../assets/images/bestfamily.webp";
 import image2 from "../assets/images/family-savings.png";
 import hero from "../assets/images/hero1.png";
 import hero5 from "../assets/images/hero6.jpg";
+import lady1 from "../assets/images/lady1.jpg";
+import lady2 from "../assets/images/lady2.jpg";
+import lady3 from "../assets/images/lady3.jpg";
+import lady4 from "../assets/images/lady4.jpg";
+import lady5 from "../assets/images/lady5.jpg";
+import lady6 from "../assets/images/lady6.jpg";
+import lady7 from "../assets/images/lady7.jpg";
 
 
 import Button from "./Button";
@@ -53,149 +60,169 @@ function Homepage() {
 
   return (
     <div className="">
+       
+     <div className="">
       <Navbar />
 
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[#0B3219]" />
-
-        <div className="absolute inset-0 bg-[#e6f2ef] backdrop-blur-2xl" />
-
-        <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-emerald-200/20" />
-        <motion.div
-          className="relative z-10 w-full py-10 flex flex-col justify-center items-center p-5 mt-30"
-          initial={{ opacity: 0.3, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <h2 className="text-4xl font-bold text-slate-900 text-center leading-normal mb-6">
-            Powering the Next Generation of Global Investing.
-          </h2>
-          <p className="text-lg text-slate-700 text-center mb-8 max-w-2xl">
-            Invest confidently across markets with secure,transparent access to
-            public offers and growth assets.
-          </p>
-          <Button />
-
-          <div className=" inset-0 bg-black/1">
-            <div className=" overflow-hidden w-full rounded-2xl h-120 mt-20 border-10 border-white">
-              <div className="py-2 px-2 items-center flex justify-between absolute w-32 rounded-lg bg-white left-2 bottom-6 shadow-2xl">
-                <div className="flex flex-col">
-                  <span className="font-medium text-sm text-blue-500">
-                    Bitsusu
-                  </span>
-                  <span className="font-sm text-gray-900 font-bold">
-                    ₵{count.toLocaleString()}
-                  </span>
-                  <span className="text-[12px] text-gray-800">
-                    6% interest rate
-                  </span>
-                </div>
-                <div className="py-1 px-1 bg-blue-100 rounded-full">
-                  <CurrencyDollarIcon className="w-5 h-5 text-blue-700" />
-                </div>
-              </div>
-
-              <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white left-2 bottom-105 shadow-2xl">
-                <div className="flex flex-col">
-                  <span className="font-medium text-sm text-pink-500">
-                    Real Estate
-                  </span>
-                  <span className="font-sm text-gray-900 font-bold">
-                    ₵{count.toLocaleString()}
-                  </span>
-                  <span className="text-[12px] text-gray-800">
-                    9% interest rate
-                  </span>
-                </div>
-                <div className="py-1 px-1 bg-pink-100 rounded-full">
-                  <BuildingLibraryIcon className="w-5 h-5 text-pink-700" />
-                </div>
-              </div>
-
-              <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white left-2 bottom-42 shadow-2xl">
-                <div className="flex flex-col">
-                  <span className="font-medium text-sm text-green-500">
-                    Agribusiness
-                  </span>
-                  <span className="font-sm text-gray-900 font-bold">
-                    ₵22,000
-                  </span>
-                  <span className="text-[12px] text-gray-800">
-                    6% interest rate
-                  </span>
-                </div>
-                <div className="py-1 px-1 bg-green-100 rounded-full">
-                  <GiPlantSeed className="w-5 h-5 text-green-700" />
-                </div>
-              </div>
-
-              <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white right-2 bottom-104 shadow-2xl">
-                <div className="flex flex-col">
-                  <span className="font-medium text-sm text-orange-500">
-                    {" "}
-                    Mutual Fund
-                  </span>
-                  <span className="font-sm text-gray-900 font-bold">
-                    ₵48,000
-                  </span>
-                  <span className="text-[12px] text-gray-800">
-                    5% interest rate
-                  </span>
-                </div>
-                <div className="py-1 px-1 bg-orange-100 rounded-full">
-                  <FaChartBar className="w-5 h-5 text-orange-700" />
-                </div>
-              </div>
-
-              <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white right-2 bottom-53 shadow-2xl">
-                <div className="flex flex-col">
-                  <span className="font-medium text-sm text-blue-800">
-                    ForexTrading
-                  </span>
-                  <span className="font-sm text-gray-900 font-bold">
-                    ₵60,000
-                  </span>
-                  <span className="text-[12px] text-gray-800">
-                    8% interest rate
-                  </span>
-                </div>
-                <div className="py-1 px-1 bg-blue-100 rounded-full">
-                  <FaChartBar className="w-5 h-5 text-blue-700" />
-                </div>
-              </div>
-
-              <div className="py-2 px-2 items-center justify-between flex absolute w-35 rounded-lg bg-white right-2 bottom-6 shadow-2xl">
-                <div className="flex flex-col">
-                  <span className="font-medium text-sm text-violet-500">
-                    Investwise Cap
-                  </span>
-                  <span className="font-sm text-gray-900 font-bold">
-                    ₵5,000
-                  </span>
-                  <span className="text-[12px] text-gray-800">
-                    7% interest rate
-                  </span>
-                </div>
-                <div className="py-1 px-1 bg-violet-100 rounded-full">
-                  <FaChartBar className="w-5 h-5 text-violet-700" />
-                </div>
-              </div>
-              <img src={hero5} className="w-full h-full object-cover"></img>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Floating support button (unchanged) */}
-        <div className="relative">
-          <div
-            onClick={() => navigate("/support")}
-            className="z-30 fixed shadow-2xl right-3 flex justify-center items-center bottom-10 w-15 h-15 rounded-full bg-[#0b3c49]"
+       <section className="relative overflow-hidden">
+      <div className="absolute inset-0 bg-[#0B3219]" />
+      <div className="absolute inset-0 bg-[#e6f2ef] backdrop-blur-2xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-emerald-200/20" />
+      <motion.div
+        className="relative z-10 w-full py-10 flex flex-col justify-center items-center p-5 mt-30"
+        initial={{ opacity: 0.3, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <h2 className="text-4xl font-bold text-slate-900 text-center leading-normal mb-6">
+          Powering the Next Generation of Global Investing.
+        </h2>
+        <p className="text-lg text-slate-700 text-center mb-8 max-w-2xl">
+          Invest confidently across markets with secure, transparent access to
+          public offers and growth assets.
+        </p>
+        <div className="inset-0 bg-black/1">
+          {/* Floating Container with Image */}
+          <motion.div
+            className="overflow-visible w-full rounded-2xl h-120 mt-40 border-10 border-white relative"
+            animate={{ y: [20, -15, 20] }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              type: "tween"
+            }}
           >
-            <MdQuestionMark className="w-6 h-6 text-white" />
-          </div>
+            <img
+              src={lady4}
+              alt="Investment Hero"
+              className="w-full h-full object-cover"
+            />
+            {/* Bitsusu Card - Bottom Left */}
+            <div className="py-2 px-2 items-center flex justify-between absolute w-32 rounded-lg bg-white -left-6 bottom-3 shadow-2xl z-20">
+              <div className="flex flex-col">
+                <span className="font-medium text-sm text-blue-500">
+                  Bitsusu
+                </span>
+                <span className="text-sm text-gray-900 font-bold">
+                  ₵{count.toLocaleString()}
+                </span>
+                <span className="text-[12px] text-gray-800">
+                  6% interest rate
+                </span>
+              </div>
+              <div className="py-1 px-1 bg-blue-100 rounded-full">
+                <CurrencyDollarIcon className="w-5 h-5 text-blue-700" />
+              </div>
+            </div>
+            {/* Real Estate Card - Top Left */}
+            <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white -left-7 bottom-95 shadow-2xl z-20">
+              <div className="flex flex-col">
+                <span className="font-medium text-sm text-pink-500">
+                  Real Estate
+                </span>
+                <span className="font-sm text-gray-900 font-bold">
+                  ₵{count.toLocaleString()}
+                </span>
+                <span className="text-[12px] text-gray-800">
+                  9% interest rate
+                </span>
+              </div>
+              <div className="py-1 px-1 bg-pink-100 rounded-full">
+                <BuildingLibraryIcon className="w-5 h-5 text-pink-700" />
+              </div>
+            </div>
+            {/* Agribusiness Card - Middle Left */}
+            <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white -left-7 bottom-56 shadow-2xl z-20">
+              <div className="flex flex-col">
+                <span className="font-medium text-sm text-green-500">
+                  Agribusiness
+                </span>
+                <span className="text-sm text-gray-900 font-bold">
+                  ₵22,000
+                </span>
+                <span className="text-[12px] text-gray-800">
+                  6% interest rate
+                </span>
+              </div>
+              <div className="py-1 px-1 bg-green-100 rounded-full">
+                <GiPlantSeed className="w-5 h-5 text-green-700" />
+              </div>
+            </div>
+            {/* Mutual Fund Card - Top Right */}
+            <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white -right-7 bottom-94 shadow-2xl z-20">
+              <div className="flex flex-col">
+                <span className="font-medium text-sm text-orange-500">
+                  Mutual Fund
+                </span>
+                <span className="text-sm text-gray-900 font-bold">
+                  ₵48,000
+                </span>
+                <span className="text-[12px] text-gray-800">
+                  5% interest rate
+                </span>
+              </div>
+              <div className="py-1 px-1 bg-orange-100 rounded-full">
+                <FaChartBar className="w-5 h-5 text-orange-700" />
+              </div>
+            </div>
+            {/* ForexTrading Card - Middle Right */}
+            <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white -right-7 bottom-51 shadow-2xl z-20">
+              <div className="flex flex-col">
+                <span className="font-medium text-sm text-blue-800">
+                  ForexTrading
+                </span>
+                <span className="text-sm text-gray-900 font-bold">
+                  ₵60,000
+                </span>
+                <span className="text-[12px] text-gray-800">
+                  8% interest rate
+                </span>
+              </div>
+              <div className="py-1 px-1 bg-blue-100 rounded-full">
+                <FaChartBar className="w-5 h-5 text-blue-700" />
+              </div>
+            </div>
+            {/* Investwise Cap Card - Bottom Right */}
+            <div className="py-2 px-2 items-center justify-between flex absolute w-35 rounded-lg bg-white -right-7 -bottom-7 shadow-2xl z-20">
+              <div className="flex flex-col">
+                <span className="font-medium text-sm text-violet-500">
+                  Investwise Cap
+                </span>
+                <span className="font-sm text-gray-900 font-bold">
+                  ₵5,000
+                </span>
+                <span className="text-[12px] text-gray-800">
+                  7% interest rate
+                </span>
+              </div>
+              <div className="py-1 px-1 bg-violet-100 rounded-full">
+                <FaChartBar className="w-5 h-5 text-violet-700" />
+              </div>
+            </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.div>
+      {/* Floating support button */}
+      <div className="relative">
+        <motion.div
+          className="z-30 fixed shadow-2xl right-3 flex justify-center items-center bottom-10 w-15 h-15 rounded-full bg-[#0b3c49] cursor-pointer"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          animate={{ y: [0, -10, 0] }}
+          transition={{
+            y: {
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }
+          }}
+        >
+          <MdQuestionMark className="w-6 h-6 text-white" />
+        </motion.div>
+      </div>
+    </section>
 
       {/*getting started section*/}
       <section>
@@ -499,6 +526,7 @@ function Homepage() {
       <section>
         {decline && <Cookie decline={decline} setDecline={setDecline} />}
       </section>
+    </div>
     </div>
   );
 }
