@@ -17,7 +17,7 @@ const Navbar = () => {
           className="md:hidden"
           onClick={() => setIsOpen(true)}
         >
-          <Bars3Icon className="w-8 h-8" />
+          <Bars3Icon className="w-6 h-6" />
         </button>
           </div>
        
@@ -29,7 +29,7 @@ const Navbar = () => {
         <div>
           <button
           onClick={()=>navigate("/signin")}
-           className="border-1 border-[#2f5d50] py-3 px-7 font-medium rounded-full  text-lg text-gray-900 shadow-xl bg--[#e6f2ef]">Login</button>
+           className="border-1 border-white w-20 h-10 flex justify-center items-center font-medium rounded-full  text-md text-white bg-gray-800">Log in</button>
         </div>
        
          
