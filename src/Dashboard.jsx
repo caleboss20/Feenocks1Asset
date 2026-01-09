@@ -63,6 +63,13 @@ function Dashboard({
             <span className="text-gray-600">Welcome!</span>
           </div>
         </div>
+
+        <div
+        onClick={()=>navigate("/referral")} 
+        className="py-1 px-2 bg-[#e6f2ef] rounded-lg">
+          <p className="text-gray-900 text-sm">Refer a friend</p>
+        </div>
+
         <div className="relative">
           <BellIcon className="w-6 h-6" />
           <div className="absolute p-1 top-0 right-1 bg-red-600 rounded-full"></div>

@@ -31,6 +31,7 @@ import Ottpverification from "./withdrawflow/Ottpverify";
 import PrivacyPolicyAny from "./PrivacyPolicyany";
 import TermsAndConditionsAny from "./TermsAndConditionsAny";
 import PINSetupPage from "./components/PinSetUp";
+import Referral from "./components/Referral";
 
 function App() {
   const [selectedId, setSelectedId] = useState(null);
@@ -344,6 +345,8 @@ function App() {
                 />
             }
           />
+           <Route path="/referral" element={<Referral />} />
+
         </Routes>
       </div>
       </div>
