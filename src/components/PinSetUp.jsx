@@ -15,7 +15,7 @@ async function hashPIN(pin) {
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
 }
-const PINPage = () => {
+const PINPage = ({profileName}) => {
   const navigate = useNavigate();
   const PIN_LENGTH = 4;
   const storedPINHash = localStorage.getItem("userPIN");
@@ -114,9 +114,10 @@ const PINPage = () => {
         >
           <UserCircleIcon className="w-12 h-12 text-white" />
         </motion.div>
-        <h1 className="text-xl font-medium text-gray-900 mb-4 text-center">
+        <h1 className="text-lg font-medium text-gray-900 mb-4 text-center">
           {isReturningUser
-            ? "Welcome back, enter your PIN"
+            ? `Welcome back ${profileName||""}, 
+            enter your PIN`
             : step === "create"
             ? "Create a PIN to continue"
             : "Repeat your PIN"}

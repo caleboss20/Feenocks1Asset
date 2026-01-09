@@ -7,7 +7,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { motion, AnimatePresence } from "framer-motion";
 import BackArrow from "./Backarrow";
-import { signInWithGoogle, handleRedirectResult } from "../Config/auth";
+
+
 // Disposable email domains
 const disposableDomains = [
   "tempmail.com",
@@ -80,16 +81,7 @@ export default function SignUp() {
     resolver: yupResolver(infoSchema),
     mode: "onChange",
   });
-  // Handle Google redirect (mobile)
-  useEffect(() => {
-    const checkRedirect = async () => {
-      const result = await handleRedirectResult();
-      if (result?.success) {
-        navigate("/socialinfo"); // redirect after Google signup
-      }
-    };
-    checkRedirect();
-  }, [navigate]);
+
   // Step 1 submit (email)
   const onEmailSubmit = (data) => {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
@@ -119,18 +111,7 @@ export default function SignUp() {
     alert("Signup completed!");
     navigate("/socialinfo"); // redirect to dashboard
   };
-  // Google signup handler
-  const handleGoogleSignup = async () => {
-    setLoading(true);
-    setError("");
-    const result = await signInWithGoogle();
-    if (result?.success) {
-      navigate("/socialinfo");
-    } else if (result?.error) {
-      setError(result.error);
-    }
-    setLoading(false);
-  };
+
   const goback = () => navigate("/");
   return (
     <div className="w-full bg-re-300 p-4 flex justify-center md:items-center relative">
@@ -163,7 +144,7 @@ export default function SignUp() {
               >
                 <button
                   type="button"
-                  onClick={handleGoogleSignup}
+                  
                   disabled={loading}
                   className="relative flex justify-center items-center w-full h-15 border-1 border-gray-500 rounded-md cursor-pointer"
                 >

@@ -16,7 +16,7 @@ import lady6 from "../assets/images/lady6.jpg";
 import lady7 from "../assets/images/lady7.jpg";
 
 const HeroImageSection = () => {
-  const images = [lady1, lady2, lady3, lady5];
+  const images = [lady1, lady2, lady3, lady4];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   // Example count values for cards
   const count = 10000;
@@ -41,8 +41,8 @@ const HeroImageSection = () => {
       <AnimatePresence mode="wait">
         <motion.img
           key={currentImageIndex} // important for AnimatePresence
-          src={images[currentImageIndex]}
-          alt="Investment Hero"
+          // src={images[currentImageIndex]}
+          alt=""
           className="w-full h-full object-cover absolute top-0 left-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -51,8 +51,9 @@ const HeroImageSection = () => {
         />
       </AnimatePresence>
       <img
-        src={images[currentImageIndex]}
-        alt="Investment Hero"
+        // src={images[currentImageIndex]}
+        src={lady4}
+        alt=""
         className="w-full h-full object-cover"
       />
       {/* Bitsusu Card */}

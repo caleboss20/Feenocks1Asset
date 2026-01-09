@@ -4,7 +4,9 @@ import { FcGoogle } from "react-icons/fc";
 import BackArrow from "./components/Backarrow";
 import ChatHelp from "./components/chatHelp";
 import { motion } from "framer-motion";
-import { signInWithGoogle, handleRedirectResult } from "./Config/auth";
+import signInwithGoogle from "./Config/auth"
+
+
 export default function SignIn() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -12,32 +14,9 @@ export default function SignIn() {
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [showSpinner, setShowSpinner] = useState(false);
-  useEffect(() => {
-    const checkRedirect = async () => {
-      const result = await handleRedirectResult();
-      if (result && result.success === false && result.error) {
-        setError(result.error);
-      }
-    };
-    checkRedirect();
-  }, []);
-  const handleGoogleSignIn = async () => {
-    setLoading(true);
-    setError("");
-    try {
-      const result = await signInWithGoogle(false);
-      if (result && result.success === false) {
-        setError(result.error || "Failed to sign in with Google");
-      } else {
-        // Normally you'd handle Google login data here
-        // Example: store user in localStorage
-      }
-    } catch (err) {
-      setError("Something went wrong during sign-in");
-    } finally {
-      setLoading(false);
-    }
-  };
+ 
+
+
   const handleEmailSignIn = () => {
     setError("");
     const storedData = JSON.parse(localStorage.getItem("signupData"));
@@ -56,7 +35,7 @@ export default function SignIn() {
       setShowSpinner(true);
       setTimeout(() => {
         navigate("/setpin", { state: { isReturningUser, username } });
-      }, 2000); // show spinner for 2 seconds
+      }, 10000); // show spinner for 10 seconds
     } else {
       setError("Invalid email or password");
     }
@@ -78,7 +57,7 @@ export default function SignIn() {
           <div className="mt-6 p-3 bg-red-100 text-red-700 rounded">{error}</div>
         )}
         <button
-          onClick={handleGoogleSignIn}
+          onClick={signInwithGoogle}
           disabled={loading}
           className="mt-10 flex items-center justify-center gap-4 w-full h-14 border border-gray-400 rounded-lg disabled:opacity-60"
         >

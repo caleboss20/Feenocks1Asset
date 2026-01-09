@@ -58,12 +58,12 @@ function SocialInfo() {
               <div
                 key={item.id}
                 onClick={()=>setSelected(item)}
-                className={`${selected===item?'border-2 border-blue-400': 'border-gray-400' } pl-5 border-1 rounded-lg py-6 flex items-center gap-4 w-full h-10 bg-viole-500`}
+                className={`${selected===item?'border-2 border-[#2f5d50]': 'border-gray-400' } pl-5 border-1 rounded-lg py-6 flex items-center gap-4 w-full h-10 bg-viole-500`}
               >
                 <input 
                 checked={selected===item}
                 onChange={()=>setSelected(item)}
-                type="radio" className="w-5 h-5 accent-blue-600" />
+                type="radio" className="w-5 h-5 accent-[#2f5d50]" />
                 <span>{item.name}</span>
               </div>
             ))}
@@ -75,7 +75,7 @@ function SocialInfo() {
           initial={{ opacity: 0, y: 20 }}
           animate={selected ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
-          className="mt-10 w-full px-4 py-3 bg-blue-600 rounded-lg text-white font-medium text-lg "
+          className="mt-10 w-full px-4 py-3 bg-[#2f5d50] rounded-lg text-white font-medium text-lg "
         >
           Continue
         </motion.button>

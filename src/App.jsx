@@ -31,14 +31,7 @@ import Ottpverification from "./withdrawflow/Ottpverify";
 import PrivacyPolicyAny from "./PrivacyPolicyany";
 import TermsAndConditionsAny from "./TermsAndConditionsAny";
 import PINSetupPage from "./components/PinSetUp";
-// Risk calculation utility
-function calculateRiskProfile(answers) {
-  const total = Object.values(answers).reduce((sum, val) => sum + val, 0);
-  if (total <= 22) return { level: "Conservative", portfolioType: "Safe" };
-  if (total <= 32) return { level: "Moderate", portfolioType: "Balanced" };
-  if (total <= 42) return { level: "Growth", portfolioType: "Aggressive" };
-  return { level: "Aggressive", portfolioType: "High-Risk" };
-}
+
 function App() {
   const [selectedId, setSelectedId] = useState(null);
   const [selected, setSelected] = useState(null);
@@ -46,7 +39,11 @@ function App() {
   const [riskResult, setRiskResult] = useState(null);
   // ===== WALLET SECTION =====
   const [walletName, setWalletName] = useState("");
-  const [profileName, setProfileName] = useState("");
+   const [profileName, setProfileName] = useState(() => {
+    const saved = localStorage.getItem("profileName");
+    return saved ? String(saved) : "";
+  })
+
   // ===== DEPOSIT SECTION =====
   const [selectedMethod, setSelectedMethod] = useState(null);
   const [inputAmount, setInputAmount] = useState("");
@@ -90,7 +87,10 @@ function App() {
 
 
 
-
+ // ===== PERSIST profile Name of user =====
+  useEffect(() => {
+    localStorage.setItem("profileName", profileName);
+  }, [profileName]);
 
 
   // ===== PERSIST TOTAL FUNDED TO LOCALSTORAGE =====
@@ -260,7 +260,7 @@ function App() {
            <Route path="/termsdraft" element={<TermsAndConditionsAny />} />
           <Route path="/policy" element={<PrivacyPolicy />} />
           <Route path="/policydraft" element={<PrivacyPolicyAny />} />
-           <Route path="/setpin" element={<PINSetupPage />} />
+           <Route path="/setpin" element={<PINSetupPage profileName={profileName}/>} />
           <Route
             path="/dashboard"
             element={
