@@ -94,24 +94,19 @@ export default function SignIn() {
         <ChatHelp />
       </div>
       {showSpinner && (
-        <motion.div
-          className="fixed inset-0 bg-black/40 flex flex-col items-center justify-center z-50"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
-          <motion.div
-            className="rounded-full h-16 w-16 border-t-4 border-b-4 border-green-800 border-blue-500 mb-6"
-            animate={{ rotate: 360, scale: [1, 1.2, 1] }}
-            transition={{ repeat: Infinity, duration: 1.2, ease: "linear" }}
-          />
-          <motion.p
-            className="text-white text-2xl font-bold"
+      <>
+         <div className="fixed inset-0 bg-black/40 flex gap-7 flex-col items-center justify-center">
+          <div className="w-6 h-6 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+         <motion.p
+            className=" text-white text-2xl font-bold"
             initial={{ y: -10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
           >
             Logging in...
           </motion.p>
-        </motion.div>
+        </div>
+        
+      </>
       )}
     </div>
   );
