@@ -3,8 +3,11 @@ import { FiShare2 } from "react-icons/fi";
 import { RiShareForwardLine } from "react-icons/ri";
 import { FiCopy, FiInfo } from "react-icons/fi";
 import { useState,useEffect } from "react";
+import BackArrow from "./Backarrow";
+import { useNavigate } from "react-router-dom";
 
 function Referral() {
+  const navigate=useNavigate();
   const [copied, setCopied] = useState(false);
   const [show, setShow] = useState(false);
   const [referralCode, setReferralCode] = useState("");
@@ -52,12 +55,15 @@ function Referral() {
 
   return (
     <div className="p-6">
-      <div className="flex flex-col gap-2 mt-5">
-        <h2 className="text-2xl font-medium text-[#2f5d50]">Refer a friend</h2>
-        <p className="text-gray-600 text-lg font-medium">
+      <div className="flex flex-col gap-2 mt-5 ">
+      <div onClick={()=>navigate("/dashboard")}>
+         <BackArrow />
+      </div>
+        <h2 className="text-2xl font-medium text-[#2f5d50] ml-2">Refer a friend</h2>
+        <p className="text-gray-600 text-lg font-medium ml-2">
           And you can both save GH₵ 20.
         </p>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3  ml-2">
           <MdErrorOutline className="text-[#2f5d50] h-5 w-5 mt-5.5" />
           <h2 className="text-[#2f5d50] font-medium text-xl mt-5">
             How it works
@@ -119,9 +125,9 @@ function Referral() {
           <div>
             <button 
             onClick={handleCopy}
-            className=""
+            className="outline-none"
             >
-              {copied ? <span className="text-green-700">copied!</span> : <FiCopy size={20} className="font-bold text-green-700 text-xl"/>}
+              {copied ? <span className="text-green-700">copied!</span> : <span className="font-bold text-green-700 text-lg">copy</span>}
             </button>
           </div>
         </div>

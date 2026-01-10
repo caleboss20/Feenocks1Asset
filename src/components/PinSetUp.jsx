@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { UserCircleIcon } from "@heroicons/react/24/outline";
+import { UserCircleIcon,XMarkIcon, } from "@heroicons/react/24/outline";
 import { MdLogout } from "react-icons/md";
 import { AiOutlineWarning } from "react-icons/ai";
+import { FaHeart} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 /* =======================
    HASH HELPER (BROWSER)
@@ -26,7 +27,10 @@ const PINPage = ({profileName}) => {
   const [attempts, setAttempts] = useState(5);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  /* =======================
+  const [showpopup,setshowpopup]=useState(false);
+   const [overlay,setOverlay]=useState(false);
+
+  /* =======================/
      NUMPAD HANDLERS
   ======================= */
   const handleNumpadClick = (num) => {
@@ -98,7 +102,18 @@ const PINPage = ({profileName}) => {
   }, [pin, confirmPin]);
   const activePin =
     isReturningUser || step === "enter" || step === "create" ? pin : confirmPin;
-  return (
+ 
+ 
+   const showOverlay=()=>{
+  setshowpopup(false);
+  setOverlay(true);
+  const timer=setTimeout(() => {
+    navigate("/signin");
+  }, 4000);
+   }
+ 
+ 
+    return (
     <div
       className={`min-h-screen flex flex-col bg-gradient-to-b from-[#e6f2ef] via-white to-[#e6f2ef] ${
         loading ? "pointer-events-none" : ""
@@ -138,10 +153,14 @@ const PINPage = ({profileName}) => {
         </div>
         {/* ERROR */}
         {error && (
-          <div className="flex items-center gap-2 text-red-500 mb-4">
+          <motion.div 
+           initial={{ scale: 0.4 }}
+          animate={{ scale: 1 }}
+          transition={{ type:"spring", stiffness: 1000 }}
+          className="flex items-center gap-2 text-red-500 mb-4">
             <AiOutlineWarning />
             <span className="text-sm font-medium">{error}</span>
-          </div>
+          </motion.div>
         )}
         {/* NUMPAD */}
         <div className="grid grid-cols-3 gap-7 mt-6">
@@ -171,13 +190,77 @@ const PINPage = ({profileName}) => {
       {/* SIGN OUT */}
       <div className="pb-6 flex justify-center">
         <button
-          onClick={() => navigate("/signin")}
+          onClick={()=>setshowpopup(true)}
           className="flex items-center gap-2 text-gray-500"
         >
           <MdLogout size={18} />
-          Sign out
+          Log out
         </button>
       </div>
+
+      {/**show overlay */}
+    {overlay && (
+        <motion.div
+          className="fixed inset-0 bg-black/40 flex flex-col items-center justify-center z-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
+          <motion.div
+            className="rounded-full h-16 w-16 border-t-4 border-b-4 border-green-800 border-blue-500 mb-6"
+            animate={{ rotate: 360, scale: [1, 1.2, 1] }}
+            transition={{ repeat: Infinity, duration: 1.2, ease: "linear" }}
+          />
+          <motion.p
+            className="text-white text-2xl font-bold"
+            initial={{ y: -10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+          >
+            Logging out...
+          </motion.p>
+        </motion.div>
+      )}
+       
+
+      {/**show popup confirm sign out */}
+     
+      {showpopup && 
+      <>
+       <div 
+       onClick={()=>setshowpopup(false)}
+       className="z-10 fixed top-0 bottom-0 right-0 inset-0 bg-black/50 w-full "></div>
+       <div className="p-6 fixed left-0 right-0 h-[320px] bg-white bottom-0 shadow-2xl rounded-l-xl rounded-r-xl z-30">
+         <div 
+         className="flex items-center justify-between">
+          <div 
+          onClick={()=>setshowpopup(false)} >
+             <XMarkIcon className="w-6 h-6 text-black font-medium"/>
+          </div>
+         
+          <h2 className="text-red-500 font-medium text-lg text-center -ml-4">Logout</h2>
+         <div></div>
+         </div>
+         <div className="w-full h-[1px] bg-gray-100 mt-5">
+
+         </div>
+
+         <div className="flex gap-3 flex-col items-center justify-center mt-7">
+          <h2 className="text-lg font-medium">Are you sure you want to Log out?</h2>
+         <p className="flex items-center gap-2 justify-center">Thank you and see you again<FaHeart className="text-red-500"/></p>
+         </div>
+
+         <div className="flex gap-5 mt-10 w-full">
+          <button
+          onClick={()=>setshowpopup(false)} 
+          className="flex-1 bg-green-50 rounded-full py-3 text-green-600 font-medium text-lg">cancel</button>
+          <button
+          onClick={showOverlay}
+           className="flex-1 bg-green-800 rounded-full py-3 text-white font-medium text-lg">Yes,logout</button>
+         </div>
+      
+      </div>
+      </>
+      }
+      
       {/* LOADING OVERLAY */}
       {loading && (
         <div className="fixed inset-0 bg-black/40 flex flex-col items-center justify-center">
