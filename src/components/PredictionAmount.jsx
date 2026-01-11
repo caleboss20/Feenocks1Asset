@@ -1,10 +1,11 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 function PredictionAmount() {
   const navigate = useNavigate();
   // Slider principal
-  const [amount, setAmount] = useState(100000);
+  const [amount, setAmount] = useState(100);
   // Duration type: month/year
   const [durationType, setDurationType] = useState("month");
   // Duration number: selected month/year
@@ -12,7 +13,7 @@ function PredictionAmount() {
   // Month dropdown number (sync with year if selected)
   const [monthNumber, setMonthNumber] = useState(durationNumber);
   // Annual interest rate
-  const interestRate = 0.06;
+  const interestRate = 0.06;//6%
   // Sync months when duration type or number changes
   useEffect(() => {
     if (durationType === "year") {
@@ -45,8 +46,11 @@ function PredictionAmount() {
       </div>
       <div className="mt-24 flex gap-4 flex-col justify-center items-center">
         <p className="text-gray-500 text-xl">If you Invested</p>
-        <h2 className="font-small text-gray-800 text-4xl">
-          GHS {amount.toLocaleString()}
+        <h2 className="
+       
+        font-medium text-gray-800 text-4xl">
+
+          <span className="text-gray-900">GHS </span>{amount.toLocaleString()}
         </h2>
         <div className="flex gap-14 p-6 mt-5 items-center justify-center">
           <div>
@@ -80,7 +84,7 @@ function PredictionAmount() {
           </div>
         </div>
         <div className="pl-8 pr-8 w-full flex flex-col justify-center items-center">
-          <div className="w-full max-w-md mx-auto mt-10">
+          <div className="w-full max-w-md mx-auto mt-1">
             <input
               type="range"
               min="0"
@@ -97,7 +101,7 @@ function PredictionAmount() {
                 [&::-webkit-slider-thumb]:rounded-full
                 [&::-webkit-slider-thumb]:bg-white
                 [&::-webkit-slider-thumb]:border-2
-                [&::-webkit-slider-thumb]:border-gray-200
+                [&::-webkit-slider-thumb]:border-green-400
                 [&::-webkit-slider-thumb]:shadow-xl
                 [&::-webkit-slider-thumb]:cursor-pointer
                 [&::-moz-range-thumb]:w-8
@@ -109,6 +113,7 @@ function PredictionAmount() {
               "
             />
           </div>
+          
           <p className="mt-7 text-gray-700">Today, you'd have</p>
           <h2 className="mt-5 font-small text-3xl text-gray-500">
             GHS {Number(total.toFixed(2)).toLocaleString()}
@@ -122,10 +127,11 @@ function PredictionAmount() {
           <div className="mt-2">
             <button
               onClick={() => navigate("/signup")}
-              className="py-4 px-20 mt-10 text-lg rounded-lg bg-green-800 text-white font-medium"
+              className="py-4 px-20 mt-10 text-lg rounded-lg bg-[#2f5d50] text-white font-medium"
             >
               Get started
             </button>
+            
           </div>
         </div>
       </div>

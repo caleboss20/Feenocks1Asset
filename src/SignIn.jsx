@@ -84,7 +84,9 @@ export default function SignIn() {
           onChange={(e) => setPasswordInput(e.target.value)}
           className="w-full h-14 border rounded-lg border-gray-400 px-4 mb-4 text-lg"
         />
-        <span className="text-[#2f5d50] font-medium mb-4 block">Forgot password?</span>
+        <span 
+        onClick={()=>navigate("/passwordreset")}
+        className="text-[#2f5d50] font-medium mb-4 block">Forgot password?</span>
         <button
           onClick={handleEmailSignIn}
           className="w-full h-14 bg-[#2f5d50] rounded-lg text-white text-lg mt-2"

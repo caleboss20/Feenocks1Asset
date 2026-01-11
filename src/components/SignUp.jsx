@@ -200,7 +200,7 @@ export default function SignUp() {
                   onClick={()=>navigate("/prediction")} 
                   className="mt-9 flex justify-center items-center  gap-3 rounded-full py-2 px-3 bg-green-50 font-bold text-green-600 text-md">
                     <span><AiFillStar className="text-yellow-400 mt-1 w-5 h-5"/></span>
-                    see what you've missed
+                    see what you missed
                     <span><HiChevronRight className="mt-1 w-6 h-6"/></span>
                   </div>
                 </div>

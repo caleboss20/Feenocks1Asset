@@ -24,6 +24,7 @@ import { FaBuilding, FaChartBar } from "react-icons/fa";
 import { GiPlantSeed } from "react-icons/gi";
 import ScrollingNeedHelpBox from "./chatHelp";
 import HeroImageSection from "./HeroImagesection";
+import PredictionAmount from "./PredictionAmount";
 
 function Homepage() {
   const [decline, setDecline] = useState(true);
@@ -93,7 +94,7 @@ function Homepage() {
 
       {/*getting started section*/}
       <section>
-        <div className="mt-0 w-full h-480 bg-[#fafafa] flex flex-col p-10">
+        <div className="mt-0 w-full h-460 bg-[#fafafa] flex flex-col p-10">
           <div className="mt-35 flex gap-10 flex-col items-center justify-center w-full bg-300 pb-13 ">
             <div className="text-gray-900 bg-[#e6f2ef] font-light text-base px-7 py-3 rounded-full ">
               HOW TO GET STARTED
@@ -161,9 +162,12 @@ function Homepage() {
         </div>
       </section>
 
+<section>
+  <PredictionAmount />
+</section>
       {/*benefits section */}
 
-      <section>
+      <section className="mt-40">
         <motion.div
           initial={{ opacity: 0, y: 50 }} // start invisible, 50px below
           whileInView={{ opacity: 1, y: 0 }} // animate to visible, y=0
