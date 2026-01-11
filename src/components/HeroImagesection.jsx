@@ -61,7 +61,7 @@ const HeroImageSection = () => {
         <div className="flex flex-col">
           <span className="font-medium text-[12px] text-blue-500">Bitsusu</span>
           <span className="text-[12px] text-gray-900 font-bold">
-            ₵{count.toLocaleString()}
+            ${count.toLocaleString()}
           </span>
           <span className="text-[10px] text-gray-800">6% interest rate</span>
         </div>
@@ -74,7 +74,7 @@ const HeroImageSection = () => {
         <div className="flex flex-col">
           <span className="font-medium text-[12px] text-pink-500">Real Estate</span>
           <span className="text-[12px] text-gray-900 font-bold">
-            ₵{count.toLocaleString()}
+            ${count.toLocaleString()}
           </span>
           <span className="text-[10px] text-gray-800">9% interest rate</span>
         </div>
@@ -86,7 +86,7 @@ const HeroImageSection = () => {
       <div className="py-1 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white -left-7 bottom-56 shadow-2xl z-20">
         <div className="flex flex-col">
           <span className="font-medium text-[12px] text-green-500">Agribusiness</span>
-          <span className="text-[12px] text-gray-900 font-bold">₵22,000</span>
+          <span className="text-[12px] text-gray-900 font-bold">$22,000</span>
           <span className="text-[10px] text-gray-800">6% interest rate</span>
         </div>
         <div className="py-1 px-1 bg-green-100 rounded-full">
@@ -97,7 +97,7 @@ const HeroImageSection = () => {
       <div className="py-1 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white -right-7 bottom-94 shadow-2xl z-20">
         <div className="flex flex-col">
           <span className="font-medium text-[12px] text-orange-500">Mutual Fund</span>
-          <span className="text-[12px] text-gray-900 font-bold">₵48,000</span>
+          <span className="text-[12px] text-gray-900 font-bold">$48,000</span>
           <span className="text-[10px] text-gray-800">5% interest rate</span>
         </div>
         <div className="py-1 px-1 bg-orange-100 rounded-full">
@@ -108,7 +108,7 @@ const HeroImageSection = () => {
       <div className="py-1 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white -right-7 bottom-51 shadow-2xl z-20">
         <div className="flex flex-col">
           <span className="font-medium text-[12px] text-blue-800">ForexTrading</span>
-          <span className="text-[12px] text-gray-900 font-bold">₵60,000</span>
+          <span className="text-[12px] text-gray-900 font-bold">€60,000</span>
           <span className="text-[10px] text-gray-800">8% interest rate</span>
         </div>
         <div className="py-1 px-1 bg-blue-100 rounded-full">
@@ -119,7 +119,7 @@ const HeroImageSection = () => {
       <div className="py-1 px-2 items-center justify-between flex absolute w-35 rounded-lg bg-white -right-7 -bottom-7 shadow-2xl z-20">
         <div className="flex flex-col">
           <span className="font-medium text-[12px] text-violet-500">Investwise Cap</span>
-          <span className="text-[12px] text-gray-900 font-bold">₵5,000</span>
+          <span className="text-[12px] text-gray-900 font-bold">€5,000</span>
           <span className="text-[10px] text-gray-800">7% interest rate</span>
         </div>
         <div className="py-1 px-1 bg-violet-100 rounded-full">
