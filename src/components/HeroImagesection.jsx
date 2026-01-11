@@ -57,73 +57,73 @@ const HeroImageSection = () => {
         className="w-full h-full object-cover"
       />
       {/* Bitsusu Card */}
-      <div className="py-2 px-2 items-center flex justify-between absolute w-32 rounded-lg bg-white -left-6 bottom-3 shadow-2xl z-20">
+      <div className="py-1 px-2 items-center flex justify-between absolute w-32 rounded-lg bg-white -left-6 bottom-3 shadow-2xl z-20">
         <div className="flex flex-col">
-          <span className="font-medium text-sm text-blue-500">Bitsusu</span>
-          <span className="text-sm text-gray-900 font-bold">
+          <span className="font-medium text-[12px] text-blue-500">Bitsusu</span>
+          <span className="text-[12px] text-gray-900 font-bold">
             ₵{count.toLocaleString()}
           </span>
-          <span className="text-[12px] text-gray-800">6% interest rate</span>
+          <span className="text-[10px] text-gray-800">6% interest rate</span>
         </div>
         <div className="py-1 px-1 bg-blue-100 rounded-full">
-          <CurrencyDollarIcon className="w-5 h-5 text-blue-700" />
+          <CurrencyDollarIcon className="w-4 h-4 text-blue-700" />
         </div>
       </div>
       {/* Real Estate Card */}
-      <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white -left-7 bottom-95 shadow-2xl z-20">
+      <div className="py-1 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white -left-7 bottom-95 shadow-2xl z-20">
         <div className="flex flex-col">
-          <span className="font-medium text-sm text-pink-500">Real Estate</span>
-          <span className="text-sm text-gray-900 font-bold">
+          <span className="font-medium text-[12px] text-pink-500">Real Estate</span>
+          <span className="text-[12px] text-gray-900 font-bold">
             ₵{count.toLocaleString()}
           </span>
-          <span className="text-[12px] text-gray-800">9% interest rate</span>
+          <span className="text-[10px] text-gray-800">9% interest rate</span>
         </div>
         <div className="py-1 px-1 bg-pink-100 rounded-full">
-          <BuildingLibraryIcon className="w-5 h-5 text-pink-700" />
+          <BuildingLibraryIcon className="w-4 h-4 text-pink-700" />
         </div>
       </div>
       {/* Agribusiness Card */}
-      <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white -left-7 bottom-56 shadow-2xl z-20">
+      <div className="py-1 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white -left-7 bottom-56 shadow-2xl z-20">
         <div className="flex flex-col">
-          <span className="font-medium text-sm text-green-500">Agribusiness</span>
-          <span className="text-sm text-gray-900 font-bold">₵22,000</span>
-          <span className="text-[12px] text-gray-800">6% interest rate</span>
+          <span className="font-medium text-[12px] text-green-500">Agribusiness</span>
+          <span className="text-[12px] text-gray-900 font-bold">₵22,000</span>
+          <span className="text-[10px] text-gray-800">6% interest rate</span>
         </div>
         <div className="py-1 px-1 bg-green-100 rounded-full">
-          <GiPlantSeed className="w-5 h-5 text-green-700" />
+          <GiPlantSeed className="w-4 h-4 text-green-700" />
         </div>
       </div>
       {/* Mutual Fund Card */}
-      <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white -right-7 bottom-94 shadow-2xl z-20">
+      <div className="py-1 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white -right-7 bottom-94 shadow-2xl z-20">
         <div className="flex flex-col">
-          <span className="font-medium text-sm text-orange-500">Mutual Fund</span>
-          <span className="text-sm text-gray-900 font-bold">₵48,000</span>
-          <span className="text-[12px] text-gray-800">5% interest rate</span>
+          <span className="font-medium text-[12px] text-orange-500">Mutual Fund</span>
+          <span className="text-[12px] text-gray-900 font-bold">₵48,000</span>
+          <span className="text-[10px] text-gray-800">5% interest rate</span>
         </div>
         <div className="py-1 px-1 bg-orange-100 rounded-full">
-          <FaChartBar className="w-5 h-5 text-orange-700" />
+          <FaChartBar className="w-4 h-4 text-orange-700" />
         </div>
       </div>
       {/* ForexTrading Card */}
-      <div className="py-2 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white -right-7 bottom-51 shadow-2xl z-20">
+      <div className="py-1 px-2 items-center justify-between flex absolute w-32 rounded-lg bg-white -right-7 bottom-51 shadow-2xl z-20">
         <div className="flex flex-col">
-          <span className="font-medium text-sm text-blue-800">ForexTrading</span>
-          <span className="text-sm text-gray-900 font-bold">₵60,000</span>
-          <span className="text-[12px] text-gray-800">8% interest rate</span>
+          <span className="font-medium text-[12px] text-blue-800">ForexTrading</span>
+          <span className="text-[12px] text-gray-900 font-bold">₵60,000</span>
+          <span className="text-[10px] text-gray-800">8% interest rate</span>
         </div>
         <div className="py-1 px-1 bg-blue-100 rounded-full">
-          <FaChartBar className="w-5 h-5 text-blue-700" />
+          <FaChartBar className="w-4 h-4 text-blue-700" />
         </div>
       </div>
       {/* Investwise Cap Card */}
-      <div className="py-2 px-2 items-center justify-between flex absolute w-35 rounded-lg bg-white -right-7 -bottom-7 shadow-2xl z-20">
+      <div className="py-1 px-2 items-center justify-between flex absolute w-35 rounded-lg bg-white -right-7 -bottom-7 shadow-2xl z-20">
         <div className="flex flex-col">
-          <span className="font-medium text-sm text-violet-500">Investwise Cap</span>
-          <span className="text-sm text-gray-900 font-bold">₵5,000</span>
-          <span className="text-[12px] text-gray-800">7% interest rate</span>
+          <span className="font-medium text-[12px] text-violet-500">Investwise Cap</span>
+          <span className="text-[12px] text-gray-900 font-bold">₵5,000</span>
+          <span className="text-[10px] text-gray-800">7% interest rate</span>
         </div>
         <div className="py-1 px-1 bg-violet-100 rounded-full">
-          <FaChartBar className="w-5 h-5 text-violet-700" />
+          <FaChartBar className="w-4 h-4 text-violet-700" />
         </div>
       </div>
     </motion.div>

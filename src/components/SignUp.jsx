@@ -179,8 +179,8 @@ export default function SignUp() {
                 </div>
                 <button
                   type="submit"
-                  className={`w-full h-15 bg-[#0b3c39] rounded-md mt-15 flex justify-center items-center hover:bg-blue-700 transition ${
-                    !isEmailValid ? "bg-[#0b3c39] cursor-not-allowed" : ""
+                  className={`w-full h-15 bg-[#2f5d50] rounded-md mt-15 flex justify-center items-center hover:bg-blue-700 transition ${
+                    !isEmailValid ? "bg-[#2f5d50] cursor-not-allowed" : ""
                   }`}
                   disabled={!isEmailValid}
                 >
