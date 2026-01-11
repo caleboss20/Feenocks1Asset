@@ -269,8 +269,8 @@ const PINPage = ({ profileName }) => {
               </p>
             </div>
             <div className="flex gap-5 mt-10 w-full">
-              <button onClick={() => setshowpopup(false)} className="flex-1 bg-green-50 rounded-full py-3 text-green-600 font-medium text-lg">cancel</button>
-              <button onClick={showOverlayHandler} className="flex-1 bg-green-800 rounded-full py-3 text-white font-medium text-lg">Yes,logout</button>
+              <button onClick={() => setshowpopup(false)} className="flex-1 bg-green-50 rounded-full py-2 text-green-600 font-medium text-lg">cancel</button>
+              <button onClick={showOverlayHandler} className="flex-1 bg-green-800 rounded-full py-2 text-white font-medium text-md">Yes,logout</button>
             </div>
           </div>
         </>

@@ -91,7 +91,8 @@ export default function SignIn() {
         >
           Continue
         </button>
-        <ChatHelp />
+        
+        {/* <ChatHelp /> */}
       </div>
       {showSpinner && (
       <>

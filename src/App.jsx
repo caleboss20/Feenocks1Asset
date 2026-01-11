@@ -32,6 +32,7 @@ import PrivacyPolicyAny from "./PrivacyPolicyany";
 import TermsAndConditionsAny from "./TermsAndConditionsAny";
 import PINSetupPage from "./components/PinSetUp";
 import Referral from "./components/Referral";
+import PredictionAmount from "./components/PredictionAmount";
 
 function App() {
   const [selectedId, setSelectedId] = useState(null);
@@ -198,6 +199,7 @@ function App() {
           <Route path="" element={<Navbar />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
+          <Route path="/prediction" element={<PredictionAmount />} />
           <Route path="/socialinfo" element={<SocialInfo />} />
           <Route path="/verification" element={<Verification />} />
           <Route

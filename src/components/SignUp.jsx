@@ -7,7 +7,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { motion, AnimatePresence } from "framer-motion";
 import BackArrow from "./Backarrow";
-
+import { HiChevronRight } from "react-icons/hi";
+import { AiFillStar } from "react-icons/ai";
 
 // Disposable email domains
 const disposableDomains = [
@@ -69,7 +70,10 @@ export default function SignUp() {
     fullName: yup.string().required("First name is required"),
     lastName: yup.string().required("Last name is required"),
     phone: yup.string().required("Phone number is required"),
-    password: yup.string().required("Password is required").min(6, "Password must be at least 6 characters"),
+    password: yup
+      .string()
+      .required("Password is required")
+      .min(6, "Password must be at least 6 characters"),
     terms: yup.bool().oneOf([true], "You must accept terms"),
   });
   const {
@@ -114,7 +118,7 @@ export default function SignUp() {
 
   const goback = () => navigate("/");
   return (
-    <div className="w-full bg-re-300 p-4 flex justify-center md:items-center relative">
+    <div className="w-full bg-[#e6f2ef]- p-4 flex justify-center md:items-center relative">
       <div className="absolute left-5 top-10" onClick={goback}>
         <BackArrow />
       </div>
@@ -144,7 +148,6 @@ export default function SignUp() {
               >
                 <button
                   type="button"
-                  
                   disabled={loading}
                   className="relative flex justify-center items-center w-full h-15 border-1 border-gray-500 rounded-md cursor-pointer"
                 >
@@ -155,9 +158,7 @@ export default function SignUp() {
                     {loading ? "Signing up..." : "Sign up with Google"}
                   </span>
                 </button>
-                {error && (
-                  <p className="text-red-500 text-sm mt-1">{error}</p>
-                )}
+                {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
                 <div className="flex items-center mb-4 mt-8">
                   <hr className="flex-1 border-gray-300" />
                   <span className="px-2 text-gray-400 text-sm">or</span>
@@ -187,11 +188,22 @@ export default function SignUp() {
                     Continue
                   </span>
                 </button>
-                <div className="mt-5">
-                  <ChatHelp />
-                </div>
+                <div className="mt-5">{/* <ChatHelp /> */}</div>
+
+               
               </form>
+              
             </div>
+             <div className="mb-5 mt-10 flex flex-col justify-center items-center">
+                  <p className=" text-center text-lg text-gray-500">See how much you could have earned in the past few years </p>
+                  <div
+                  onClick={()=>navigate("/prediction")} 
+                  className="mt-9 flex justify-center items-center  gap-3 rounded-full py-2 px-3 bg-green-50 font-bold text-green-600 text-md">
+                    <span><AiFillStar className="text-yellow-400 mt-1 w-5 h-5"/></span>
+                    see what you've missed
+                    <span><HiChevronRight className="mt-1 w-6 h-6"/></span>
+                  </div>
+                </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -360,7 +372,7 @@ export default function SignUp() {
         )}
       </AnimatePresence>
       {/* Step Indicator */}
-      <div className="absolute bottom-2 w-full flex justify-center space-x-4">
+      {/* <div className="absolute bottom-2 w-full flex justify-center space-x-4">
         <span
           className={`w-3 h-3 rounded-full ${
             step === 1 ? "bg-blue-600" : "bg-gray-300"
@@ -376,7 +388,7 @@ export default function SignUp() {
             step === 3 ? "bg-blue-600" : "bg-gray-300"
           }`}
         ></span>
-      </div>
+      </div> */}
     </div>
   );
 }
