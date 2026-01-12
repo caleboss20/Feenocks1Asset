@@ -1,8 +1,12 @@
-import { ArrowLeftIcon } from "@heroicons/react/24/solid";
+import { ArrowLeftIcon,ChevronLeftIcon } from "@heroicons/react/24/solid";
 function BackArrow(){
  return(
     <div className="w-full h-10 ">
-        <ArrowLeftIcon className="w-7 h-7" />
+        <div className="py-2 px-2 bg-gray-100 shadow-2xl rounded-full flex justify-center items-center">
+
+    <ChevronLeftIcon className="w-6 h-6 " />
+        </div>
+        
     </div>
  )
 }
