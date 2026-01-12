@@ -87,8 +87,8 @@ import {Link, useNavigate} from "react-router-dom";
     >
       <div
       onClick={()=>navigate("/support")} 
-      className="fixed top-8 z-50 inset-87 bg-black/0 w-20 h-10">
-               <MdSupportAgent className="w-10 h-10 text-gray-700"/>
+      className="absolute top-8 z-50 right-6">
+               <MdSupportAgent className="w-10 h-10 text-gray-600"/>
             </div>
       <AnimatePresence mode="wait">
         <motion.img
