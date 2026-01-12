@@ -9,13 +9,21 @@ import lady6 from "../assets/images/lady6.jpg";
 import lady7 from "../assets/images/lady7.jpg";
 import woman1 from "../assets/images/woman1.jpg";
 import woman2 from "../assets/images/woman2.jpg";
+import man1 from "../assets/images/man1.jpg";
+import family1 from "../assets/images/family1.jpeg";
+import family2 from "../assets/images/family2.jpg";
+import family3 from "../assets/images/family3.jpg";
+
+import farmer1 from "../assets/images/farmer1.jpg";
+import farmer2 from "../assets/images/farmer2.jpg";
+import farmer3 from "../assets/images/farmer3.jpg";
 
 import farm1 from "../assets/images/farm1.jpg";
 import farm5 from "../assets/images/farm5.jpg";
 import farm6 from "../assets/images/farm6.jpg";
 import farm4 from "../assets/images/farm4.jpg";
 
-import {MdSupportAgent } from "react-icons/md";
+import {MdQuestionMark, MdSupportAgent } from "react-icons/md";
 
 
 
@@ -27,24 +35,27 @@ import {Link, useNavigate} from "react-router-dom";
   const [currentSlide, setCurrentSlide] = useState(0);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
+
+  const [show,setShow]=useState(true);
+
   const slides = [
     {
-      image: lady4,
+      image: man1,
       title: "Secure Investments for you",
       description: "Smart Investing made simple,secure and transparent",
     },
     {
-      image: woman2,
+      image: family1,
       title: "Secure Payments",
       description: "Your transactions are protected with bank-level encryption",
     },
     {
-      image: farm1,
+      image: farmer2,
       title: "Sustainable Agribusiness",
      description:"Support food production while earning consistent returns from verified agricultural projects"
     },
     {
-      image: woman1,
+      image: family3,
       title: "24/7 Customer Service",
       description: "We are always ready to assist you",
     },
@@ -85,6 +96,37 @@ import {Link, useNavigate} from "react-router-dom";
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
+
+    {show && 
+     <div className="fixed left-6 right-6 bottom-1 top-5 rounded-lg bg-white z-90">
+      <div className="flex flex-col items-center px-5">
+        <div className="bg-red-200 rounded-lg py-5 px-6 mt-6">
+          <MdQuestionMark className="text-red-600 w-7 h-8"/>
+        </div>
+        <h2 className="text-lg font-medium mt-4 text-gray-800">User Data Consent</h2>
+       <div className="mt-4">
+        <p className="text-gray-600 text-md">Feenicks1 collects and stores your personal information such as name,email, and address to enable secure account creation and management.
+          Feenicks1 also collects analytical data,which helps improve app performance and enhance user interactions and preferences.
+        </p>
+       </div>
+
+       <div className="mt-4">
+        <p className="text-gray-600">We also collects information about the applications installed on your device to provide personalized recommendations and enhance your user experience.We do not share this information with third parties without your consent.</p>
+       </div>
+
+
+       <div className="mt-6">
+      <p className="text-gray-600">Do you consent to the collection and use of your personal information and analytical data for these purposes?</p>
+      <button 
+      onClick={()=>setShow(false)}
+      className="font-medium text-lg bg-green-700 rounded-lg w-full text-white mt-5 py-3">I Agree</button>
+       </div>
+      
+      </div>
+      </div>
+    }
+
+
       <div
       onClick={()=>navigate("/support")} 
       className="absolute top-8 z-50 right-6">
@@ -147,6 +189,7 @@ import {Link, useNavigate} from "react-router-dom";
         
         </div>
       </div>
+     
     </div>
   );
 }

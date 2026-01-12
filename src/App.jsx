@@ -35,6 +35,7 @@ import Referral from "./components/Referral";
 import PredictionAmount from "./components/PredictionAmount";
 import PasswordReset from "./components/PasswordReset";
 import WelcomePage from "./components/WelcomePage";
+import Splashscreen from "./components/Splashscreen";
 
 function App() {
   const [selectedId, setSelectedId] = useState(null);
@@ -196,7 +197,8 @@ function App() {
       </div>
         <div className="md:hidden">
         <Routes>
-          <Route path="/" element={<WelcomePage />} />
+          <Route path="/" element={<Splashscreen />} />
+           <Route path="/welcomepage" element={<WelcomePage />} />
           <Route path="/support" element={<SupportCenter />} />
           <Route path="" element={<Navbar />} />
           <Route path="/signup" element={<SignUp />} />
