@@ -353,7 +353,7 @@ function App() {
                 />
             }
           />
-           <Route path="/referral" element={<Referral />} />
+           <Route path="/referral" element={<Referral   profileName={profileName}/>} />
 
         </Routes>
       </div>
