@@ -42,7 +42,7 @@ function TermsAndConditionsAny() {
   return (
     <div className="relative w-full px-6 py-10 max-w-5xl mx-auto text-gray-800 leading-relaxed">
       <h1 className="text-3xl font-light mb-2">Terms & Conditions</h1>
-      <p className="text-lg font-medium mt-8 mb-5 text-[#0b3c39]">
+      <p className="text-lg font-medium mt-8 mb-5 text-green-700">
         (Last Updated: December, 2025)
       </p>
       {/* CONTENT */}
@@ -411,7 +411,7 @@ function TermsAndConditionsAny() {
       {/* FLOATING SCROLL BUTTON */}
       <button
         onClick={scrollAction}
-        className="fixed bottom-40 right-6 w-12 h-12 rounded-full bg-[#0b3c39] text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition"
+        className="fixed bottom-40 right-6 w-12 h-12 rounded-full bg-[#0b3c39] text-white flex items-center justify-center shadow-lg hover:bg-green-700 transition"
       >
         {atBottom ? <HiChevronUp size={22} /> : <HiChevronDown size={22} />}
       </button>

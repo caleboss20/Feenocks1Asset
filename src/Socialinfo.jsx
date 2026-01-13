@@ -20,10 +20,6 @@ function SocialInfo() {
     },
     {
       id: crypto.randomUUID(),
-      name: " Online Adertisement ( Google Ads etc. )",
-    },
-    {
-      id: crypto.randomUUID(),
       name: "Facebook",
     },
     {
@@ -43,11 +39,9 @@ function SocialInfo() {
 
   return (
     <div className="w-full bg-yello-400 p-5">
-      <div className="w-full h-20">
-        <Navbar />
-      </div>
+      
 
-      <div className="mt-15">
+      <div className="mt-7">
         <h2 className="font-medium text-2xl">How did you hear about Us?</h2>
         <div className="mt-10">
           <p className="text-gray-700 text-sm">

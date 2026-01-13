@@ -36,7 +36,7 @@ import {Link, useNavigate} from "react-router-dom";
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  const [show,setShow]=useState(true);
+  const [show,setShow]=useState(false);
 
   const slides = [
     {
@@ -90,6 +90,24 @@ import {Link, useNavigate} from "react-router-dom";
   };
 
   const currentSlideData = slides[currentSlide];
+
+
+ //user consent//
+ 
+useEffect(()=>{
+ const consent=localStorage.getItem("userconsent");
+ if(!consent){
+  setShow(true);
+ }
+},[])
+
+
+
+
+
+
+
+
   return (
     <div
       className="w-full h-screen object-cover absolute top-0 left-0"
@@ -118,7 +136,7 @@ import {Link, useNavigate} from "react-router-dom";
        <div className="mt-6">
       <p className="text-gray-600">Do you consent to the collection and use of your personal information and analytical data for these purposes?</p>
       <button 
-      onClick={()=>setShow(false)}
+      onClick={()=>{localStorage.setItem("userconsent","true"); setShow(false)}}
       className="font-medium text-lg bg-green-700 rounded-lg w-full text-white mt-5 py-3">I Agree</button>
        </div>
       

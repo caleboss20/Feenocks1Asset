@@ -43,21 +43,21 @@ function CompleteVerification({ selectedId, setSelectedId }) {
 
   return (
     <div className="w-full h-screen bg-geen-400 p-4">
-      <div className="flex gap-15 mt-5">
+      <div className="flex gap-15 mt-3">
         <div onClick={goback}>
           <BackArrow />
         </div>
-        <h2 className="font-medium text-lg text-center">Verify Your identity</h2>
+        <h2 className="font-medium text-md text-center mt-2">Verify Your identity</h2>
       </div>
 
-      <div className="mt-10 p-2 bg-green-100 w-full rounded-md ">
+      <div className="mt-10 p-2 bg-green-50 w-full rounded-md ">
         <div className="flex gap-4">
           <CheckCircleIcon className="w-8 h-8 text-green-700" />
-          <span className="font-medium text-green-900 text-md">
+          <span className="font-medium text-green-900 text-sm">
             Your account is verified
           </span>
         </div>
-        <h2 className="text-green-900 text-lg mt-2">
+        <h2 className="text-green-900 text-sm mt-2">
           You have completed all verification steps and have access to all
           features
         </h2>
@@ -69,20 +69,20 @@ function CompleteVerification({ selectedId, setSelectedId }) {
 
       <div className="items-center flex justify-between mt-15 p-2 w-full rounded-md">
         <div className="flex flex-col gap-1">
-          <h2 className="font-medium text-black text-lg ">
+          <h2 className="font-medium text-black text-md ">
             Identity Verification
           </h2>
-          <span className="text-gray-700 text-md">{selectedId}</span>
+          <span className="text-gray-700 text-sm">{selectedId}</span>
         </div>
         <div className="bg-green-100 p-2 rounded-lg">
-          <p className="font-medium text-green-900 text-md">Completed</p>
+          <p className="font-medium text-green-900 text-sm">Completed</p>
         </div>
       </div>
 
         <div className="pr-3 flex justify-between items-center mt-10 p-4 bg-green-50 w-full rounded-md ">
          <div className="flex flex-col gap-2">
-          <p className="text-green-800 font-medium text-md">Identification Number</p>
-          <span className="font-medium text-black text-xl">{accountID}</span>
+          <p className="text-green-800 font-medium text-sm">Identification Number</p>
+          <span className="font-medium text-black text-lg">{accountID}</span>
           
          </div>
          <div
@@ -100,8 +100,8 @@ function CompleteVerification({ selectedId, setSelectedId }) {
          <FiInfo className="text-amber-500 "/>
           </div>
           <div>
-            <span className="text-amber-500 font-medium">Please note:</span>
-          <span className="text-amber-500">This Account ID is a unique identifier
+            <span className="text-amber-500 font-medium text-md">Please note:</span>
+          <span className="text-amber-500 text-sm">This Account ID is a unique identifier
             for your Feenicks1 Asset Management account and may be required for support or account reference.
           </span>
           </div>

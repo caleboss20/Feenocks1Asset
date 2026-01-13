@@ -14,7 +14,7 @@ function Verification() {
   return (
     <div className="w-full bg-re-400 px-8 py-4">
       {/* <Navbar /> */}
-      <div className=" mt-8">
+      <div className=" mt-6">
         <div className="flex flex-col gap-4 justify-center items-center">
           <div className="flex justify-center items-center w-25 h-25  bg-[#e6f2ef] rounded-full mb-3">
             <RiIdCardLine className="w-13 h-13 text-[#0b3c39]" />
@@ -56,19 +56,19 @@ function Verification() {
         </div>
 
         <div className="mt-15 flex flex-col gap-4 w-full h-45 bg-viole-300 p-6">
-          <p className=" text-center text-[12px] text-gray-600">
+          <p className=" text-center text-[11px] text-gray-600">
             By selecting "continue" you agree to the{" "}
             <span className="underline">Terms</span>
           </p>
           <button
             onClick={next}
-            className="w-full px-4 py-3 bg-[#0b3c39] rounded-lg text-white font-medium text-lg"
+            className="w-full px-4 py-3 bg-[#0b3c39] rounded-lg text-white font-medium text-md"
           >
             Continue
           </button>
           <span
             onClick={() => navigate("/signin")}
-            className="text-gray-700 text-center"
+            className="text-gray-700 text-center text-md"
           >
             Cancel
           </span>

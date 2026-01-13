@@ -42,7 +42,7 @@ export default function SignIn() {
   };
   return (
     <div className="w-full h-screen p-4 bg-white flex justify-center items-start relative">
-      <div className="absolute left-5 top-10" onClick={() => navigate("/")}>
+      <div className="absolute left-5 top-10" onClick={() => navigate("/signup")}>
         <BackArrow />
       </div>
       <div className="mt-20 p-4 w-full max-w-md">

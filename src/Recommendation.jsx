@@ -52,14 +52,14 @@ function Recommendation({selected,setSelected}) {
 
     return (
     <div className="w-full bg-white">
-      <div className="w-full h-30 ">
+      {/* <div className="w-full h-30 ">
         <Navbar />
-      </div>
-      <div className="w-full p-4 mt-5 h-50 bg-orang-400">
-        <h2 className="text-left pl-4 leading-normal text-3xl font-medium mb-12">
+      </div> */}
+      <div className="w-full p-4 mt-7 bg-orang-400">
+        <h2 className="text-left pl-4 leading-normal text-xl font-medium mb-6">
           Let's Choose Your Investment Packages
         </h2>
-        <span className="text-left pl-4 leading-normal mb-12 text-gray-700">
+        <span className="text-left pl-4 leading-normal mb-2 text-gray-700">
          Our tailored Investment Packages for you
         </span>
         
@@ -108,7 +108,7 @@ function Recommendation({selected,setSelected}) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 40 }}
           transition={{ duration: 0.5 }}
-          className="mb-10 p-5 py-3 bg-[#0b3c39] rounded-lg text-white font-medium text-lg "
+          className="mb-10 p-5 py-3 bg-[#0b3c39] rounded-lg text-white font-medium text-md "
         >
           Continue
         </motion.button>

@@ -256,9 +256,9 @@ function Dashboard({
         <div className="fixed top-0 bottom-0 right-0 inset-0 bg-black/50 w-full z-20"></div>
       )}
       {popup && (
-        <div className="w-full pl-2 py-6 px-2 h-110 fixed bottom-0 left-0 right-0 bg-white shadow-xl z-50">
+        <div className="w-full pl-2 py-6 px-2 h-110 fixed bottom-0 left-0 right-0 bg-white shadow-xl z-50 rounded-xl">
           <span className="text-4xl">🥳</span>
-          <p className="ml-4 mt-6 font-small text-md text-black">
+          <p className="ml-4 mt-6 font-small text-sm leading-normal text-gray-700">
             Now that your investment account is ready, how about you make that
             first deposit? Just enter the amount to get started. It must be at
             least GH₵ 100.00
@@ -288,7 +288,7 @@ function Dashboard({
             </style>
             <button
               onClick={handleNext}
-              className="py-3 hover:bg-blue-700 transition mt-8 bg-blue-700 text-white w-full rounded-lg font-medium border-none outline-none"
+              className="py-3 hover:bg-blue-700 transition mt-8 bg-green-800 text-white w-full rounded-lg font-medium border-none outline-none"
             >
               Continue
             </button>
@@ -296,7 +296,7 @@ function Dashboard({
               onClick={() => setPopup(false)}
               className="flex justify-center items-center mt-8"
             >
-              <span className="font-medium text-gray-900 text-lg">Later</span>
+              <span className="font-medium text-gray-900 text-md">Later</span>
             </div>
           </div>
         </div>

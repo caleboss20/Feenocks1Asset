@@ -1,4 +1,4 @@
-import { FiArrowUpRight, FiArrowDownRight } from "react-icons/fi";
+import { FiArrowUpRight, FiArrowDownRight,FiArrowDownLeft  } from "react-icons/fi";
 import BackArrow from "./components/Backarrow";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -56,9 +56,9 @@ function Transactions({ transactions }) {
       borderColor: "rgb(209, 213, 219)"
     },
     active: {
-      backgroundColor: "rgb(37, 99, 235)",
+      backgroundColor: "#2f5d50",
       color: "rgb(255, 255, 255)",
-      borderColor: "rgb(37, 99, 235)"
+      
     },
   };
   return (
@@ -75,7 +75,7 @@ function Transactions({ transactions }) {
         </Link>
         </div>
        
-        <h2 className="font-medium text-lg text-gray-800">Transaction History</h2>
+        <h2 className="font-medium mt-2 text-lg text-gray-800">Transaction History</h2>
       </motion.div>
       {/* Filter Buttons - Horizontal Scrollable */}
       <motion.div
@@ -100,7 +100,7 @@ function Transactions({ transactions }) {
               animate={selectedFilter === filter.id ? "active" : "inactive"}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="py-2.5 px-6 border- rounded-full outline-none font-medium text-sm transition-all whitespace-nowrap flex-shrink-0"
+              className="py-2.5 px-6 border- rounded-lg outline-none font-medium text-sm transition-all whitespace-nowrap flex-shrink-0"
             >
               {filter.label}
             </motion.button>
@@ -112,20 +112,20 @@ function Transactions({ transactions }) {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="flex flex-col mt-6 w-full gap-3 p-6"
+        className="flex flex-col mt-6 w-full gap-3 p-2"
       >
         {filteredTransactions.length === 0 ? (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="w-full py-12 rounded-lg bg-white flex flex-col items-center justify-center border-1 border-gray-200"
+            className="w-full py-12 rounded-lg flex flex-col items-center justify-center"
           >
-            <div className="text-gray-400 text-4xl mb-3">📭</div>
-            <span className="text-gray-500 font-medium">
+            <div className="text-gray-700 text-4xl mb-3"></div>
+            <span className="text-gray-700 font-medium">
               {selectedFilter === "all"
                 ? "No transactions yet"
                 : selectedFilter === "deposits"
-                ? "No deposits found"
+                ? "You have no deposit yet"
                 : "No withdrawals found"}
             </span>
             <p className="text-gray-400 text-sm mt-2">
@@ -143,13 +143,13 @@ function Transactions({ transactions }) {
               transaction.type === "Withdrawal" ||
               transaction.type === "withdrawal";
             // ===== SET COLORS AND ICONS =====
-            const bgColor = isWithdrawal ? "bg-red-100" : "bg-green-100";
+            const bgColor = isWithdrawal ? "bg-red-50" : "bg-green-50";
             const iconColor = isWithdrawal ? "text-red-700" : "text-green-700";
             const amountColor = isWithdrawal ? "text-red-600" : "text-green-600";
             const percentColor = isWithdrawal ? "text-red-400" : "text-green-400";
             const amountSign = isWithdrawal ? "- " : "+ ";
             const icon = isWithdrawal ? (
-              <FiArrowDownRight className="w-6 h-6" />
+              <FiArrowDownLeft className="w-6 h-6" />
             ) : (
               <FiArrowUpRight className="w-6 h-6" />
             );
@@ -159,11 +159,11 @@ function Transactions({ transactions }) {
                 variants={itemVariants}
                 whileHover={{
                   scale: 1.02,
-                  boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                  boxShadow: "0 4px 1px rgba(0,0,0,0.1)",
                   backgroundColor: isWithdrawal ? "rgb(254, 242, 242)" : "rgb(240, 253, 244)"
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="flex w-full py-4 px-4 bg-white rounded-lg justify-between items-center border-1 border-gray-100 transition-all cursor-pointer"
+                className="flex w-full py-4 px-4  rounded-lg justify-between items-center border-1 border-gray-100 transition-all cursor-pointer"
               >
                 {/* Left Section */}
                 <div className="flex gap-4 flex-1">

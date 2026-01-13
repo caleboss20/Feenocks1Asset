@@ -75,7 +75,7 @@ function SupportCenter() {
           </h2>
         </div>
         <div
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/welcomepage")}
           className=" w-6 h-6 rounded-lg bg-blu-900 py-5 px-5 flex items-center justify-center"
         >
           <span className="text-3xl text-white">&times;</span>

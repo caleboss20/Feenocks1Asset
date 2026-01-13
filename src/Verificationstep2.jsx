@@ -30,14 +30,14 @@ function Verification2({selectedId,setSelectedId}) {
             <BackArrow />
         </div>
 
-      <div className="mt-5">
+      <div className="mt-0">
         <div className="gap-4 w-full bg-gree-500 flex justify-center items-center flex-col">
-          <RiIdCardLine className="w-26 h-26 text-[#0b3c39]"/>
-          <p className="font-medium text-xl">We need a photo of your ID</p>
-          <p className="text-md mt-3 text-gray-600 text-center">
+          <RiIdCardLine className="w-22 h-22 text-[#0b3c39]"/>
+          <p className="font-medium text-lg">We need a photo of your ID</p>
+          <p className="text-sm mt-3 text-gray-600 text-center">
             For the Ghanaians please select one of the following identity document types:
           </p>
-          <div className="flex flex-col w-full mt-8 gap-6">
+          <div className="flex flex-col w-full mt-4 gap-5">
             <motion.div
               onClick={() => setSelectedId("Driver's License")}
               whileHover={{ scale: 1.03 }}
@@ -47,7 +47,7 @@ function Verification2({selectedId,setSelectedId}) {
                 selectedId === "Driver's License" ? "border-[#0b3c39] border-2" : "border-gray-400"
               }`}
             >
-              <MdDirectionsCar className="w-7 h-7 text-[#0b3c39]"/>
+              <MdDirectionsCar className="w-6 h-6 text-[#0b3c39]"/>
               <p>Driver's License</p>
             </motion.div>
             <motion.div
@@ -59,7 +59,7 @@ function Verification2({selectedId,setSelectedId}) {
                 selectedId === "Ghana Card" ? "border-[#0b3c39] border-2" : "border-gray-400"
               }`}
             >
-              <RiIdCardLine className="w-7 h-7 text-[#0b3c39]"/>
+              <RiIdCardLine className="w-6 h-6 text-[#0b3c39]"/>
               <p>Ghana Card</p>
             </motion.div>
             <motion.div
@@ -71,7 +71,7 @@ function Verification2({selectedId,setSelectedId}) {
                 selectedId === "Passport" ? "border-[#0b3c39] border-2" : "border-gray-400"
               }`}
             >
-              <FaPassport className="w-7 h-7 text-[#0b3c39]"/>
+              <FaPassport className="w-6 h-6 text-[#0b3c39]"/>
               <p>Passport</p>
             </motion.div>
             <motion.div
@@ -83,7 +83,7 @@ function Verification2({selectedId,setSelectedId}) {
                 selectedId === "Residency Card(US)" ? "border-[#0b3c39] border-2" : "border-gray-400"
               }`}
             >
-              <MdOutlineBadge className="w-7 h-7 text-[#0b3c39]"/>
+              <MdOutlineBadge className="w-6 h-6 text-[#0b3c39]"/>
               <p>Residency Card(US)</p>
             </motion.div>
           </div>

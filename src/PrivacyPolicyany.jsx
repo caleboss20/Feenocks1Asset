@@ -28,7 +28,7 @@ function PrivacyPolicyAny() {
   return (
     <div className="relative w-full px-6 py-10 max-w-5xl mx-auto text-gray-800 leading-relaxed">
       <h1 className="text-3xl font-light mb-2">Privacy Policy</h1>
-      <p className="text-lg font-medium mt-5 mb-5 text-blue-600">
+      <p className="text-lg font-medium mt-5 mb-5 text-green-600">
         (Last Updated: December, 2025)
       </p>
 
@@ -205,7 +205,7 @@ function PrivacyPolicyAny() {
         your parent or guardian must agree to our Privacy Policy on your behalf.
         If you have any concerns about your child’s personal information,please
         contact us at <br />
-        <span className="underline text-blue-600">
+        <span className="underline text-green-600">
           customerservice@feenicks1.com.
         </span>{" "}
         <br />
@@ -216,7 +216,7 @@ function PrivacyPolicyAny() {
         your parent or guardian must agree to our Privacy Policy on your behalf.
         If you have any concerns about your child’s personal information, please
         contact us at <br />
-        <span className="underline text-blue-600">
+        <span className="underline text-green-600">
           info@theFeenicks1project.com .
         </span>
         <br />
@@ -235,7 +235,7 @@ function PrivacyPolicyAny() {
         you believe we might have any information from or about a person under
         18, please contact us at 
         <br />
-        <span className="underline text-blue-600">
+        <span className="underline text-green-600">
           info@theFeenicks1project.com .
         </span>
         <br />
@@ -271,7 +271,7 @@ function PrivacyPolicyAny() {
         under certain conditions; (viii) the right to lodge a complaint with
         data protection authorities. If you want to learn more about your rights
         under the Data Protection Act,2012 you can visit {""}
-        <span className="text-blue-600">
+        <span className="text-green-600">
           the Data Protection Agency website.
         </span>
         <br />
@@ -372,19 +372,19 @@ function PrivacyPolicyAny() {
         request, to exercise any applicable rights, to make a complaint, or to
         obtain information about our policies and practices with respect to any
         service providers outside Ghana, we can be reached by email at
-        {""} <span className="text-blue-600">info@theFeenicks1project.com</span>
+        {""} <span className="text-green-600">info@theFeenicks1project.com</span>
       </div>
 
       <button
         onClick={scrollAction}
-        className="outline-none fixed bottom-20 right-6 w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition"
+        className="outline-none fixed bottom-20 right-6 w-12 h-12 rounded-full bg-[#2f5d50] text-white flex items-center justify-center shadow-lg hover:bg-blue-700 transition"
       >
         {atBottom ? <HiChevronUp size={22} /> : <HiChevronDown size={22} />}
       </button>
 
         <Link to="/termsdraft">
          <span
-       className="text-blue-800 mt-5 underline">Check out our terms and conditions</span>
+       className="text-green-800 mt-5 underline">Check out our terms and conditions</span>
         </Link>
      
 

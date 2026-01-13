@@ -116,7 +116,7 @@ export default function SignUp() {
     navigate("/socialinfo"); // redirect to dashboard
   };
 
-  const goback = () => navigate("/");
+  const goback = () => navigate("/welcomepage");
   return (
     <div className="w-full bg-[#e6f2ef]- p-4 flex justify-center md:items-center relative">
       <div className="absolute left-5 top-10" onClick={goback}>
@@ -131,13 +131,13 @@ export default function SignUp() {
             transition={{ duration: 0.5 }}
           >
             <div className="p-2 w-full bg-white mt-2 md:p-6 max-w-md mt-20">
-              <h2 className="text-3xl leading-normal md:text-3xl">
+              <h2 className="text-2xl leading-normal md:text-3xl">
                 Become An Elite Investor
               </h2>
-              <p className="text-gray-700 text-xl mt-6">
+              <p className="text-gray-700 text-lg mt-6">
                 Got an account?
                 <Link to="/signin">
-                  <span className="ml-3 text-[#0b3c39] font-medium text-xl">
+                  <span className="ml-3 text-[#0b3c39] font-medium text-lg">
                     Sign In
                   </span>
                 </Link>
@@ -149,7 +149,7 @@ export default function SignUp() {
                 <button
                   type="button"
                   disabled={loading}
-                  className="relative flex justify-center items-center w-full h-15 border-1 border-gray-500 rounded-md cursor-pointer"
+                  className="relative flex justify-center items-center w-full py-4 border-1 border-gray-500 rounded-md cursor-pointer"
                 >
                   <span>
                     <FcGoogle className="w-6 h-6 mr-6" />
@@ -169,7 +169,7 @@ export default function SignUp() {
                     {...registerEmail("email")}
                     type="text"
                     placeholder="Email Address"
-                    className="text-xl pl-4 text-gray-800 w-full h-15 border-1 border-gray-500 rounded-md"
+                    className="text-lg pl-4 text-gray-800 w-full py-3 border-1 border-gray-500 rounded-md"
                   />
                   {emailErrors.email && (
                     <p className="text-red-500 text-sm mt-1">
@@ -195,7 +195,7 @@ export default function SignUp() {
               
             </div>
              <div className="mb-5 mt-10 flex flex-col justify-center items-center">
-                  <p className=" text-center text-lg text-gray-500">See how much you could have earned in the past few years </p>
+                  <p className=" text-center text-md text-gray-500">See how much you could have earned in the past few years </p>
                   <div
                   onClick={()=>navigate("/prediction")} 
                   className="mt-9 flex justify-center items-center  gap-3 rounded-full py-2 px-3 bg-green-50 font-bold text-green-600 text-md">
@@ -219,44 +219,44 @@ export default function SignUp() {
           >
             <div className="p-2 w-full bg-white mt-3 md:p-6 max-w-md mt-20">
               <span className="">{generatedOTP}</span>
-              <h2 className="text-2xl font-medium leading-normal md:text-xl">
+              <h2 className="text-xl font-medium leading-normal md:text-xl">
                 Enter the 6 digit code we've sent to
               </h2>
-              <p className="mb-7 text-gray-600 font-medium text-2xl mt-6">
+              <p className="mb-7 text-gray-600 font-medium text-lg mt-3">
                 {email}
               </p>
-              <span className="text-xl text-[#0b3c39] font-medium ">
+              <span className="text-lg text-[#0b3c39] font-medium ">
                 Wrong email?
               </span>
               <form
                 onSubmit={handleOTPSubmit(onOTPSubmitHandler)}
-                className="mt-10 space-y-5"
+                className="mt-5 space-y-5"
               >
                 <div>
                   <input
                     {...registerOTP("otp", { required: true, maxLength: 6 })}
                     type="text"
                     placeholder="OTP"
-                    className="mb-10 text-xl pl-4 text-gray-900 w-full h-15 border-1 border-gray-500 rounded-md"
+                    className="mb-8 text-xl pl-4 text-gray-900 w-full py-3 border-1 border-gray-500 rounded-md"
                   />
                   {otpErrors.otp && (
                     <p className="text-red-500 text-sm mt-2">
                       {otpErrors.otp.message}
                     </p>
                   )}
-                  <h2 className="mb-5 text-[#0b3c39] font-medium text-xl">
+                  <h2 className="mb-5 text-[#0b3c39] font-medium text-lg">
                     CHECK YOUR EMAIL
                   </h2>
-                  <span className="text-gray-600 text-xl">
+                  <span className="text-gray-600 text-lg">
                     Didn't get OTP?{" "}
                     <span className="text-[#0b3c39] font-medium">Resend</span>
                   </span>
                 </div>
                 <button
                   type="submit"
-                  className="w-full h-15 bg-[#0b3c39] rounded-md mt-15 flex justify-center items-center hover:bg-blue-700 transition"
+                  className="w-full py-3 bg-[#0b3c39] rounded-md mt-15 flex justify-center items-center hover:bg-blue-700 transition"
                 >
-                  <span className="font-medium text-white text-xl">
+                  <span className="font-medium text-white text-lg">
                     Verify OTP
                   </span>
                 </button>
@@ -276,7 +276,7 @@ export default function SignUp() {
             transition={{ duration: 0.5 }}
           >
             <div className="p-2 w-full bg-white mt-3 md:p-6 max-w-md mt-20">
-              <h2 className="text-4xl leading-normal md:text-3xl">
+              <h2 className="text-2xl leading-normal md:text-3xl">
                 Let Get To Know You More
               </h2>
               <form
@@ -288,7 +288,7 @@ export default function SignUp() {
                     {...registerInfo("fullName")}
                     type="text"
                     placeholder="Legal First Name"
-                    className="text-xl pl-4 text-gray-800 w-full h-15 border-1 border-gray-500 rounded-md"
+                    className="text-xl pl-4 text-gray-800 w-full py-3 border-1 border-gray-500 rounded-md"
                   />
                   {infoErrors.fullName && (
                     <p className="text-red-500 text-sm mt-1">
@@ -301,7 +301,7 @@ export default function SignUp() {
                     {...registerInfo("lastName")}
                     type="text"
                     placeholder="Legal Last Name"
-                    className="text-xl pl-4 text-gray-800 w-full h-15 border-1 border-gray-500 rounded-md"
+                    className="text-xl pl-4 text-gray-800 w-full py-3 border-1 border-gray-500 rounded-md"
                   />
                   {infoErrors.lastName && (
                     <p className="text-red-500 text-sm mt-1">
@@ -314,7 +314,7 @@ export default function SignUp() {
                     {...registerInfo("phone")}
                     type="text"
                     placeholder="Phone Number"
-                    className="text-xl pl-4 text-gray-800 w-full h-15 border-1 border-gray-500 rounded-md"
+                    className="text-xl pl-4 text-gray-800 w-full py-3 border-1 border-gray-500 rounded-md"
                   />
                   {infoErrors.phone && (
                     <p className="text-red-500 text-sm mt-1">
@@ -327,7 +327,7 @@ export default function SignUp() {
                     {...registerInfo("password")}
                     type="password"
                     placeholder="Password"
-                    className="text-xl pl-4 text-gray-800 w-full h-15 border-1 border-gray-500 rounded-md"
+                    className="text-xl pl-4 text-gray-800 w-full py-3 border-1 border-gray-500 rounded-md"
                   />
                   {infoErrors.password && (
                     <p className="text-red-500 text-sm mt-1">
@@ -342,7 +342,7 @@ export default function SignUp() {
                     id="terms"
                     className="mr-5 w-10 h-10 accent-blue-500"
                   />
-                  <label htmlFor="terms" className="text-gray-700 text-lg mt-4">
+                  <label htmlFor="terms" className="text-gray-700 text-md mt-4">
                     By checking this checkbox, you agree to our{" "}
                     <span className="text-[#0b3c39] font-medium">
                       Terms and Conditions
@@ -360,9 +360,9 @@ export default function SignUp() {
                 )}
                 <button
                   type="submit"
-                  className="w-full h-15 bg-[#0b3c39] rounded-md mt-10 flex justify-center items-center hover:bg-blue-700 transition"
+                  className="w-full py-3 bg-[#0b3c39] rounded-md mt-10 flex justify-center items-center hover:bg-blue-700 transition"
                 >
-                  <span className="font-medium text-white text-xl">
+                  <span className="font-medium text-white text-lg">
                     Complete Signup
                   </span>
                 </button>
