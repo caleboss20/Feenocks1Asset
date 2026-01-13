@@ -41,7 +41,7 @@ import {Link, useNavigate} from "react-router-dom";
   const slides = [
     {
       image: man1,
-      title: "Secure Investments for you",
+      title: "Secure investments for you",
       description: "Smart Investing made simple,secure and transparent",
     },
     {
