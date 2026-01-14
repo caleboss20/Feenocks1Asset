@@ -36,6 +36,7 @@ import PredictionAmount from "./components/PredictionAmount";
 import PasswordReset from "./components/PasswordReset";
 import WelcomePage from "./components/WelcomePage";
 import Splashscreen from "./components/Splashscreen";
+import Packages from "./DepositFlow/Packages";
 
 function App() {
   const [selectedId, setSelectedId] = useState(null);
@@ -291,6 +292,7 @@ function App() {
               />
             }
           />
+           <Route path="/packages" element={<Packages />} />
           <Route
             path="/depositmethod"
             element={

@@ -114,7 +114,7 @@ function Dashboard({
       {/* Deposit / Withdraw Buttons */}
       <div className="flex w-full mt-10 gap-6">
         <Link
-          to="/depositmethod"
+          to="/packages"
           className="shadow-2xl flex-1 gap-3 flex items-center bg-[#e6f2ef] rounded-full"
         >
           <div className="rounded-sm w-5 h-5 border-1 border-[#e6f2ef] ml-4 flex items-center justify-center">

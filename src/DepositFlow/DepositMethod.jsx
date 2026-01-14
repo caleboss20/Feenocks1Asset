@@ -48,7 +48,7 @@ function DepositMethod({selectedMethod,setSelectedMethod}) {
         </Link>
 
         <div className="">
-          <p className="font-medium text-lg">Create One-Time Deposit</p>
+          <p className="font-medium text-lg mt-1">Create One-Time Deposit</p>
         </div>
       </div>
 
