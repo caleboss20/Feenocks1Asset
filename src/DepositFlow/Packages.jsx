@@ -36,7 +36,7 @@ function Packages() {
   return (
     <div>
       {/* Header */}
-      <div className="flex p-4 items-center justify-between">
+      <div className="flex p-4 items-center justify-between mt-5">
         <div className="flex gap-10 items-center">
             <div onClick={()=>navigate("/dashboard")}>
                 <BackArrow />
@@ -47,7 +47,9 @@ function Packages() {
         
         
         <div className="flex gap-5 items-center">
-          <MdSupportAgent className="w-6 h-6" />
+         <div onClick={()=>navigate("/support")}>
+             <MdSupportAgent className="w-6 h-6" />
+         </div>
           <BellIcon className="w-6 h-6" />
         </div>
       </div>
@@ -85,8 +87,8 @@ function Packages() {
                     )}
                     <h3 className="text-lg font-bold">{item.name}</h3>
                   </div>
-                  <p className="text-md mt-4 opacity-100 max-w-[250px]">{item.description}</p>
-                  <button className="py-3 px-6 bg-white rounded-lg text-gray-700 font-medium mt-4 w-max">
+                  <p className="text-lg mt-4 opacity-100 max-w-[280px]">{item.description}</p>
+                  <button className="py-3 px-10 bg-white rounded-lg text-gray-700 font-medium mt-8 w-max">
                     {item.buttonText}
                   </button>
                 </div>
