@@ -245,7 +245,7 @@ function Dashboard({
       {/* Add Funds Button */}
       <div className="z-10 fixed w-full h-20 p-4 bottom-0 right-0">
         <button
-          onClick={() => navigate("/depositmethod")}
+          onClick={() => navigate("/packages")}
           className="py-3 bg-[#0b3c39] text-white w-full rounded-lg font-medium border-none outline-none"
         >
           Add Funds

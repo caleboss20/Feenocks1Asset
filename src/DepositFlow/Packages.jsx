@@ -31,6 +31,18 @@ function Packages() {
         "bg-gradient-to-r from-black/40 via-yellow-900/30 to-black/30",
       icon: FaBitcoin,
     },
+
+     {
+      heading: "Mutual Fund Capital",
+      img: btc2,
+      name: "Mutual Fund Capital",
+      description:
+        "Put your money into Bitcoin, the original cryptocurrency. Watch your investment grow as the market evolves. Easy, secure and accessible for everyone.",
+      buttonText: "Start now",
+      bgcolor:
+        "bg-gradient-to-r from-black/40 via-yellow-900/30 to-black/30",
+      icon: FaBitcoin,
+    },
     // Add more packages here
   ];
   return (
@@ -88,7 +100,9 @@ function Packages() {
                     <h3 className="text-lg font-bold">{item.name}</h3>
                   </div>
                   <p className="text-lg mt-4 opacity-100 max-w-[280px]">{item.description}</p>
-                  <button className="py-3 px-10 bg-white rounded-lg text-gray-700 font-medium mt-8 w-max">
+                  <button
+                  onClick={()=>navigate("/depositmethod")}
+                   className="py-3 px-10 bg-white rounded-lg text-gray-700 font-medium mt-8 w-max">
                     {item.buttonText}
                   </button>
                 </div>

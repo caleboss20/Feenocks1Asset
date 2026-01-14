@@ -41,7 +41,7 @@ function DepositMethod({selectedMethod,setSelectedMethod}) {
     <>
     <div className="p-4 mt-4">
       <div className="flex gap-15">
-        <Link to="/dashboard">
+        <Link to="/packages">
           <div>
             <BackArrow />
           </div>
