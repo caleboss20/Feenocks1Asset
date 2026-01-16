@@ -89,11 +89,11 @@ function WithdrawPage({
   return (
     <div>
       {/* Header */}
-      <div className="p-6 flex gap-4 items-center">
+      <div className="p-6 flex gap-10 items-center">
         <Link to="/withdrawmethod"className="mt-4">
           <BackArrow />
         </Link>
-        <p className="font-medium text-lg">Withdraw money</p>
+        <p className="font-medium text-lg mt-">Withdraw money</p>
       </div>
       {/* Main Content */}
       <div className="p-6">

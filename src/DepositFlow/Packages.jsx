@@ -7,8 +7,15 @@ import btc2 from "../assets/images/btc2.jpg";
 import { GiWheat } from "react-icons/gi";
 import { FaBitcoin } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+
+import lady6 from "../assets/images/lady6.jpg";
+import lady7 from "../assets/images/lady7.jpg";
+import woman1 from "../assets/images/woman1.jpg";
+import woman2 from "../assets/images/woman2.jpg";
+
 function Packages() {
-    const navigate=useNavigate();
+  const navigate = useNavigate();
   const packages = [
     {
       heading: "AgriBusiness",
@@ -17,7 +24,8 @@ function Packages() {
       description:
         "Invest in agribusiness and grow your money while supporting food and animal production.",
       buttonText: "Start now",
-      bgcolor: "bg-gradient-to-r from-green-600/20 via-[#0f2a44]/70 to-transparent",
+      bgcolor:
+        "bg-gradient-to-r from-green-600/20 via-[#0f2a44]/70 to-transparent",
       icon: GiWheat,
     },
     {
@@ -27,20 +35,18 @@ function Packages() {
       description:
         "Put your money into Bitcoin, the original cryptocurrency. Watch your investment grow as the market evolves. Easy, secure and accessible for everyone.",
       buttonText: "Start now",
-      bgcolor:
-        "bg-gradient-to-r from-black/40 via-yellow-900/30 to-black/30",
+      bgcolor: "bg-gradient-to-r from-black/90 via-green-900/20 to-black/20",
       icon: FaBitcoin,
     },
 
-     {
+    {
       heading: "Mutual Fund Capital",
-      img: btc2,
+      img: woman2,
       name: "Mutual Fund Capital",
       description:
         "Put your money into Bitcoin, the original cryptocurrency. Watch your investment grow as the market evolves. Easy, secure and accessible for everyone.",
       buttonText: "Start now",
-      bgcolor:
-        "bg-gradient-to-r from-black/40 via-yellow-900/30 to-black/30",
+      bgcolor: "bg-gradient-to-r from-blue-700/80 via-blue-900/60 to-black/30",
       icon: FaBitcoin,
     },
     // Add more packages here
@@ -50,18 +56,17 @@ function Packages() {
       {/* Header */}
       <div className="flex p-4 items-center justify-between mt-5">
         <div className="flex gap-10 items-center">
-            <div onClick={()=>navigate("/dashboard")}>
-                <BackArrow />
-            </div>
-       
-        <h2 className="font-medium text-xl">Hi, Caleb</h2>
+          <div onClick={() => navigate("/dashboard")}>
+            <BackArrow />
+          </div>
+
+          <h2 className="font-medium text-xl">Hi, Caleb</h2>
         </div>
-        
-        
+
         <div className="flex gap-5 items-center">
-         <div onClick={()=>navigate("/support")}>
-             <MdSupportAgent className="w-6 h-6" />
-         </div>
+          <div onClick={() => navigate("/support")}>
+            <MdSupportAgent className="w-6 h-6" />
+          </div>
           <BellIcon className="w-6 h-6" />
         </div>
       </div>
@@ -69,7 +74,8 @@ function Packages() {
       <div className="p-6 flex flex-col gap-2">
         <h2 className="font-medium text-lg">Invest</h2>
         <p className="text-gray-700">
-          Choose any of Feenicks1 investment options to start investing in. Don't know which one to choose?{" "}
+          Choose any of Feenicks1 investment options to start investing in.
+          Don't know which one to choose?{" "}
           <span className="text-gray-600 font-medium">Tap here</span>
         </p>
       </div>
@@ -80,7 +86,13 @@ function Packages() {
           return (
             <div key={index}>
               <h2 className="font-medium text-xl mb-5">{item.heading}</h2>
-              <div className="relative rounded-2xl overflow-hidden w-full">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0,x:1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="shadow-xl relative rounded-2xl overflow-hidden w-full"
+              >
                 {/* Background image */}
                 <img
                   src={item.img}
@@ -99,14 +111,17 @@ function Packages() {
                     )}
                     <h3 className="text-lg font-bold">{item.name}</h3>
                   </div>
-                  <p className="text-lg mt-4 opacity-100 max-w-[280px]">{item.description}</p>
+                  <p className="text-lg mt-4 opacity-100 max-w-[280px]">
+                    {item.description}
+                  </p>
                   <button
-                  onClick={()=>navigate("/depositmethod")}
-                   className="py-3 px-10 bg-white rounded-lg text-gray-700 font-medium mt-8 w-max">
+                    onClick={() => navigate("/depositmethod")}
+                    className="py-3 px-10 bg-white rounded-lg text-gray-700 font-medium mt-8 w-max"
+                  >
                     {item.buttonText}
                   </button>
                 </div>
-              </div>
+              </motion.div>
             </div>
           );
         })}
