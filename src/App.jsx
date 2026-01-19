@@ -37,6 +37,7 @@ import PasswordReset from "./components/PasswordReset";
 import WelcomePage from "./components/WelcomePage";
 import Splashscreen from "./components/Splashscreen";
 import Packages from "./DepositFlow/Packages";
+import Notifications from "./components/Notifications";
 
 function App() {
   const [selectedId, setSelectedId] = useState(null);
@@ -356,6 +357,7 @@ function App() {
             }
           />
            <Route path="/referral" element={<Referral   profileName={profileName}/>} />
+           <Route path="/notifications" element={<Notifications />} />
 
         </Routes>
       </div>

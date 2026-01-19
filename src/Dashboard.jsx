@@ -70,7 +70,9 @@ function Dashboard({
           <p className="text-gray-900 text-sm">Refer a friend</p>
         </div>
 
-        <div className="relative">
+        <div 
+        onClick={()=>navigate("/notifications")}
+        className="relative">
           <BellIcon className="w-6 h-6" />
           <div className="absolute p-1 top-0 right-1 bg-red-600 rounded-full"></div>
         </div>

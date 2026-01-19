@@ -182,11 +182,11 @@ useEffect(()=>{
             </p>
           </motion.div>
         </AnimatePresence>
-        <div className="flex gap-3 mt-6 ml-0.5">
+        <div className="flex gap-6 mt-6 ml-0.5">
           {slides.map((_, index) => (
             <div
               key={index}
-              className={`w-10 h-[5px] ${
+              className={`w-3 h-3 rounded-full  ${
                 index === currentSlide ? "bg-white" : "bg-gray-500"
               }`}
             ></div>
