@@ -187,7 +187,7 @@ useEffect(()=>{
             <div
               key={index}
               className={`w-3 h-3 rounded-full  ${
-                index === currentSlide ? "bg-white" : "bg-gray-500"
+                index === currentSlide ? "bg-green-700" : "bg-white"
               }`}
             ></div>
           ))}
