@@ -186,7 +186,7 @@ useEffect(()=>{
           {slides.map((_, index) => (
             <div
               key={index}
-              className={`w-3 h-3 rounded-full  ${
+              className={`w-7 h-[5px]  ${
                 index === currentSlide ? "bg-green-700" : "bg-white"
               }`}
             ></div>
